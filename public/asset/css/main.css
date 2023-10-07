@@ -1,0 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
+@font-face {
+    font-family: horse;
+    src: url("GoodVibrations Script.ttf");
+}
+
+.font-horse{
+    /*font-family: horse !important;*/
+    font-family: 'Great Vibes', cursive !important;
+}
