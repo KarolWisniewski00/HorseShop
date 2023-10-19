@@ -1,5 +1,12 @@
 <?php
 
+use App\Http\Controllers\AboutController;
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\IndexController;
+use App\Http\Controllers\PolicyCookieController;
+use App\Http\Controllers\PolicyPrivController;
+use App\Http\Controllers\RuleController;
+use App\Http\Controllers\ShopController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,10 +20,33 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', [IndexController::class, 'index'])->name('index');
+
+Route::prefix('about')->group(function () {
+    Route::get('/', [AboutController::class, 'index'])->name('about');
 });
 
+Route::prefix('contact')->group(function () {
+    Route::get('/', [ContactController::class, 'index'])->name('contact');
+});
+
+Route::prefix('policy-cookies')->group(function () {
+    Route::get('/', [PolicyCookieController::class, 'index'])->name('policy-cookie');
+});
+
+Route::prefix('policy-priv')->group(function () {
+    Route::get('/', [PolicyPrivController::class, 'index'])->name('policy-priv');
+});
+
+Route::prefix('rule')->group(function () {
+    Route::get('/', [RuleController::class, 'index'])->name('rule');
+});
+
+Route::prefix('shop')->group(function () {
+    Route::get('/', [ShopController::class, 'index'])->name('shop');
+});
+
+//LOGGED IN
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
@@ -26,3 +56,22 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 });
+
+/*
+Route::prefix('shop')->group(function () {
+    Route::get('/', [ShopController::class, 'index'])->name('shop');
+    Route::prefix('cart')->group(function () {
+        Route::get('/', [NewBusketController::class, 'index'])->name('shop.cart.busket');
+        Route::get('get', [NewBusketController::class, 'get'])->name('shop.cart.get');
+        Route::post('add/{product}', [NewBusketController::class, 'add'])->name('shop.cart.add');
+        Route::post('minus/{product}', [NewBusketController::class, 'minus'])->name('shop.cart.minus');
+        Route::post('remove/{product}', [NewBusketController::class, 'remove'])->name('shop.cart.remove');
+        Route::get('/create', [OrderController::class, 'create'])->name('account.order.create');
+        Route::post('/store', [OrderController::class, 'store'])->name('account.order.store');
+        Route::get('/show/{slug}', [OrderController::class, 'show'])->name('account.order.show');
+    });
+    Route::prefix('product')->group(function () {
+        Route::get('{slug}', [ProductController::class, 'show'])->name('shop.product.show');
+    });
+});
+*/
