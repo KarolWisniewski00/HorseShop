@@ -18,6 +18,20 @@
         radial-gradient(ellipse at center left, rgba(224, 203, 182, 0.5), transparent 50%) !important;
 }
 
-.work{
-    border: 1px solid yellow!important;
+.work {
+    border: 1px solid yellow !important;
+}
+
+.hover-filter {
+    -webkit-filter: grayscale(100%);
+    /* Safari 6.0 - 9.0 */
+    filter: grayscale(100%);
+    transition: ease-in-out 200ms;
+}
+.hover-filter:hover {
+    -webkit-filter: grayscale(0%);
+    /* Safari 6.0 - 9.0 */
+    filter: grayscale(0%);
+    transition: ease-in-out 200ms;
+    cursor: pointer;
 }
