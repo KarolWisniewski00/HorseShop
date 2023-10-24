@@ -1,6 +1,6 @@
 <!--filter-->
 <section class="pt-20">
-    
+
     <div class="container mx-auto text-center my-16 relative">
         <svg class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" width="110" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 40" fill="none" x="0px" y="0px">
             <path fill="#f3f4f6" fill-rule="evenodd" clip-rule="evenodd" d="M9 5V8C8.44772 8 8 8.44772 8 9V11.6736C5.63505 12.7971 4 15.2076 4 18V27C4 28.6569 5.34315 30 7 30H17C18.6569 30 20 28.6569 20 27V18C20 15.2076 18.3649 12.7971 16 11.6736V9C16 8.44772 15.5523 8 15 8V5C15 3.34315 13.6569 2 12 2C10.3431 2 9 3.34315 9 5ZM18 19V24H13V19H18ZM12 17H17.9C17.4367 14.7178 15.419 13 13 13H11C8.23858 13 6 15.2386 6 18V27C6 27.5523 6.44772 28 7 28H17C17.5523 28 18 27.5523 18 27V26H12C11.4477 26 11 25.5523 11 25V18C11 17.4477 11.4477 17 12 17ZM10 10V11H14V10H10ZM13 5V8H11V5C11 4.44772 11.4477 4 12 4C12.5523 4 13 4.44772 13 5Z" fill="black" />
@@ -8,9 +8,11 @@
         </svg>
         <div class="text-5xl font-horse relative">Sklep</div>
     </div>
-
+    <div class="mx-auto text-center relative">
+        <div class="text-5xl font-horse relative my-8">Wszystkie produkty</div>
+    </div>
     <div class="container mx-auto flex flex-row">
-        <div class="w-1/3 my-16 bg-gray-100 rounded-3xl pb-4">
+        <div class="w-1/3 my-16 bg-gray-100 shadow rounded-3xl pb-4">
             <div class="mx-auto text-center relative">
                 <div class="text-5xl font-horse relative my-8">Kategorie produktów</div>
             </div>
@@ -36,6 +38,23 @@
             <div class="mx-auto flex flex-col items-start px-4 text-start relative pb-3">
                 <label for="steps-range" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Do 100 zł</label>
                 <input id="steps-range" type="range" min="0" max="5" value="2.5" step="0.5" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700">
+            </div>
+        </div>
+        <div class="w-2/3">
+            <div class="flex flex-row justify-between align-center">
+                <div class="flex flex-row justify-center align-center">
+                    <p class="m-0 p-0 text-gray-300">Pokazano: 19</p>
+                </div>
+                <a href="{{route('shop')}}" class="duration-200 block shadow h-full text-bone-50 m-1 px-4 py-2 leading-loose text-center font-semibold bg-bone-600 hover:bg-gray-50 hover:text-bone-600 rounded-xl">Sortuj: domyślnie</a>
+            </div>
+            <div class="grid gap-4 lg:grid-cols-4">
+                @include('components/product-small')
+                @include('components/product-small')
+                @include('components/product-small')
+                @include('components/product-small')
+                @include('components/product-small')
+                @include('components/product-small')
+                @include('components/product-small')
             </div>
         </div>
     </div>

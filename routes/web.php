@@ -5,6 +5,7 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\PolicyCookieController;
 use App\Http\Controllers\PolicyPrivController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RuleController;
 use App\Http\Controllers\ShopController;
 use Illuminate\Support\Facades\Route;
@@ -44,6 +45,9 @@ Route::prefix('rule')->group(function () {
 
 Route::prefix('shop')->group(function () {
     Route::get('/', [ShopController::class, 'index'])->name('shop');
+    Route::prefix('product')->group(function () {
+        Route::get('{product}', [ProductController::class, 'show'])->name('product.show');
+    });
 });
 
 //LOGGED IN
