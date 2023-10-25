@@ -10,6 +10,6 @@ class ProductController extends Controller
     {
         $product = $slug;
         $products = [];
-        return view('shop.product',compact('product','products'));
+        return view('shop.product.show',compact('product','products'));
     }
 }

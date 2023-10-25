@@ -7,6 +7,7 @@ use App\Http\Controllers\PolicyCookieController;
 use App\Http\Controllers\PolicyPrivController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RuleController;
+use App\Http\Controllers\ShopAdminController;
 use App\Http\Controllers\ShopController;
 use Illuminate\Support\Facades\Route;
 
@@ -56,9 +57,18 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified',
 ])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
+    Route::prefix('dashboard')->group(function () {
+
+        Route::get('/', function () {
+            return view('dashboard');
+        })->name('dashboard');
+
+        Route::prefix('shop')->group(function () {
+            Route::get('/', [ShopAdminController::class, 'index'])->name('admin.products');
+            Route::get('/create', [ShopAdminController::class, 'create'])->name('admin.product.create');
+            Route::post('/store', [ShopAdminController::class, 'store'])->name('admin.product.store');
+        });
+    });
 });
 
 /*
