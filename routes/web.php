@@ -1,15 +1,18 @@
 <?php
 
 use App\Http\Controllers\AboutController;
+use App\Http\Controllers\BusketController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\PolicyCookieController;
 use App\Http\Controllers\PolicyPrivController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RuleController;
 use App\Http\Controllers\ShopAdminController;
 use App\Http\Controllers\ShopController;
 use Illuminate\Support\Facades\Route;
+use Symfony\Component\HttpKernel\Profiler\Profile;
 
 /*
 |--------------------------------------------------------------------------
@@ -47,7 +50,14 @@ Route::prefix('rule')->group(function () {
 Route::prefix('shop')->group(function () {
     Route::get('/', [ShopController::class, 'index'])->name('shop');
     Route::prefix('product')->group(function () {
+        Route::get('/get', [BusketController::class, 'get'])->name('product.get');
         Route::get('{product}', [ProductController::class, 'show'])->name('product.show');
+        Route::post('/add/{product}', [BusketController::class, 'add'])->name('product.add');
+        Route::post('/minus/{product}', [BusketController::class, 'minus'])->name('product.minus');
+        Route::post('/remove/{product}', [BusketController::class, 'remove'])->name('product.remove');
+    });
+    Route::prefix('profile')->group(function () {
+        Route::get('/', [ProfileController::class, 'index'])->name('profile');
     });
 });
 

@@ -16,7 +16,9 @@ return [
     */
 
     'default' => env('BROADCAST_DRIVER', 'null'),
+    // config/breadcrumbs.php
 
+    'view' => 'breadcrumbs::tailwind',
     /*
     |--------------------------------------------------------------------------
     | Broadcast Connections

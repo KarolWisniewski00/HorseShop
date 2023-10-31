@@ -1,8 +1,8 @@
-<a href="{{route('product.show',$product)}}" class="w-full product-small">
+<a href="{{route('product.show',$product)}}" class="w-full product-small h-full flex flex-col justify-between">
     <div class="rounded-3xl shadow overflow-hidden flex flex-col items-center relative">
         <img class="h-full md:h-auto w-auto md:rounded-3xl" src="{{asset('asset/image/'.$product->photo)}}">
     </div>
-    <div class="overflow-hidden relative bg-gray-100 rounded-3xl shadow p-4 mx-16 md:mx-4 -mt-12 relative text-center flex flex-col items-center justify-center">
+    <div class="overflow-hidden relative h-1/4 bg-gray-100 rounded-3xl shadow p-4 mx-16 -mt-12 md:mx-4 relative text-center flex flex-col items-center justify-center">
         <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full">
             <img alt="" src="{{asset('asset/image/products-grid-product-bg.svg')}}">
 

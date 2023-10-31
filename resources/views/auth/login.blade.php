@@ -33,7 +33,7 @@
             </div>
             <div class="mt-4">
                 <x-button class="w-full">
-                    Logowanie
+                <i class="fa-solid fa-arrow-right-to-bracket mr-2"></i>Logowanie
                 </x-button>
             </div>
 
@@ -51,7 +51,7 @@
                 </a>
                 @if (Route::has('password.request'))
                 <a class="underline ml-2 text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-bone-500" href="{{ route('password.request') }}">
-                    {{ __('Zapomniałeś hasła?') }}
+                    Zapomniałeś hasła?
                 </a>
                 @endif
             </div>
