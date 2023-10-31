@@ -27,9 +27,6 @@
         </div>
         <div class="container mx-auto flex flex-row">
             <div class="grid gap-4 lg:grid-cols-3">
-                @include('components/product-small')
-                @include('components/product-small')
-                @include('components/product-small')
             </div>
         </div>
     </section>

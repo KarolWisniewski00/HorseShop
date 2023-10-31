@@ -40,11 +40,6 @@
                                     <th scope="col" class="px-6 py-3">
                                         Cena
                                     </th>
-                                    <!--
-                                    <th scope="col" class="px-6 py-3">
-                                        Podgląd
-                                    </th>
--->
                                     <th scope="col" class="px-6 py-3">
                                         Edycja
                                     </th>
@@ -52,18 +47,12 @@
                                         Usuwanie
                                     </th>
                                 </tr>
-                            </thead><!--
+                            </thead>
                             <tbody>
                                 @foreach($products as $product)
                                 <tr class="bg-white border-b hover:bg-gray-50">
                                     <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                                        @foreach($photos as $photo)
-                                        @if($photo->product_id == $product->id)
-                                        @if($photo->order == 1)
-                                        <img src="{{ asset('photo/' . $photo->image_path) }}" alt="" class="img-fluid" height="48px" width="48px" onerror="this.onerror=null; this.src=`{{ asset('image/undraw_photos_re_pvh3.svg') }}`;">
-                                        @endif
-                                        @endif
-                                        @endforeach
+                                        <img src="{{ asset('asset/photo/'.$product->photo) }}" alt="" class="img-fluid" height="48px" width="48px" onerror="this.onerror=null; this.src=`{{ asset('asset/image/photo-noloaded.svg') }}`;">
                                     </th>
                                     <td class="px-6 py-4">
                                         {{$product->name}}
@@ -78,31 +67,7 @@
                                         {{$product->sell}}
                                     </td>
                                     <td class="px-6 py-4">
-                                        @php
-                                        $minPrice = null;
-                                        $maxPrice = null;
-                                        @endphp
-
-                                        @foreach($variants as $variant)
-                                        @if($variant->product_id == $product->id && $variant->size_id != null)
-                                        @php
-                                        // Sprawdź minimalną cenę
-                                        if ($minPrice === null || $variant->price < $minPrice) { $minPrice=$variant->price;
-                                            }
-
-                                            // Sprawdź maksymalną cenę
-                                            if ($maxPrice === null || $variant->price > $maxPrice) {
-                                            $maxPrice = $variant->price;
-                                            }
-                                            @endphp
-                                            @endif
-                                            @endforeach
-
-                                            @if($minPrice !== null && $maxPrice !== null)
-                                            {{$minPrice}} PLN - {{$maxPrice}} PLN
-                                            @else
-                                            Brak dostępnych cen.
-                                            @endif
+                                        {{$product->price}}
                                     </td>
                                     <td class="px-6 py-4">
                                         <a href="{{ route('admin.product.edit', $product->id) }}" class="text-white bg-indigo-500 hover:bg-indigo-600 focus:ring-4 focus:ring-indigo-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 focus:outline-none">
@@ -120,10 +85,10 @@
                                     </td>
                                 </tr>
                                 @endforeach
-                            </tbody>-->
+                            </tbody>
                         </table>
                         <div class="px-4 py-2">
-                            <!--{{ $products->links() }}-->
+                            {{ $products->links() }}
                         </div>
                     </div>
                 </div>

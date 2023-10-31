@@ -20,25 +20,42 @@
                         @csrf
                         <div class="mb-6">
                             <label for="text" class="block mb-2 text-sm font-medium text-gray-900 ">Nazwa</label>
-                            <input value="{{ old('name') ? old('name') : ''}}" name="name" type="text" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 " placeholder="Brazil Santos" required>
+                            <input value="{{ old('name') ? old('name') : ''}}" name="name" type="text" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 " placeholder="Wpisz nazwę" required>
                             @error('name')
                             <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
                             @enderror
                         </div>
                         <div class="mb-6">
                             <label for="description" class="block mb-2 text-sm font-medium text-gray-900 ">Opis</label>
-                            <textarea id="description" name="description" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 " placeholder="Wpisz treść tutaj">{{ old('description') ? old('description') : ''}}</textarea>
+                            <textarea id="description" name="description" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 " placeholder="Wpisz opis">{{ old('description') ? old('description') : ''}}</textarea>
                             @error('description')
                             <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
                             @enderror
                         </div>
                         <div class="mb-6">
                             <label for="number" class="block mb-2 text-sm font-medium text-gray-900 ">Kolejność</label>
-                            <input value="{{ old('order') ? old('order') : ''}}" name="order" type="number" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 " placeholder="0" required>
+                            <input value="{{ old('order') ? old('order') : 0}}" name="order" type="number" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 " required>
                             @error('order')
                             <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
                             @enderror
                         </div>
+
+                        <div class="mb-6">
+                            <label for="number" class="block mb-2 text-sm font-medium text-gray-900 ">Cena</label>
+                            <input value="{{ old('price') ? old('price') : ''}}" name="price" type="number" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
+                            @error('price')
+                            <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                            @enderror
+                        </div>
+
+                        <div class="mb-6">
+                            <label for="number" class="block mb-2 text-sm font-medium text-gray-900 ">Cena promocyjna</label>
+                            <input value="{{ old('price_promo') ? old('price_promo') : ''}}" name="price_promo" type="number" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
+                            @error('price_promo')
+                            <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                            @enderror
+                        </div>
+
                         <label class="relative inline-flex items-center cursor-pointer">
                             <input type="checkbox" name="visibility_on_website" value="1" class="sr-only peer" {{ old('visibility_on_website') ? 'checked' : '' }}>
                             <div class="w-11 h-6 bg-gray-200 rounded-full peer peer-focus:ring-4 peer-focus:ring-blue-300 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
@@ -47,9 +64,10 @@
                         @error('visibility_on_website')
                         <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
                         @enderror
+
                         <div class="mb-6">
                             <label for="text" class="block mb-2 text-sm font-medium text-gray-900 ">SEO Tytuł</label>
-                            <input value="{{ old('seo_title') ? old('seo_title') : ''}}" type="text" name="seo_title" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 " placeholder="Brazil Santos" required>
+                            <input value="{{ old('seo_title') ? old('seo_title') : ''}}" type="text" name="seo_title" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 " placeholder="Tytuł widoczny w google" required>
                             @error('seo_title')
                             <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
                             @enderror
@@ -57,7 +75,7 @@
 
                         <div class="mb-6">
                             <label for="text" class="block mb-2 text-sm font-medium text-gray-900 ">SEO Opis</label>
-                            <input value="{{ old('seo_description') ? old('seo_description') : ''}}" type="text" name="seo_description" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 " placeholder="Wysokiej jakości kawa z Brazylii" required>
+                            <input value="{{ old('seo_description') ? old('seo_description') : ''}}" type="text" name="seo_description" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 " placeholder="Opis widoczny w google" required>
                             @error('seo_description')
                             <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
                             @enderror
@@ -70,20 +88,30 @@
                         @error('visibility_in_google')
                         <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
                         @enderror
-                        <div class="mb-6">
-                            <h3 class="mb-5 text-lg font-medium text-gray-900 ">Rozmiar opakowania</h3>
-                            <ul class="grid w-full gap-6 md:grid-cols-3">
-                            </ul>
-                            @error('size')
-                            <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
-                            @enderror
-                        </div>
-                        <div class="mb-6">
 
-                            <h3 class="mb-5 text-lg font-medium text-gray-900 ">Rozmiar mielenia</h3>
+                        <div class="mb-6">
+                            <h3 class="mb-5 text-lg font-medium text-gray-900 ">Kategoria</h3>
                             <ul class="grid w-full gap-6 md:grid-cols-3">
+                                <li>
+                                    <input {{ old('photo') == 'oil' ? 'checked' : '' }} name="category" type="radio" id="category-1" value="oil" class="hidden peer">
+                                    <label for="category-1" class="h-full inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border-2 border-gray-200 rounded-lg cursor-pointer peer-checked:border-blue-600 hover:text-gray-600 peer-checked:text-gray-600 hover:bg-gray-50">
+                                        <div class="block text-center">
+                                            <div class="w-full text-lg font-semibold">Olej</div>
+                                            <div class="w-full p-5"><img src="{{ asset('asset/image/filter-oil.jpg') }}" alt=""></div>
+                                        </div>
+                                    </label>
+                                </li>
+                                <li>
+                                    <input {{ old('photo') == 'suplement' ? 'checked' : '' }} name="category" type="radio" id="category-2" value="suplement" class="hidden peer">
+                                    <label for="category-2" class="h-full inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border-2 border-gray-200 rounded-lg cursor-pointer peer-checked:border-blue-600 hover:text-gray-600 peer-checked:text-gray-600 hover:bg-gray-50">
+                                        <div class="block text-center">
+                                            <div class="w-full text-lg font-semibold">Suplement</div>
+                                            <div class="w-full p-5"><img src="{{ asset('asset/image/filter-sup.jpg') }}" alt=""></div>
+                                        </div>
+                                    </label>
+                                </li>
                             </ul>
-                            @error('grind')
+                            @error('category')
                             <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
                             @enderror
                         </div>
@@ -93,6 +121,16 @@
                             <h3 class="mb-5 text-lg font-medium text-gray-900 ">Zdjęcie</h3>
                             <ul class="grid w-full gap-6 md:grid-cols-3" id="photoGrid">
                                 <!-- The first 9 photos will be loaded initially, the rest will be hidden -->
+                                @foreach($photos as $index => $photo)
+                                <li class="{{ $index >= 9 ? 'hidden' : '' }}">
+                                    <input {{ old('photo') == $photo->getFilename() ? 'checked' : '' }} name="photo" type="radio" id="photo-{{ $photo->getFilename() }}" value="{{ $photo->getFilename() }}" class="hidden peer">
+                                    <label for="photo-{{ $photo->getFilename() }}" class="h-full inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border-2 border-gray-200 rounded-lg cursor-pointer peer-checked:border-blue-600 hover:text-gray-600 peer-checked:text-gray-600 hover:bg-gray-50">
+                                        <div class="block">
+                                            <div class="w-full text-lg font-semibold"><img src="{{ asset('asset/photo/' . $photo->getFilename()) }}" alt=""></div>
+                                        </div>
+                                    </label>
+                                </li>
+                                @endforeach
                             </ul>
                             <!-- "Show More" button -->
                             <button id="showMoreBtn" type="button" class="mt-8 text-white bg-indigo-500 hover:bg-indigo-600 focus:ring-4 focus:ring-indigo-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 focus:outline-none"><i class="fa-solid fa-caret-down mr-2"></i>Pokaż więcej</button>

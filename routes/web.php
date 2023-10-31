@@ -67,6 +67,9 @@ Route::middleware([
             Route::get('/', [ShopAdminController::class, 'index'])->name('admin.products');
             Route::get('/create', [ShopAdminController::class, 'create'])->name('admin.product.create');
             Route::post('/store', [ShopAdminController::class, 'store'])->name('admin.product.store');
+            Route::get('/edit/{product}', [ShopAdminController::class, 'edit'])->name('admin.product.edit');
+            Route::put('/update/{product}', [ShopAdminController::class, 'update'])->name('admin.product.update');
+            Route::delete('/delete/{product}', [ShopAdminController::class, 'delete'])->name('admin.product.delete');
         });
     });
 });
