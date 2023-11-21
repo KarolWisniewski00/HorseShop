@@ -32,19 +32,19 @@
         <div class="text-5xl font-horse relative my-8 text-gray-700">Wszystkie produkty</div>
     </div>
     <div class="container mx-auto flex flex-col lg:flex-row px-4">
-        <div class="w-full lg:w-1/3 my-16 bg-gray-100 shadow rounded-3xl pb-4">
+        <div class="w-full lg:w-1/3 my-16 bg-gray-100 shadow rounded-xl pb-4">
             <div class="mx-auto text-center relative">
                 <div class="text-5xl font-horse relative my-8 text-gray-700">Kategorie produktów</div>
             </div>
             <div class="mx-auto flex flex-col items-center px-4 text-center relative pb-3">
                 <div class="flex grid grid-cols-2 gap-4">
-                    <div class="flex flex-col hover-filter bg-white rounded-3xl p-4">
+                    <div class="flex flex-col hover-filter bg-white rounded-xl p-4">
                         <img class="h-full w-auto -mb-4" src="{{asset('asset/image/filter-oil.jpg')}}">
-                        <div class="text-3xl font-horse relative text-gray-700">Oleje</div>
+                        <div class="text-xl font-horse relative text-gray-700">Oleje</div>
                     </div>
-                    <div class="flex flex-col hover-filter bg-white rounded-3xl p-4">
+                    <div class="flex flex-col hover-filter bg-white rounded-xl p-4">
                         <img class="h-full w-auto -mb-4" src="{{asset('asset/image/filter-sup.jpg')}}">
-                        <div class="text-3xl font-horse relative text-gray-700">Suplementy</div>
+                        <div class="text-xl font-horse relative text-gray-700">Suplementy</div>
                     </div>
                 </div>
             </div>

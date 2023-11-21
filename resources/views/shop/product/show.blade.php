@@ -41,8 +41,8 @@
 
         <div class="mx-auto container text-center grid grid-cols-1 md:grid-cols-2 items-center">
             <div class="flex flex-col items-center w-full mx-auto">
-                <div class="rounded-3xl md:rounded-none overflow-hidden flex flex-col items-center relative">
-                    <img class="h-full md:h-auto w-auto md:rounded-3xl" src="{{asset('asset/image/'.$product->photo)}}">
+                <div class="rounded-xl md:rounded-none overflow-hidden flex flex-col items-center relative">
+                    <img class="h-full md:h-auto w-auto md:rounded-xl" src="{{asset('asset/image/'.$product->photo)}}">
                 </div>
             </div>
             <div class="flex flex-col items-start w-2/3 mx-auto">

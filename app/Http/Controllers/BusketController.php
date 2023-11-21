@@ -3,10 +3,26 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use DaveJamesMiller\Breadcrumbs\Facades\Breadcrumbs;
 use Illuminate\Http\Request;
 
 class BusketController extends Controller
 {
+    function index(){
+        Breadcrumbs::for('index', function ($trail) {
+            $trail->push('Strona główna', route('index'));
+        });
+
+        Breadcrumbs::for('shop', function ($trail) {
+            $trail->push('Sklep', route('shop'));
+        });
+
+        Breadcrumbs::for('busket', function ($trail) {
+            $trail->push('Podsumowanie koszyka', route('busket'));
+        });
+        $cartItems = \Cart::session('cart')->getContent();
+        return view('busket', compact('cartItems'));
+    }
     public function get()
     {
         $cartItems = \Cart::session('cart')->getContent();
@@ -23,35 +39,30 @@ class BusketController extends Controller
             'associatedModel' => $product,
         ]);
 
-        return redirect()->back()->with('success', 'Produkt został dodany do koszyka.')->with('show-busket', true);
+        return redirect()->back()->with('success', 'Produkt został dodany do koszyka.')->with('busket-show', 'busket-show');
     }
     public function minus(Request $request, Product $product)
     {
         $cart = \Cart::session('cart');
-        $size = Size::where('id', '=', $request->size)->first();
-        $grind = Grinding::where('name', '=', $request->grind)->first();
 
-        $currentQuantity = $cart->get(intval(strval($product->id) . strval($size->id) . strval($grind->id)))->quantity;
+
+        $currentQuantity = $cart->get($product->id)->quantity;
 
         if ($currentQuantity === 1) {
             // Usuń produkt z koszyka, jeśli ilość wynosi 1
-            $cart->remove(intval(strval($product->id) . strval($size->id) . strval($grind->id)));
+            $cart->remove($product->id);
             return redirect()->back()->with('success', 'Produkt został usunięty z koszyka.');
         }
 
         // Zmniejsz ilość produktu o 1
-        $cart->update(intval(strval($product->id) . strval($size->id) . strval($grind->id)), [
+        $cart->update($product->id, [
             'quantity' => -1,
         ]);
-
         return redirect()->back()->with('success', 'Usunięto jedną sztukę produktu z koszyka.');
     }
     public function remove(Request $request, Product $product)
     {
-        $size = Size::where('id', '=', $request->size)->first();
-        $grind = Grinding::where('name', '=', $request->grind)->first();
-
-        \Cart::session('cart')->remove(intval(strval($product->id) . strval($size->id) . strval($grind->id)));
+        \Cart::session('cart')->remove($product->id);
 
         return redirect()->back()->with('success', 'Produkt został usunięty z koszyka.');
     }

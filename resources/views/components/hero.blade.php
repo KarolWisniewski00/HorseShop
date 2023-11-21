@@ -2,7 +2,7 @@
 <section class="bd-masthead pt-20">
     <div class="container mx-auto flex flex-col items-center px-4 py-16 text-center relative">
 
-        <div class="grid grid-cols-1 md:grid-cols-2 py-6 bg-gray-100 rounded-3xl shadow relative overflow-hidden">
+        <div class="grid grid-cols-1 md:grid-cols-2 py-6 bg-gray-100 rounded-xl shadow relative overflow-hidden">
             <img alt="" class="absolute -bottom-28 left-0 md:-bottom-80 md:left-12 xl:-bottom-96 z-0 scale-125 md:scale-100" src="{{asset('asset/image/hero-bg.svg')}}">
             <div class="relative z-1 order-1 md:order-2">
                 <img class="h-auto max-w-full" src="{{asset('asset/image/logo.png')}}" alt="logo">

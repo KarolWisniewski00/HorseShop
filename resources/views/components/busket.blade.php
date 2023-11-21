@@ -1,6 +1,6 @@
 <div class="fixed bottom-8 right-8 z-10">
     <div class="relative hidden" id="shopping-cart-window">
-        <div class="absolute bottom-0 right-0 bg-white rounded p-4 mb-4 shadow rounded-3xl" style="min-width: 20em; max-height:75vh;">
+        <div class="absolute bottom-0 right-0 bg-white rounded p-4 mb-4 shadow rounded-xl" style="min-width: 20em; max-height:75vh;">
             <div class="flex flex-col justify-center align-middle text-center">
                 <h5 class="leading-loose font-semibold"><i class="fa-solid fa-basket-shopping mr-2"></i>Koszyk</h5>
                 <div class="shopping-cart-container" style="height: 32vh; overflow-y:auto">
@@ -16,5 +16,12 @@
 </div>
 <!--busket-->
 <input type="hidden" value="{{route('product.get')}}" id="url-get" name="url-get">
+<input type="hidden" value="{{route('busket')}}" id="url-busket" name="url-busket">
+<input type="hidden" value="{{route('order.create')}}" id="url-order-create" name="url-order-create">
+<input type="hidden" value="{{route('shop')}}" id="url-shop" name="url-shop">
 <input type="hidden" value="{{asset('asset/image/empty-busket.svg')}}" id="empty-busket" name="empty-busket">
+<input type="hidden" value="{{asset('asset/image/')}}" id="asset-image" name="asset-image">
+@if(Session::has('busket-show'))
+<input type="hidden" value="busket-show" id="busket-show" name="busket-show">
+@endif
 <script src="{{asset('asset/js/busket.js')}}"></script>

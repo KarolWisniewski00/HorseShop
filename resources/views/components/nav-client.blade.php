@@ -1,7 +1,7 @@
 <!--nav-->
 <section class="fixed top-0 left-0 right-0 z-10 bg-white shadow">
     <nav class="relative px-4 py-4 flex justify-between items-center bg-transparent container mx-auto">
-        <a class="text-3xl leading-none flex flex-row items-center" href="{{route('index')}}">
+        <a class="text-xl leading-none flex flex-row items-center" href="{{route('index')}}">
             <img class="h-auto w-16" src="{{asset('asset/image/logo.png')}}" alt="logo">
             <span class="font-horse text-black">Healthy Horse</span>
         </a>
@@ -25,13 +25,13 @@
         @else
         <a class="shadow hidden lg:inline-block lg:ml-auto lg:mr-3 py-2 px-6 bg-gray-50 text-bone-500 hover:bg-bone-500 hover:text-white text-sm text-gray-900 font-bold  rounded-xl transition duration-200" href="{{route('login')}}"><i class="fa-solid fa-arrow-right-to-bracket mr-2"></i>Logowanie</a>
         @endauth
-        <a class="shadow hidden lg:inline-block py-2 px-6 bg-bone-500 hover:bg-gray-50 hover:text-bone-500 text-sm text-white font-bold rounded-full transition duration-200" href="#"><i class="fa-solid fa-basket-shopping mr-2"></i>Koszyk</a>
+        <a class="shadow hidden lg:inline-block py-2 px-6 bg-bone-500 hover:bg-gray-50 hover:text-bone-500 text-sm text-white font-bold rounded-xl transition duration-200" href="{{route('busket')}}"><i class="fa-solid fa-basket-shopping mr-2"></i>Koszyk</a>
     </nav>
     <div class="navbar-menu relative z-50 hidden">
         <div class="navbar-backdrop fixed inset-0 bg-gray-800 opacity-25"></div>
         <nav class="fixed top-0 left-0 bottom-0 flex flex-col w-5/6 max-w-sm py-6 px-6 bg-white border-r overflow-y-auto">
             <div class="flex items-center mb-8">
-                <a class="mr-auto text-3xl font-bold leading-none" href="{{route('index')}}">
+                <a class="mr-auto text-xl font-bold leading-none" href="{{route('index')}}">
                     <img class="h-auto w-16" src="{{asset('asset/image/logo.png')}}" alt="logo">
                 </a>
                 <button class="navbar-close">
@@ -59,7 +59,7 @@
             <div class="mt-auto">
                 <div class="pt-6">
                     <a class="shadow block px-4 py-3 mb-3 leading-loose text-xs text-center font-semibold leading-none text-bone-500 bg-gray-50 hover:bg-bone-500 hover:text-white rounded-xl" href="{{route('login')}}"><i class="fa-solid fa-arrow-right-to-bracket mr-2"></i>Logowanie</a>
-                    <a class="shadow block px-4 py-3 mb-2 leading-loose text-xs text-center text-gray-50 font-semibold bg-bone-600 hover:bg-gray-50 hover:text-bone-500  rounded-xl" href="#"><i class="fa-solid fa-basket-shopping mr-2"></i>Koszyk</a>
+                    <a class="shadow block px-4 py-3 mb-2 leading-loose text-xs text-center text-gray-50 font-semibold bg-bone-600 hover:bg-gray-50 hover:text-bone-500  rounded-xl" href="{{route('busket')}}"><i class="fa-solid fa-basket-shopping mr-2"></i>Koszyk</a>
                 </div>
                 <p class="my-4 text-xs text-center text-gray-400">
                     <span>Karol Wiśniewski © 2023</span>

@@ -9,90 +9,28 @@
     </div>
 
     <div class="container mx-auto px-4">
-        <div class="not-prose relative bg-gray-100 rounded-3xl overflow-hidden shadow relative">
-            <svg id="OBJECTS" xmlns="http://www.w3.org/2000/svg" class="absolute -bottom-16 left-1/2 transform -translate-x-1/2" viewBox="0 0 301.43 225.49">
-                <defs>
-                    <style>
-                        .cls-1 {
-                            fill: #1f2220;
-                            stroke-width: 0px;
-                        }
-                    </style>
-                </defs>
-                <path class="cls-1" d="m283.76,192.24s6.17-10.83-7-16l-4,.33s.17-4.17-2.67-6.17c-1.17-8.5-3-7.67-5.67-17.33-2.67-9.67-3-27.33-5.67-28-2.67-.67-20.33-8-19-16.67,1.33-8.67,14.33-36.67-8.67-57,5.33.67,8.67,1.67,14.67-.67,6-2.33,12,10,21,14.67-7-7-11.67-19.33-11.67-19.33,0,0,11.67,13.83,27.17,10-3.33,0-14.5-7.5-14.5-7.5,0,0,14.83,3.83,21,7.5-3.67-5.17-6.33-8-6.33-8,0,0,9.33,2,19-2.17-6.17.83-16.33-3.83-32-12.17-15.67-8.33-20.33-6.5-26.5-2.83-6.17,3.67-15,9.17-23.67,8.67-8.67-.5-23.33-9.67-39.67-6.67-16.33,3-29,15.5-46.5,16s-27.33-10.17-37.33-11.83c-10-1.67-15.67-18.17-38.17-22.33-5.17-.33-10.5-5.17-13.67-5.17S39.26-1.76,33.43.24c.17,4.67.17,6.83.17,6.83,0,0-5.5,1.5-9,5.33-5.83-6-7.83-10.33-7.83-10.33,0,0-4.83,4.83.83,14.17.67,4-3.83,9.33-6.5,12.33-2.67,3,1.83,7.5,1.83,7.5,0,0-8.33,13.67-11.67,19-3.33,5.33,1,8.67,1,8.67,0,0-.67,6.83,1.67,7.5,3.33,6,12.67,4.17,13.67-.67,5.67-3.5,21.83-12,23.5-14,3.5,4.17,5,4.33,5.5,4.5.5.17,2.33,8.67,5,12.67-2.67,11.33-6.17,32.83,4,46.17-.17,11,2.5,25.33,3.83,30-2.5,13.17-5.83,38.17-8.5,43.83-2.67,5.67-9.33,13.67-13.33,14.5s-7.5,10.83-7.5,10.83c0,0,9.67,3,15.33-1.17,1-2,1.17-4.33,1.17-4.33,0,0,7.33-.17,9.33-2.17s9.33-26.33,11.33-41.83c6.33-17.83,11-37.33,17-37.33s13.92,4.83,21.67,5.33c3.5,9.25,12.75,27.25,18,34.25s9.75,28,7.75,31.75-7.75,15.25-7.75,15.25c0,0,7,4.25,16.75,0,2-5.5-.25-13.75-.25-13.75,0,0,1.75-5.5,4-8s-2.5-11.5-8.75-21-8.25-34.25-10.75-43.5c21.25,1.75,40.5-6,56-19,9,8.75,13.75,21.5,18.5,27s10.5,16.5,16,22.5c7,12.75,14,26.75,15,37s.5,12.5-2.5,15.75-4.75,9.25-4.75,9.25c0,0,13.25,2.5,20.75-4.75.75-6.5-5.75-12-2.75-17.5s1.5-7.75-4-22.5-9.75-25.25-10-31.75-13.5-19.5-14.25-26.5c15.75,12.75,29.75,13.5,35.5,18.25s7.5,36.5,10.5,40.75,24.83,11.17,24.83,11.17Z" />
-            </svg>
-            <div class="relative rounded-xl overflow-auto">
-                <!-- Contents -->
-                <div class="relative w-full flex gap-6 snap-x snap-mandatory overflow-x-auto py-8">
-                    <div class="snap-start scroll-mx-6 shrink-0">
-                        <div class="shrink-0 w-0"></div>
-                    </div>
-                    <div class="snap-start scroll-mx-6 shrink-0">
-                        <div class="mx-2 lg:mx-8 w-48 md:w-80">
-                            <div class="rounded-3xl shadow overflow-hidden flex items-center relative">
-                                <img class="h-full w-auto" src="{{asset('asset/image/product.jpg')}}">
-                            </div>
-                            <div class="overflow-hidden relative bg-gray-100 rounded-3xl shadow p-4 mx-4 -mt-6 relative text-center flex flex-col items-center justify-center">
-                                <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full">
-                                    <img alt="" src="{{asset('asset/image/products-grid-product-bg.svg')}}">
-
-                                </div>
-                                <h3 class="relative m-0 p-0 my-2 font-bold">Nazwa produktu z gramaturą 300ml</h3>
-                                <h5 class="relative m-0 p-0 my-2 mb-4 font-bold text-xl text-bone-500">100 zł</h5>
-                                <button class="relative duration-200 block shadow w-full text-bone-50 text-xs md:text-xl px-4 py-2 mb-2 leading-loose text-center font-semibold bg-bone-600 hover:bg-gray-50 hover:text-bone-600 rounded-xl"><i class="fa-solid fa-cart-shopping mr-2"></i>Dodaj do koszyka</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="snap-start scroll-mx-6 shrink-0">
-                        <div class="mx-2 lg:mx-8 w-48 md:w-80">
-                            <div class="rounded-3xl shadow overflow-hidden flex items-center relative">
-                                <img class="h-full w-auto" src="{{asset('asset/image/product.jpg')}}">
-                            </div>
-                            <div class="overflow-hidden relative bg-gray-100 rounded-3xl shadow p-4 mx-4 -mt-6 relative text-center flex flex-col items-center justify-center">
-                                <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full">
-                                    <img alt="" src="{{asset('asset/image/products-grid-product-bg.svg')}}">
-
-                                </div>
-                                <h3 class="relative m-0 p-0 my-2 font-bold">Nazwa produktu z gramaturą 300ml</h3>
-                                <h5 class="relative m-0 p-0 my-2 mb-4 font-bold text-xl text-bone-500">100 zł</h5>
-                                <button class="relative duration-200 block shadow w-full text-bone-50 text-xs md:text-xl px-4 py-2 mb-2 leading-loose text-center font-semibold bg-bone-600 hover:bg-gray-50 hover:text-bone-600 rounded-xl"><i class="fa-solid fa-cart-shopping mr-2"></i>Dodaj do koszyka</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="snap-start scroll-mx-6 shrink-0">
-                        <div class="mx-2 lg:mx-8 w-48 md:w-80">
-                            <div class="rounded-3xl shadow overflow-hidden flex items-center relative">
-                                <img class="h-full w-auto" src="{{asset('asset/image/product.jpg')}}">
-                            </div>
-                            <div class="overflow-hidden relative bg-gray-100 rounded-3xl shadow p-4 mx-4 -mt-6 relative text-center flex flex-col items-center justify-center">
-                                <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full">
-                                    <img alt="" src="{{asset('asset/image/products-grid-product-bg.svg')}}">
-
-                                </div>
-                                <h3 class="relative m-0 p-0 my-2 font-bold">Nazwa produktu z gramaturą 300ml</h3>
-                                <h5 class="relative m-0 p-0 my-2 mb-4 font-bold text-xl text-bone-500">100 zł</h5>
-                                <button class="relative duration-200 block shadow w-full text-bone-50 text-xs md:text-xl px-4 py-2 mb-2 leading-loose text-center font-semibold bg-bone-600 hover:bg-gray-50 hover:text-bone-600 rounded-xl"><i class="fa-solid fa-cart-shopping mr-2"></i>Dodaj do koszyka</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="snap-start scroll-mx-6 shrink-0">
-                        <div class="mx-2 lg:mx-8 w-48 md:w-80">
-                            <div class="rounded-3xl shadow overflow-hidden flex items-center relative">
-                                <img class="h-full w-auto" src="{{asset('asset/image/product.jpg')}}">
-                            </div>
-                            <div class="overflow-hidden relative bg-gray-100 rounded-3xl shadow p-4 mx-4 -mt-6 relative text-center flex flex-col items-center justify-center">
-                                <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full">
-
-                                </div>
-                                <h3 class="relative m-0 p-0 my-2 font-bold">Nazwa produktu z gramaturą 300ml</h3>
-                                <h5 class="relative m-0 p-0 my-2 mb-4 font-bold text-xl text-bone-500">100 zł</h5>
-                                <button class="relative duration-200 block shadow w-full text-bone-50 text-xs md:text-xl px-4 py-2 mb-2 leading-loose text-center font-semibold bg-bone-600 hover:bg-gray-50 hover:text-bone-600 rounded-xl"><i class="fa-solid fa-cart-shopping mr-2"></i>Dodaj do koszyka</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="flex items-center">
+                @foreach($products as $key => $product)
+                @if($key == 1)
+                @include('components/product-small')
+                @endif
+                @endforeach
             </div>
-            <div class="absolute inset-0 pointer-events-none border border-black/5 rounded-xl dark:border-white/5"></div>
+            <div class="flex items-center">
+                @foreach($products as $key => $product)
+                @if($key == 2)
+                @include('components/product-small')
+                @endif
+                @endforeach
+            </div>
+            <div class="flex items-center">
+                @foreach($products as $key => $product)
+                @if($key == 1)
+                @include('components/product-small')
+                @endif
+                @endforeach
+            </div>
         </div>
     </div>
 </section>

@@ -4,6 +4,7 @@ use App\Http\Controllers\AboutController;
 use App\Http\Controllers\BusketController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\IndexController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PolicyCookieController;
 use App\Http\Controllers\PolicyPrivController;
 use App\Http\Controllers\ProductController;
@@ -55,6 +56,14 @@ Route::prefix('shop')->group(function () {
         Route::post('/add/{product}', [BusketController::class, 'add'])->name('product.add');
         Route::post('/minus/{product}', [BusketController::class, 'minus'])->name('product.minus');
         Route::post('/remove/{product}', [BusketController::class, 'remove'])->name('product.remove');
+    });
+    Route::prefix('busket')->group(function () {
+        Route::get('/', [BusketController::class, 'index'])->name('busket');
+    });
+    Route::prefix('order')->group(function () {
+        Route::get('/create', [OrderController::class, 'create'])->name('order.create');
+        Route::post('/store', [OrderController::class, 'store'])->name('order.store');
+        Route::get('/show/{url}', [OrderController::class, 'show'])->name('order.show');
     });
     Route::prefix('profile')->group(function () {
         Route::get('/', [ProfileController::class, 'index'])->name('profile');

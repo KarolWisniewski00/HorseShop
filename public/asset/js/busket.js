@@ -1,5 +1,18 @@
 function addProduct(product) {
-    $('.shopping-cart-container').append(`${product.name}${product.attributes}${product.price}
+    console.log(product.associatedModel.photo)
+    $('.shopping-cart-container').append(`
+    <div class="flex flex-row justify-between align-middle my-2 h-fit">
+        <div class="flex flex-col justify-center align-middle m-1">
+            <div style="max-width:70px"><img src="${$('#asset-image').val() + '/' + product.associatedModel.photo}" alt="${product}" class="w-full h-auto" onerror="this.onerror=null; this.src='${$('#empty-busket').val()}'"></div>
+        </div>
+        <div class="flex flex-col justify-center align-middle m-1">
+            <div class="text-gray-900 text-bold">${product.name}</div>
+            <div class="text-gray-700">${product.attributes}</div>
+        </div>
+        <div class="flex flex-col justify-center align-middle m-1">
+            <p text-gray-700>${product.price} PLN</p>
+        </div>
+    </div>
     `);
 }
 function addProducts() {
@@ -14,8 +27,8 @@ function addProducts() {
                     const product = data[key];
                     addProduct(product);
                     $('.shopping-cart-buttons').html(`
-                    <a href="" class="duration-200 block shadow h-full w-full text-bone-50 m-1 px-4 py-2 leading-loose text-center font-semibold bg-bone-600 hover:bg-gray-50 hover:text-bone-600 rounded-xl">Zobacz pełne podsumowanie</a>
-                    <a href="" class="duration-200 block shadow h-full w-full text-bone-600 m-1 px-4 py-2 leading-loose text-center font-semibold bg-gray-50 hover:bg-bone-600 hover:text-bone-50 rounded-xl">Przejdź do płatności</a>
+                    <a href="${$('#url-busket').val()}" class="duration-200 block shadow h-full w-full text-bone-600 m-1 px-4 py-2 leading-loose text-center font-semibold bg-gray-50 hover:bg-bone-600 hover:text-bone-50 rounded-xl">Zobacz pełne podsumowanie</a>
+                    <a href="${$('#url-order-create').val()}" class="duration-200 block shadow h-full w-full text-bone-50 m-1 px-4 py-2 leading-loose text-center font-semibold bg-bone-600 hover:bg-gray-50 hover:text-bone-600 rounded-xl">Przejdź do płatności</a>
                     `);
                 }
             } else {
@@ -26,7 +39,7 @@ function addProducts() {
                 </div>
                 `);
                 $('.shopping-cart-buttons').html(`
-                <a href="" class="duration-200 block shadow h-full w-full text-bone-50 m-1 px-4 py-2 leading-loose text-center font-semibold bg-bone-600 hover:bg-gray-50 hover:text-bone-600 rounded-xl">Przejdź do sklepu</a>
+                <a href="${$('#url-shop').val()}" class="duration-200 block shadow h-full w-full text-bone-50 m-1 px-4 py-2 leading-loose text-center font-semibold bg-bone-600 hover:bg-gray-50 hover:text-bone-600 rounded-xl">Przejdź do sklepu</a>
             `);
             }
         },
@@ -39,7 +52,7 @@ function addProducts() {
             </div>
             `);
             $('.shopping-cart-buttons').html(`
-            <a href="" class="duration-200 block shadow h-full w-full text-bone-50 m-1 px-4 py-2 leading-loose text-center font-semibold bg-bone-600 hover:bg-gray-50 hover:text-bone-600 rounded-xl">Przejdź do sklepu</a>
+            <a href="${$('#url-shop').val()}" class="duration-200 block shadow h-full w-full text-bone-50 m-1 px-4 py-2 leading-loose text-center font-semibold bg-bone-600 hover:bg-gray-50 hover:text-bone-600 rounded-xl">Przejdź do sklepu</a>
         `);
         }
     });
@@ -57,4 +70,15 @@ $(document).ready(function () {
             window = false;
         }
     });
+    try {
+        var busketShow = $('#busket-show').val();
+    } catch (error) {
+        var busketShow = null;
+    }
+    if (busketShow != null) {
+        $('.shopping-cart-container').html('');
+        $('#shopping-cart-window').show();
+        addProducts();
+        window = true;
+    }
 });
