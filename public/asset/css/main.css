@@ -1,10 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 @font-face {
     font-family: horse;
     src: url("GoodVibrations Script.ttf");
 }
 
+*:not(i){
+    font-family: 'Poppins', sans-serif!important;
+}
 .font-horse {
     /*font-family: horse !important;*/
     font-family: 'Great Vibes', cursive !important;
@@ -22,16 +25,23 @@
     border: 1px solid yellow !important;
 }
 
-.hover-filter {
+.hover-filter img {
     -webkit-filter: grayscale(100%);
     /* Safari 6.0 - 9.0 */
     filter: grayscale(100%);
     transition: ease-in-out 200ms;
 }
-.hover-filter:hover {
-    -webkit-filter: grayscale(0%);
-    /* Safari 6.0 - 9.0 */
-    filter: grayscale(0%);
+/* Stylowanie obrazka po najechaniu */
+.hover-filter:hover img {
+    -webkit-filter: grayscale(100%);
+    filter: grayscale(100%);
     transition: ease-in-out 200ms;
     cursor: pointer;
-}
+  }
+  
+  /* Przywrócenie oryginalnego obrazka po zaznaczeniu radio */
+  .hidden:checked + label img {
+    -webkit-filter: grayscale(0%);
+    filter: grayscale(0%);
+    transition: ease-in-out 200ms;
+  }

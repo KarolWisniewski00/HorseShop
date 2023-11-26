@@ -70,7 +70,7 @@
                                         {{$product->price}}
                                     </td>
                                     <td class="px-6 py-4">
-                                        <a href="{{ route('admin.product.edit', $product->id) }}" class="text-white bg-indigo-500 hover:bg-indigo-600 focus:ring-4 focus:ring-indigo-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 focus:outline-none">
+                                        <a href="{{ route('admin.product.edit', $product->id) }}" class="text-white bg-indigo-500 hover:bg-indigo-600 focus:ring-4 focus:ring-indigo-300 font-medium rounded-lg text-sm px-5 py-2.5 focus:outline-none">
                                             <i class="fa-solid fa-pen-to-square"></i>
                                         </a>
                                     </td>
@@ -78,7 +78,7 @@
                                         <form action="{{ route('admin.product.delete', $product->id) }}" method="POST" onsubmit="return confirm('Czy na pewno chcesz usunąć ten produkt?')">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="text-red-500 hover:text-white border border-red-600 hover:bg-red-500 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">
+                                            <button type="submit" class="text-red-500 hover:text-white border border-red-600 hover:bg-red-500 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
                                                 <i class="fa-solid fa-trash"></i>
                                             </button>
                                         </form>

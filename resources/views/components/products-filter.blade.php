@@ -33,32 +33,53 @@
     </div>
     <div class="container mx-auto flex flex-col lg:flex-row px-4">
         <div class="w-full lg:w-1/3 my-16 bg-gray-100 shadow rounded-xl pb-4">
-            <div class="mx-auto text-center relative">
-                <div class="text-5xl font-horse relative my-8 text-gray-700">Kategorie produktów</div>
-            </div>
-            <div class="mx-auto flex flex-col items-center px-4 text-center relative pb-3">
-                <div class="flex grid grid-cols-2 gap-4">
-                    <div class="flex flex-col hover-filter bg-white rounded-xl p-4">
-                        <img class="h-full w-auto -mb-4" src="{{asset('asset/image/filter-oil.jpg')}}">
-                        <div class="text-xl font-horse relative text-gray-700">Oleje</div>
-                    </div>
-                    <div class="flex flex-col hover-filter bg-white rounded-xl p-4">
-                        <img class="h-full w-auto -mb-4" src="{{asset('asset/image/filter-sup.jpg')}}">
-                        <div class="text-xl font-horse relative text-gray-700">Suplementy</div>
-                    </div>
+            <form method="POST" action="{{route('shop.store')}}" id="myForm">
+                @csrf
+                <div class="mx-auto text-center relative">
+                    <div class="text-5xl font-horse relative my-8 text-gray-700">Kategorie produktów</div>
                 </div>
-            </div>
-            <div class="mx-auto text-center relative">
-                <div class="text-5xl font-horse relative my-8 text-gray-700">Cena</div>
-            </div>
-            <div class="mx-auto flex flex-col items-start px-4 text-start relative pb-3">
-                <label for="steps-range" class="block mb-2 text-sm font-medium text-gray-700 dark:text-white">Od 0 zł</label>
-                <input id="steps-range" type="range" min="0" max="5" value="2.5" step="0.5" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700">
-            </div>
-            <div class="mx-auto flex flex-col items-start px-4 text-start relative pb-3">
-                <label for="steps-range" class="block mb-2 text-sm font-medium text-gray-700 dark:text-white">Do 100 zł</label>
-                <input id="steps-range" type="range" min="0" max="5" value="2.5" step="0.5" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700">
-            </div>
+                <div class="mx-auto flex flex-col items-center px-4 text-center relative pb-3">
+                    <ul class="flex grid grid-cols-2 gap-4">
+                        <li>
+                            <input @if($category=='oil' || $category=='all' ) {{'checked'}} @endif name="category[]" type="checkbox" id="oil" value="oil" class="hidden peer">
+                            <label for="oil" class="flex flex-col hover-filter bg-white rounded-xl p-4 border-2 border-transparent peer-checked:border-2 peer-checked:border-bone-500">
+                                <img class="h-full w-auto -mb-4" src="{{asset('asset/image/filter-oil.jpg')}}">
+                                <div class="text-xl font-horse relative text-gray-700">Oleje</div>
+                            </label>
+                        </li>
+                        <li>
+                            <input @if($category=='suplement' || $category=='all' ) {{'checked'}} @endif name="category[]" type="checkbox" id="sup" value="suplement" class="hidden peer">
+                            <label for="sup" class="flex flex-col hover-filter bg-white rounded-xl p-4 border-2 border-transparent peer-checked:border-2 peer-checked:border-bone-500">
+                                <img class="h-full w-auto -mb-4" src="{{asset('asset/image/filter-sup.jpg')}}">
+                                <div class="text-xl font-horse relative text-gray-700">Suplementy</div>
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+                <div class="mx-auto text-center relative">
+                    <div class="text-5xl font-horse relative my-8 text-gray-700">Cena</div>
+                </div>
+                <div class="mx-auto flex flex-col items-start px-4 text-start relative pb-3">
+                    <label for="steps-range-1" id="min-label" class="block mb-2 text-sm font-medium text-gray-700 dark:text-white">Od @if($r_price_min!=null){{$r_price_min}}@else{{$price_min}}@endif zł</label>
+                    <input id="steps-range-1" name="price_min" type="range" min="{{$price_min}}" max="{{$price_max}}" value="@if($r_price_min!=null){{$r_price_min}}@else{{$price_min}}@endif" step="1" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700">
+                </div>
+                <div class="mx-auto flex flex-col items-start px-4 text-start relative pb-3">
+                    <label for="steps-range-2" id="max-label" class="block mb-2 text-sm font-medium text-gray-700 dark:text-white">Do @if($r_price_max!=null){{$r_price_max}}@else{{$price_max}}@endif zł</label>
+                    <input id="steps-range-2" name="price_max" type="range" min="{{$price_min}}" max="{{$price_max}}" value="@if($r_price_max!=null){{$r_price_max}}@else{{$price_max}}@endif" step="1" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700">
+                </div>
+
+                <script>
+                    $(document).ready(function() {
+                        $('#steps-range-1').on('input', function() {
+                            $('#min-label').text('Od ' + $(this).val() + ' zł');
+                        });
+
+                        $('#steps-range-2').on('input', function() {
+                            $('#max-label').text('Do ' + $(this).val() + ' zł');
+                        });
+                    });
+                </script>
+            </form>
         </div>
         <div class="mx-auto text-center lg:hidden relative">
             <div class="text-5xl font-horse relative my-8 text-gray-700">Wszystkie produkty</div>
@@ -97,3 +118,18 @@
     </div>
 </section>
 <script src="{{asset('asset/js/products-sort.js')}}"></script>
+<script>
+    // Nasłuchiwanie na zmianę opcji radio
+    $('input[name="category[]"]').change(function() {
+
+        $('#myForm').submit();
+    });
+    $('input[name="price_min"]').change(function() {
+
+        $('#myForm').submit();
+    });
+    $('input[name="price_max"]').change(function() {
+
+        $('#myForm').submit();
+    });
+</script>

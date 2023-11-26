@@ -50,6 +50,7 @@ Route::prefix('rule')->group(function () {
 
 Route::prefix('shop')->group(function () {
     Route::get('/', [ShopController::class, 'index'])->name('shop');
+    Route::post('/', [ShopController::class, 'store'])->name('shop.store');
     Route::prefix('product')->group(function () {
         Route::get('/get', [BusketController::class, 'get'])->name('product.get');
         Route::get('{product}', [ProductController::class, 'show'])->name('product.show');
