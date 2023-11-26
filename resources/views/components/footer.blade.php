@@ -9,10 +9,10 @@
                         <a href="{{route('rule')}}" class="mr-4 hover:underline md:mr-4 ">Regulamin</a>
                     </li>
                     <li>
-                        <a href="{{route('policy-priv')}}" class="mr-4 hover:underline md:mr-4">Polityka prywatności</a>
+                        <a href="{{route('priv')}}" class="mr-4 hover:underline md:mr-4">Polityka prywatności</a>
                     </li>
                     <li>
-                        <a href="{{route('policy-cookie')}}" class="mr-4 hover:underline md:mr-4">Polityka Cookies</a>
+                        <a href="{{route('cookie')}}" class="mr-4 hover:underline md:mr-4">Polityka Cookies</a>
                     </li>
                 </ul>
             </div>

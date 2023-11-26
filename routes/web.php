@@ -37,15 +37,30 @@ Route::prefix('contact')->group(function () {
 });
 
 Route::prefix('policy-cookies')->group(function () {
-    Route::get('/', [PolicyCookieController::class, 'index'])->name('policy-cookie');
+    Route::get('/', [PolicyCookieController::class, 'index'])->name('cookie');
+    Route::get('/create', [PolicyCookieController::class, 'create'])->name('cookie.create');
+    Route::post('/store', [PolicyCookieController::class, 'store'])->name('cookie.store');
+    Route::get('/edit/{element}', [PolicyCookieController::class, 'edit'])->name('cookie.edit');
+    Route::put('/update/{element}', [PolicyCookieController::class, 'update'])->name('cookie.update');
+    Route::delete('/delete/{element}', [PolicyCookieController::class, 'delete'])->name('cookie.delete');
 });
 
 Route::prefix('policy-priv')->group(function () {
-    Route::get('/', [PolicyPrivController::class, 'index'])->name('policy-priv');
+    Route::get('/', [PolicyPrivController::class, 'index'])->name('priv');
+    Route::get('/create', [PolicyPrivController::class, 'create'])->name('priv.create');
+    Route::post('/store', [PolicyPrivController::class, 'store'])->name('priv.store');
+    Route::get('/edit/{element}', [PolicyPrivController::class, 'edit'])->name('priv.edit');
+    Route::put('/update/{element}', [PolicyPrivController::class, 'update'])->name('priv.update');
+    Route::delete('/delete/{element}', [PolicyPrivController::class, 'delete'])->name('priv.delete');
 });
 
 Route::prefix('rule')->group(function () {
     Route::get('/', [RuleController::class, 'index'])->name('rule');
+    Route::get('/create', [RuleController::class, 'create'])->name('rule.create');
+    Route::post('/store', [RuleController::class, 'store'])->name('rule.store');
+    Route::get('/edit/{element}', [RuleController::class, 'edit'])->name('rule.edit');
+    Route::put('/update/{element}', [RuleController::class, 'update'])->name('rule.update');
+    Route::delete('/delete/{element}', [RuleController::class, 'delete'])->name('rule.delete');
 });
 
 Route::prefix('shop')->group(function () {

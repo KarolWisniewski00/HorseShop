@@ -47,8 +47,9 @@ class ShopController extends Controller
 
         $products = Product::orderBy('created_at', 'desc')->paginate(20);
         $category = null;
-
-        return view('shop.index', compact('products', 'category', 'price_min', 'price_max'));
+        $r_price_min = null;
+        $r_price_max = null;
+        return view('shop.index', compact('products', 'category', 'price_min', 'price_max', 'r_price_min', 'r_price_max'));
     }
     public function store(Request $request)
     {
