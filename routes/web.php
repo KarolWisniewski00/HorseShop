@@ -4,6 +4,7 @@ use App\Http\Controllers\AboutController;
 use App\Http\Controllers\BusketController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\IndexController;
+use App\Http\Controllers\OrderAdminController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PolicyCookieController;
 use App\Http\Controllers\PolicyPrivController;
@@ -93,10 +94,13 @@ Route::middleware([
     'verified',
 ])->group(function () {
     Route::prefix('dashboard')->group(function () {
-
-        Route::get('/', function () {
-            return view('dashboard');
-        })->name('dashboard');
+        Route::prefix('/')->group(function () {
+            Route::get('/', [OrderAdminController::class, 'index'])->name('dashboard');
+            Route::get('/show/{order}', [OrderAdminController::class, 'show'])->name('dashboard.order.show');
+            Route::put('/update/{order}', [OrderAdminController::class, 'update'])->name('dashboard.order.update');
+            Route::delete('/delete/{order}', [OrderAdminController::class, 'delete'])->name('dashboard.order.delete');
+            Route::get('/status/{id}/{slug}', [OrderAdminController::class, 'status'])->name('dashboard.order.status');
+        });
 
         Route::prefix('shop')->group(function () {
             Route::get('/', [ShopAdminController::class, 'index'])->name('admin.products');
