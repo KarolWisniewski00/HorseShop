@@ -4,6 +4,7 @@ use App\Http\Controllers\AboutController;
 use App\Http\Controllers\BusketController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\IndexController;
+use App\Http\Controllers\MediaController;
 use App\Http\Controllers\OrderAdminController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PolicyCookieController;
@@ -11,8 +12,10 @@ use App\Http\Controllers\PolicyPrivController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RuleController;
+use App\Http\Controllers\SettingsAdminController;
 use App\Http\Controllers\ShopAdminController;
 use App\Http\Controllers\ShopController;
+use App\Http\Controllers\UsersAdminController;
 use Illuminate\Support\Facades\Route;
 use Symfony\Component\HttpKernel\Profiler\Profile;
 
@@ -26,7 +29,14 @@ use Symfony\Component\HttpKernel\Profiler\Profile;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
+//TODO
+//poprawić ścieżkę on error na foto
+//dodac historie zamówien
+//podpiąć sandbox
+//zrobić strone o nas
+//dodać role
+//dodać logowanie przez google
+//dodać zdjęcia pod nagłówki
 Route::get('/', [IndexController::class, 'index'])->name('index');
 
 Route::prefix('about')->group(function () {
@@ -101,7 +111,20 @@ Route::middleware([
             Route::delete('/delete/{order}', [OrderAdminController::class, 'delete'])->name('dashboard.order.delete');
             Route::get('/status/{id}/{slug}', [OrderAdminController::class, 'status'])->name('dashboard.order.status');
         });
-
+        Route::prefix('photo')->group(function () {
+            Route::get('/', [MediaController::class, 'index'])->name('dashboard.photo');
+            Route::post('/upload', [MediaController::class, 'upload'])->name('dashboard.photo.upload');
+            Route::delete('/delete/{slug}', [MediaController::class, 'delete'])->name('dashboard.photo.delete');
+        });
+        Route::prefix('settings')->group(function () {
+            Route::get('/', [SettingsAdminController::class, 'index'])->name('dashboard.settings');
+            Route::get('/edit/{element}', [SettingsAdminController::class, 'edit'])->name('dashboard.settings.edit');
+            Route::put('/update/{element}', [SettingsAdminController::class, 'update'])->name('dashboard.settings.update');
+        });
+        Route::prefix('users')->group(function () {
+            Route::get('/', [UsersAdminController::class, 'index'])->name('dashboard.users');
+            Route::delete('/delete', [UsersAdminController::class, 'delete'])->name('dashboard.user.delete');
+        });
         Route::prefix('shop')->group(function () {
             Route::get('/', [ShopAdminController::class, 'index'])->name('admin.products');
             Route::get('/create', [ShopAdminController::class, 'create'])->name('admin.product.create');
@@ -112,22 +135,3 @@ Route::middleware([
         });
     });
 });
-
-/*
-Route::prefix('shop')->group(function () {
-    Route::get('/', [ShopController::class, 'index'])->name('shop');
-    Route::prefix('cart')->group(function () {
-        Route::get('/', [NewBusketController::class, 'index'])->name('shop.cart.busket');
-        Route::get('get', [NewBusketController::class, 'get'])->name('shop.cart.get');
-        Route::post('add/{product}', [NewBusketController::class, 'add'])->name('shop.cart.add');
-        Route::post('minus/{product}', [NewBusketController::class, 'minus'])->name('shop.cart.minus');
-        Route::post('remove/{product}', [NewBusketController::class, 'remove'])->name('shop.cart.remove');
-        Route::get('/create', [OrderController::class, 'create'])->name('account.order.create');
-        Route::post('/store', [OrderController::class, 'store'])->name('account.order.store');
-        Route::get('/show/{slug}', [OrderController::class, 'show'])->name('account.order.show');
-    });
-    Route::prefix('product')->group(function () {
-        Route::get('{slug}', [ProductController::class, 'show'])->name('shop.product.show');
-    });
-});
-*/

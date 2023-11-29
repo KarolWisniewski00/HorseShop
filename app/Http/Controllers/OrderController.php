@@ -35,7 +35,7 @@ class OrderController extends Controller
         Breadcrumbs::for('busket', function ($trail) {
             $trail->push('Podsumowanie koszyka', route('busket'));
         });
-        
+
         Breadcrumbs::for('order.create', function ($trail) {
             $trail->push('Płatności', route('order.create'));
         });
@@ -104,5 +104,23 @@ class OrderController extends Controller
             // Wyślij e-mail
             return redirect()->route('order.show', $order->url)->with('success', 'Dziękujemy, zamówienie zostało złożone.');
         }
+    }
+    public function show($slug)
+    {
+        $order = Order::where('url', $slug)->first();
+        Breadcrumbs::for('index', function ($trail) {
+            $trail->push('Strona główna', route('index'));
+        });
+
+        Breadcrumbs::for('account', function ($trail) {
+            $trail->push('Konto', route('profile'));
+        });
+        Breadcrumbs::for('order', function ($trail) {
+            $trail->push('Zamówienie', route('order.create'));
+        });
+
+        $user = Auth::user();
+        $orders = OrderItem::where('order_id', $order->id)->get();
+        return view('order.client', compact('order', 'orders'));
     }
 }

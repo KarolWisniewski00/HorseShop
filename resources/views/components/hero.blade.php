@@ -14,7 +14,7 @@
                 <p class="px-8 my-4 text-lg">oraz inne akcesoria dla konia</p>
                 <div class="flex flex-row my-4 justify-center px-8">
                     <a href="{{route('shop')}}" class="duration-200 block shadow h-full text-bone-50 m-1 px-4 py-2 leading-loose text-2xl text-center font-semibold bg-bone-600 hover:bg-gray-50 hover:text-bone-600 rounded-xl"><i class="fa-solid fa-angles-right mr-2"></i>Sprawdź</a>
-                    <a href="" class="duration-200 block shadow h-full text-bone-600 m-1 px-4 py-2 leading-loose text-2xl text-center font-semibold bg-gray-50 hover:bg-bone-600 hover:text-bone-50 rounded-xl ">Zobacz więcej</a>
+                    <a href="{{route('about')}}" class="duration-200 block shadow h-full text-bone-600 m-1 px-4 py-2 leading-loose text-2xl text-center font-semibold bg-gray-50 hover:bg-bone-600 hover:text-bone-50 rounded-xl ">Zobacz więcej</a>
                 </div>
             </div>
         </div>
