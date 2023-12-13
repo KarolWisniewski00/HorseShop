@@ -1,6 +1,6 @@
 <a href="{{route('product.show',$product)}}" class="w-full product-small">
     <div class="rounded-xl shadow overflow-hidden flex flex-col items-center relative">
-        <img class="h-full md:h-auto w-auto rounded-xl" src="{{asset('asset/photo/'.$product->photo)}}">
+        <img class="w-full h-auto rounded-xl" src="{{asset('asset/photo/'.$product->photo)}}">
     </div>
     <div class="overflow-hidden relative bg-white rounded-xl shadow p-4 mx-4 -mt-12 relative text-center flex flex-col items-center justify-center">
         <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full">
