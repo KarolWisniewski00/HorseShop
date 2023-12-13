@@ -37,6 +37,10 @@ use Symfony\Component\HttpKernel\Profiler\Profile;
 //dodać role
 //dodać logowanie przez google
 //dodać zdjęcia pod nagłówki
+//komunikaty w panelu admina
+//podgląd zdjęcia w panelu
+//nazewnictwo kodu + optymalizacja
+//SEO
 Route::get('/', [IndexController::class, 'index'])->name('index');
 
 Route::prefix('about')->group(function () {
