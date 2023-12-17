@@ -1,5 +1,5 @@
 <!--nav-->
-<section class="fixed top-0 left-0 right-0 z-10 bg-stone-50 shadow">
+<section class="fixed top-0 left-0 right-0 z-10 bg-white shadow">
     <nav class="relative px-4 py-4 flex justify-between items-center bg-transparent container mx-auto">
         <a class="text-xl leading-none flex flex-row items-center" href="{{route('index')}}">
             <img class="h-auto w-16" src="{{asset('asset/image/logo.png')}}" alt="logo">

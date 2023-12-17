@@ -14,6 +14,7 @@
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
         <link rel="stylesheet" href="{{asset('asset/css/main.css')}}">
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <!-- Styles -->
         @livewireStyles
     </head>

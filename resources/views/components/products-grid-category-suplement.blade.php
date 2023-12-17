@@ -8,7 +8,7 @@
         <div class="text-5xl relative font-display font-bold bg-clip-text bg-gradient-to-l from-stone-950 to-stone-500 text-transparent">SUPLEMENTY</div>
     </div>
     <div class="container mx-auto px-4">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
             <div class="flex items-center">
                 @foreach($products as $key => $product)
                 @if($key == 1)

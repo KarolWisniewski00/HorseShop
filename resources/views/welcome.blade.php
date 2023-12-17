@@ -3,14 +3,21 @@
     @include('components/hero')
     @include('components/products-grid-news')
     <!-- Announcement Banner -->
-    <div class="bg-gradient-to-r from-bone-600 to-bone-400">
-        <div class="max-w-[85rem] px-4 py-4 sm:px-6 lg:px-8 mx-auto">
+    <div class="container mx-auto px-4 mt-8">
+        <div class="bg-gradient-to-r from-bone-600 to-bone-400 border rounded-xl shadow p-4">
             <!-- Grid -->
             <div class="grid justify-center md:grid-cols-2 md:justify-between md:items-center gap-2">
                 <div class="text-center md:text-start md:order-2 md:flex md:justify-end md:items-center">
-                    <a class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border-2 border-white text-white hover:border-white/70 hover:text-white/70 disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600" href="#">
+                    @auth
+                    <div class="flex flex-col mx-4">
+                        <span class="text-white text-2xl">Masz</span>
+                        <span class="text-white text-2xl">{{$user->points != null ? $user->points : 0 }} pkt</span>
+                    </div>
+                    @else
+                    <a class="py-2 m-4 px-3 inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border-2 border-white text-white hover:border-white/70 hover:text-white/70 disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600" href="#">
                         Zaloguj przez google
                     </a>
+                    @endauth
                 </div>
                 <!-- End Col -->
 

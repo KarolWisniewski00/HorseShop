@@ -24,7 +24,7 @@ class ProductController extends Controller
         Breadcrumbs::for('shop.product.show', function ($trail, $productId) {
             $trail->push('Produkt', route('product.show', $productId));
         });
-        $products = Product::orderBy('created_at', 'desc')->take(3)->get();
+        $products = Product::where('visibility_on_website',True)->orderBy('created_at', 'desc')->take(3)->get();
         return view('shop.product.show', compact('product', 'products'));
     }
 }

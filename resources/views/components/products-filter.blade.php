@@ -35,7 +35,7 @@
         <div class="text-3xl relative my-8 text-stone-700">Wszystkie produkty</div>
     </div>
     <div class="container mx-auto flex flex-col lg:flex-row px-4">
-        <div class="w-full lg:w-1/3 my-16 bg-white shadow rounded-xl pb-4 h-fit">
+        <div class="w-full lg:w-1/3 my-16 bg-white shadow rounded-xl border pb-4 h-fit">
             <form method="POST" action="{{route('shop.store')}}" id="myForm">
                 @csrf
                 <div class="mx-auto text-center relative">
@@ -45,14 +45,14 @@
                     <ul class="flex grid grid-cols-2 gap-4">
                         <li>
                             <input @if($category=='oil' || $category=='all' ) {{'checked'}} @endif name="category[]" type="checkbox" id="oil" value="oil" class="hidden peer">
-                            <label for="oil" class="flex flex-col hover-filter bg-white rounded-xl p-4 border-2 border-transparent peer-checked:border-2 peer-checked:border-bone-500">
+                            <label for="oil" class="flex flex-col hover-filter bg-white rounded-xl border p-4 border-2 border-transparent peer-checked:border-2 peer-checked:border-bone-500">
                                 <img class="h-full w-auto -mb-4" src="{{asset('asset/image/filter-oil.jpg')}}">
                                 <div class="text-xl relative text-stone-700">Oleje</div>
                             </label>
                         </li>
                         <li>
                             <input @if($category=='suplement' || $category=='all' ) {{'checked'}} @endif name="category[]" type="checkbox" id="sup" value="suplement" class="hidden peer">
-                            <label for="sup" class="flex flex-col hover-filter bg-white rounded-xl p-4 border-2 border-transparent peer-checked:border-2 peer-checked:border-bone-500">
+                            <label for="sup" class="flex flex-col hover-filter bg-white rounded-xl border p-4 border-2 border-transparent peer-checked:border-2 peer-checked:border-bone-500">
                                 <img class="h-full w-auto -mb-4" src="{{asset('asset/image/filter-sup.jpg')}}">
                                 <div class="text-xl relative text-stone-700">Suplementy</div>
                             </label>
@@ -94,7 +94,7 @@
                 </div>
                 <div class="relative inline-block text-left">
                     <div>
-                        <button type="button" class="mb-4 duration-200 inline-flex w-full justify-center align-middle items-center gap-x-1.5 shadow h-full text-bone-50 m-1 px-4 py-2 leading-loose text-center font-semibold bg-bone-600 hover:bg-stone-50 hover:text-bone-600 rounded-xl" id="menu-button" aria-expanded="true" aria-haspopup="true">
+                        <button type="button" class="mb-4 duration-200 inline-flex w-full justify-center align-middle items-center gap-x-1.5 shadow h-full text-bone-50 m-1 px-4 py-2 leading-loose text-center font-semibold bg-bone-600 hover:bg-stone-50 hover:text-bone-600 rounded-xl border" id="menu-button" aria-expanded="true" aria-haspopup="true">
                             Sortowanie
                             <svg class="-mr-1 h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                                 <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" />

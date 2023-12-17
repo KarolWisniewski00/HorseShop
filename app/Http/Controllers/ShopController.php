@@ -10,7 +10,7 @@ class ShopController extends Controller
 {
     private function getPrice(string $min_max = 'min')
     {
-        $products = Product::get();
+        $products = Product::where('visibility_on_website',True)->get();
         $price_min = 10000;
         $price_max = 0;
         foreach ($products as $key => $value) {
@@ -45,7 +45,7 @@ class ShopController extends Controller
         $price_min =  $this->getPrice();
         $price_max =  $this->getPrice('max');
 
-        $products = Product::orderBy('created_at', 'desc')->paginate(20);
+        $products = Product::where('visibility_on_website',True)->orderBy('created_at', 'desc')->paginate(20);
         $category = null;
         $r_price_min = null;
         $r_price_max = null;
@@ -65,11 +65,11 @@ class ShopController extends Controller
         $price_min =  $this->getPrice();
         $price_max =  $this->getPrice('max');
 
-        $products = Product::orderBy('created_at', 'desc');
+        $products = Product::where('visibility_on_website',True)->orderBy('created_at', 'desc');
         $category = null;
         if ($request->category != null) {
             if (count($request->category) == 1) {
-                $products = Product::where('attr', $request->category[0]);
+                $products = Product::where('visibility_on_website',True)->where('attr', $request->category[0]);
                 $category = $request->category[0];
             } else {
                 $category = 'all';

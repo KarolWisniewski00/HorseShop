@@ -3,17 +3,32 @@
 namespace App\Http\Controllers;
 
 use App\Models\Rule;
+use DaveJamesMiller\Breadcrumbs\Facades\Breadcrumbs;
 use Illuminate\Http\Request;
 
 class RuleController extends Controller
 {
     public function index()
     {
+        Breadcrumbs::for('index', function ($trail) {
+            $trail->push('Strona główna', route('index'));
+        });
+
+        Breadcrumbs::for('rule', function ($trail) {
+            $trail->push('Regulamin', route('rule'));
+        });
         $elements = Rule::orderBy('order')->get();
         return view('settings.rule.index', compact('elements'));
     }
     public function create()
     {
+        Breadcrumbs::for('index', function ($trail) {
+            $trail->push('Strona główna', route('index'));
+        });
+
+        Breadcrumbs::for('rule', function ($trail) {
+            $trail->push('Regulamin', route('rule'));
+        });
         $elements = Rule::orderBy('order')->get();
         return view('settings.rule.create', compact('elements'));
     }
@@ -33,6 +48,13 @@ class RuleController extends Controller
     }
     public function edit(Rule $element)
     {
+        Breadcrumbs::for('index', function ($trail) {
+            $trail->push('Strona główna', route('index'));
+        });
+
+        Breadcrumbs::for('rule', function ($trail) {
+            $trail->push('Regulamin', route('rule'));
+        });
         $elements = Rule::orderBy('order')->get();
         return view('settings.rule.edit', compact('element', 'elements'));
     }

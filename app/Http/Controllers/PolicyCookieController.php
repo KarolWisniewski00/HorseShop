@@ -3,17 +3,32 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cookie;
+use DaveJamesMiller\Breadcrumbs\Facades\Breadcrumbs;
 use Illuminate\Http\Request;
 
 class PolicyCookieController extends Controller
 {
     public function index()
     {
+        Breadcrumbs::for('index', function ($trail) {
+            $trail->push('Strona główna', route('index'));
+        });
+
+        Breadcrumbs::for('cookie', function ($trail) {
+            $trail->push('Polityka cookies', route('cookie'));
+        });
         $elements = Cookie::orderBy('order')->get();
         return view('settings.cookie.index', compact('elements'));
     }
     public function create()
     {
+        Breadcrumbs::for('index', function ($trail) {
+            $trail->push('Strona główna', route('index'));
+        });
+
+        Breadcrumbs::for('cookie', function ($trail) {
+            $trail->push('Polityka cookies', route('cookie'));
+        });
         $elements = Cookie::orderBy('order')->get();
         return view('settings.cookie.create', compact('elements'));
     }
@@ -33,6 +48,13 @@ class PolicyCookieController extends Controller
     }
     public function edit(Cookie $element)
     {
+        Breadcrumbs::for('index', function ($trail) {
+            $trail->push('Strona główna', route('index'));
+        });
+
+        Breadcrumbs::for('cookie', function ($trail) {
+            $trail->push('Polityka cookies', route('cookie'));
+        });
         $elements = Cookie::orderBy('order')->get();
         return view('settings.cookie.edit', compact('element', 'elements'));
     }

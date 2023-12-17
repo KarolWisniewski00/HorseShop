@@ -3,17 +3,32 @@
 namespace App\Http\Controllers;
 
 use App\Models\Priv;
+use DaveJamesMiller\Breadcrumbs\Facades\Breadcrumbs;
 use Illuminate\Http\Request;
 
 class PolicyPrivController extends Controller
 {
     public function index()
     {
+        Breadcrumbs::for('index', function ($trail) {
+            $trail->push('Strona główna', route('index'));
+        });
+
+        Breadcrumbs::for('rule', function ($trail) {
+            $trail->push('Polityka prywatności', route('priv'));
+        });
         $elements = Priv::orderBy('order')->get();
         return view('settings.priv.index', compact('elements'));
     }
     public function create()
     {
+        Breadcrumbs::for('index', function ($trail) {
+            $trail->push('Strona główna', route('index'));
+        });
+
+        Breadcrumbs::for('rule', function ($trail) {
+            $trail->push('Polityka prywatności', route('priv'));
+        });
         $elements = Priv::orderBy('order')->get();
         return view('settings.priv.create', compact('elements'));
     }
@@ -33,6 +48,13 @@ class PolicyPrivController extends Controller
     }
     public function edit(Priv $element)
     {
+        Breadcrumbs::for('index', function ($trail) {
+            $trail->push('Strona główna', route('index'));
+        });
+
+        Breadcrumbs::for('rule', function ($trail) {
+            $trail->push('Polityka prywatności', route('priv'));
+        });
         $elements = Priv::orderBy('order')->get();
         return view('settings.priv.edit', compact('element', 'elements'));
     }

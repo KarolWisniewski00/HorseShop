@@ -22,5 +22,7 @@ class Product extends Model
         'seo_description',
         'visibility_in_google',
         'visibility_on_website',
+        'amazon',
+        'allegro',
     ];
 }

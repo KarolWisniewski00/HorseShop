@@ -43,6 +43,7 @@ class OrderController extends Controller
     }
     public function store(Request $request)
     {
+        return $request;
         if ($request->type_transfer == 'false' && $request->type_transfer_24 == 'false') {
             return redirect()->back()->with('fail', 'Administrator nie ustawił formy płatności. Przepraszamy za utrudnienia.');
         }

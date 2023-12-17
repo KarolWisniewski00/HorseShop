@@ -155,7 +155,7 @@
                         <script>
                             $(document).ready(function() {
                                 // Set the initial count of visible photos
-                                let visiblePhotoCount = 9;
+                                let visiblePhotoCount = 0;
 
                                 // Show additional photos when the "Show More" button is clicked
                                 $("#showMoreBtn").on("click", function() {
@@ -166,7 +166,7 @@
                                     const endIndex = visiblePhotoCount + 9;
 
                                     // Show the next 9 photos
-                                    hiddenPhotos.slice(visiblePhotoCount, endIndex).removeClass("hidden");
+                                    hiddenPhotos.slice(0, endIndex).removeClass("hidden");
 
                                     // Update the visiblePhotoCount for the next click
                                     visiblePhotoCount = endIndex;
