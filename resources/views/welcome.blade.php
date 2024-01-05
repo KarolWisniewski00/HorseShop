@@ -4,7 +4,7 @@
     @include('components/products-grid-news')
     <!-- Announcement Banner -->
     <div class="container mx-auto px-4 mt-8">
-        <div class="bg-gradient-to-r from-bone-600 to-bone-400 border rounded-xl shadow p-4">
+        <div class="bg-gradient-to-r from-bone-600 to-bone-400 dark:from-bone-800 dark:to-bone-600 border rounded-xl shadow p-4 dark:border-stone-600">
             <!-- Grid -->
             <div class="grid justify-center md:grid-cols-2 md:justify-between md:items-center gap-2">
                 <div class="text-center md:text-start md:order-2 md:flex md:justify-end md:items-center">

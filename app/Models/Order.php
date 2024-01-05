@@ -10,7 +10,7 @@ class Order extends Model
 {
     protected $fillable = [
         'number', 'name', 'url', 'email', 'company', 'nip', 'post', 'adres', 'adres_extra',
-        'city', 'phone', 'status', 'total', 'user_id'
+        'city', 'phone', 'status', 'total', 'user_id', 'payment_type'
     ];
     public function user()
     {

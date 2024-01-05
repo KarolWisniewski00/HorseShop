@@ -33,13 +33,12 @@ use Symfony\Component\HttpKernel\Profiler\Profile;
 //poprawić ścieżkę on error na foto
 //dodac historie zamówien
 //podpiąć sandbox
-//zrobić strone o nas
 //dodać role
 //dodać logowanie przez google
-//dodać zdjęcia pod nagłówki
 //komunikaty w panelu admina
 //podgląd zdjęcia w panelu
 //nazewnictwo kodu + optymalizacja
+//dodać otwarty koszyk przy zakupie
 //SEO
 Route::get('/', [IndexController::class, 'index'])->name('index');
 

@@ -43,10 +43,14 @@
                                 </div>
                                 <div class="flex flex-col pt-3">
                                     <dt class="mb-1 text-gray-500 md:text-lg">Metoda płatności</dt>
-                                    @if ($order->payment)
-                                    <dd class="text-lg font-semibold">Płatność online</dd>
-                                    @else
+                                    @if ($order->hosting == 'payment_classic')
                                     <dd class="text-lg font-semibold">Przelew bankowy</dd>
+                                    @elseif($order->hosting == 'payment_transfer24')
+                                    <dd class="text-lg font-semibold">Płatność on-line</dd>
+                                    @elseif($order->hosting == 'payment_shipcash')
+                                    <dd class="text-lg font-semibold">Płatność przy odbiorze</dd>
+                                    @elseif($order->hosting == 'payment_cash')
+                                    <dd class="text-lg font-semibold">Odbiór osobisty - Brak opłaty za wysyłkę</dd>
                                     @endif
                                 </div>
                             </dl>
@@ -139,7 +143,7 @@
                                 @foreach($orders as $o)
                                 <tr class="bg-white border-b hover:bg-gray-50">
                                     <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                                        <img src="" alt="" class="img-fluid" height="48px" width="48px" onerror="this.onerror=null; this.src=`{{ asset('image/undraw_photos_re_pvh3.svg') }}`;">
+                                        <img src="{{asset('asset/photo/'.$o->product->photo)}}" alt="" class="img-fluid" height="48px" width="48px" onerror="this.onerror=null; this.src=`{{ asset('asset/image/undraw_photos_re_pvh3.svg') }}`;">
                                     </th>
                                     <td class="px-6 py-4">
                                         {{$o->name}}
@@ -151,13 +155,21 @@
                                         {{$o->attributes_grind}}
                                     </td>
                                     <td class="px-6 py-4">
+                                        @if($o->product->price_promo != null || $o->product->price_promo != 0)
+                                        {{$o->product->price_promo}}
+                                        @else
                                         {{$o->price}}
+                                        @endif
                                     </td>
                                     <td class="px-6 py-4">
                                         {{$o->quantity}}
                                     </td>
                                     <td class="px-6 py-4">
+                                        @if($o->product->price_promo != null || $o->product->price_promo != 0)
+                                        {{$o->quantity*$o->product->price_promo}} PLN
+                                        @else
                                         {{$o->quantity*$o->price}} PLN
+                                        @endif
                                     </td>
                                 </tr>
                                 @endforeach
@@ -166,14 +178,14 @@
                     </div>
                     <div class="grid grid-cols-1 mt-8">
 
-                        <ol class="relative border-s border-gray-200 dark:border-gray-700">
+                        <ol class="relative border-s border-gray-200">
                             @if($order_logs)
                             @foreach($order_logs as $log)
                             <li class="mb-10 ms-4">
-                                <div class="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -start-1.5 border border-white dark:border-gray-900 dark:bg-gray-700"></div>
+                                <div class="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -start-1.5 border border-white"></div>
                                 <time class="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">{{$log->created_at}}</time>
-                                <h3 class="text-lg font-semibold text-gray-900 dark:text-white">{{$log->name}}</h3>
-                                <p class="mb-4 text-base font-normal text-gray-500 dark:text-gray-400">{{$log->description}}</p>
+                                <h3 class="text-lg font-semibold text-gray-900">{{$log->name}}</h3>
+                                <p class="mb-4 text-base font-normal text-gray-500 ">{{$log->description}}</p>
                             </li>
                             @endforeach
                             @endif

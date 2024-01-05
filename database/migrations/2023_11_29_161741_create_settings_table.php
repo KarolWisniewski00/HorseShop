@@ -73,6 +73,30 @@ return new class extends Migration
         $company->pl = 'Ciąg dalszy adresu';
         $company->content = ' 00-000 Big City';
         $company->save();
+
+        $company = new Setting();
+        $company->type = 'payment_classic';
+        $company->pl = 'Płatność przelewem';
+        $company->content = '1';
+        $company->save();
+
+        $company = new Setting();
+        $company->type = 'payment_transfer24';
+        $company->pl = 'Płatność on-line';
+        $company->content = '1';
+        $company->save();
+
+        $company = new Setting();
+        $company->type = 'payment_shipcash';
+        $company->pl = 'Płatność za pobraniem';
+        $company->content = '1';
+        $company->save();
+
+        $company = new Setting();
+        $company->type = 'payment_cash';
+        $company->pl = 'Odbiór osobisty';
+        $company->content = '1';
+        $company->save();
     }
 
     /**

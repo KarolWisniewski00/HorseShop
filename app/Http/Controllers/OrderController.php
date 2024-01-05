@@ -39,15 +39,12 @@ class OrderController extends Controller
         Breadcrumbs::for('order.create', function ($trail) {
             $trail->push('Płatności', route('order.create'));
         });
-        return view('order.create');
+        $cartItems = \Cart::session('cart')->getContent();
+        $ship = 14;
+        return view('order.create', compact('cartItems','ship'));
     }
     public function store(Request $request)
     {
-        return $request;
-        if ($request->type_transfer == 'false' && $request->type_transfer_24 == 'false') {
-            return redirect()->back()->with('fail', 'Administrator nie ustawił formy płatności. Przepraszamy za utrudnienia.');
-        }
-
         $cartContent = \Cart::session('cart')->getContent();
 
         if ($cartContent->isEmpty()) {
@@ -59,9 +56,21 @@ class OrderController extends Controller
         } catch (Throwable $e) {
             $usrid = null;
         }
-
-        $total = \Cart::session('cart')->getTotal();
-
+        if($request->hosting == 'payment_cash'){
+            $total = $request->count;
+            $hosting = 'Odbiór osobisty - Brak opłat za wysyłkę';
+        }elseif($request->hosting == 'payment_shipcash'){
+            $total = $request->countship;
+            $hosting = 'Płatność przy odbiorze';
+        }elseif($request->hosting == 'payment_transfer24'){
+            $total = $request->countship;
+            $hosting = 'Płatność on-line';
+        }elseif($request->hosting == 'payment_classic'){
+            $total = $request->countship;
+            $hosting = 'Przelew';
+        }else{
+            
+        }
         $order = Order::create([
             'number' => $this->getOrderNumber(),
             'url' => Str::random(4),
@@ -77,6 +86,7 @@ class OrderController extends Controller
             'extra' => $request->extra,
             'user_id' => $usrid,
             'total' => $total,
+            'hosting'=>$hosting,
             'status' => OrderStatus::PENDING,
         ]);
 
@@ -97,12 +107,10 @@ class OrderController extends Controller
             'type' => EnumsOrderLog::CLIENT,
             'order_id' => $order->id,
         ]);
-        if ($request->type_transfer_24 == 'true') {
-            return '$this->paymentTransaction($order)';
-        } elseif ($request->type_transfer == 'true') {
+        if($request->hosting == 'payment_transfer24'){
+            return "w trakcie";
+        }else{
             \Cart::session('cart')->clear();
-
-            // Wyślij e-mail
             return redirect()->route('order.show', $order->url)->with('success', 'Dziękujemy, zamówienie zostało złożone.');
         }
     }

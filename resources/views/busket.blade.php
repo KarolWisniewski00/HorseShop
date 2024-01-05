@@ -82,10 +82,17 @@
                                     </form>
                                 </div>
                                 <div class="flex justify-end space-x-4">
+                                    @if($item->associatedModel->price_promo != null || $item->associatedModel->price_promo != null)
+                                    <p class="text-sm">{{$item->associatedModel->price_promo*$item->quantity}} PLN</p>
+                                    @php
+                                    $count += ($item->associatedModel->price_promo*$item->quantity)
+                                    @endphp
+                                    @else
                                     <p class="text-sm">{{$item->price*$item->quantity}} PLN</p>
                                     @php
                                     $count += ($item->price*$item->quantity)
                                     @endphp
+                                    @endif
                                     <form method="POST" action="{{route('product.remove', $item->associatedModel)}}">
                                         @csrf
                                         <button type="submit" onclick="return confirm('Czy na pewno chcesz usunąć ten produkt?');"> <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-5 w-5 cursor-pointer duration-150 hover:text-red-500">
