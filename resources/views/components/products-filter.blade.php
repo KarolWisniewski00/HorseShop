@@ -12,7 +12,8 @@
                 <path d="M29.7,66.7c0.4,0,0.8-0.2,1.1-0.5l4.4-4.7c0.6-0.6,0.5-1.6-0.1-2.1c-0.6-0.6-1.5-0.5-2.1,0.1l-4.4,4.7   c-0.6,0.6-0.5,1.6,0.1,2.1C29,66.5,29.4,66.7,29.7,66.7z" />
                 <path d="M39.5,64.3c0.4,0,0.8-0.2,1.1-0.5l4.4-4.7c0.6-0.6,0.5-1.6-0.1-2.1c-0.6-0.6-1.6-0.5-2.1,0.1l-4.4,4.7   c-0.6,0.6-0.5,1.6,0.1,2.1C38.7,64.2,39.1,64.3,39.5,64.3z" />
             </g>
-        </svg><div class="text-5xl relative font-display font-bold bg-clip-text bg-gradient-to-l from-stone-950 to-stone-500  dark:from-stone-50 dark:to-stone-50 text-transparent">SKLEP</div>
+        </svg>
+        <div class="text-5xl relative font-display font-bold bg-clip-text bg-gradient-to-l from-stone-950 to-stone-500  dark:from-stone-50 dark:to-stone-50 text-transparent">SKLEP</div>
     </div>
     <div class="mx-auto container text-center grid grid-cols-1 items-center">
         <!-- Breadcrumb -->
