@@ -37,8 +37,6 @@ use Symfony\Component\HttpKernel\Profiler\Profile;
 //dodać logowanie przez google
 //komunikaty w panelu admina
 //podgląd zdjęcia w panelu
-//nazewnictwo kodu + optymalizacja
-//dodać otwarty koszyk przy zakupie
 //SEO
 Route::get('/', [IndexController::class, 'index'])->name('index');
 

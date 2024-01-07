@@ -15,10 +15,10 @@
         </div>
 
         <ul class="hidden absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2 lg:flex lg:mx-auto lg:flex lg:items-center lg:w-auto lg:space-x-6">
-            <li><a class="mx-2 text-sm {{ request()->routeIs('index') ? 'text-bone-600 font-bold' : 'text-stone-50 hover:text-stone-200' }}" href="{{route('index')}}">Strona główna</a></li>
-            <li><a class="mx-2 text-sm {{ Str::startsWith(request()->path(), 'shop') ? 'text-bone-600 font-bold' : 'text-stone-50 hover:text-stone-200' }}" href="{{route('shop')}}">Sklep</a></li>
-            <li><a class="mx-2 text-sm {{ request()->routeIs('about') ? 'text-bone-600 font-bold' : 'text-stone-50 hover:text-stone-200' }}" href="{{route('about')}}">O nas</a></li>
-            <li><a class="mx-2 text-sm {{ request()->routeIs('contact') ? 'text-bone-600 font-bold' : 'text-stone-50 hover:text-stone-200' }}" href="{{route('contact')}}">Kontakt</a></li>
+            <li><a class="mx-2 text-sm {{ request()->routeIs('index') ? 'text-bone-600 font-bold' : 'text-stone-400 hover:text-stone-500' }}" href="{{route('index')}}">Strona główna</a></li>
+            <li><a class="mx-2 text-sm {{ Str::startsWith(request()->path(), 'shop') ? 'text-bone-600 font-bold' : 'text-stone-400 hover:text-stone-500' }}" href="{{route('shop')}}">Sklep</a></li>
+            <li><a class="mx-2 text-sm {{ request()->routeIs('about') ? 'text-bone-600 font-bold' : 'text-stone-400 hover:text-stone-500' }}" href="{{route('about')}}">O nas</a></li>
+            <li><a class="mx-2 text-sm {{ request()->routeIs('contact') ? 'text-bone-600 font-bold' : 'text-stone-400 hover:text-stone-500' }}" href="{{route('contact')}}">Kontakt</a></li>
         </ul>
         @auth
         <a class="shadow hidden lg:inline-block lg:ml-auto lg:mr-3 py-2 px-6 bg-white text-bone-500 hover:bg-bone-500 hover:text-white text-sm text-neutral-900 font-bold  rounded-xl transition duration-200 dark:bg-stone-800 dark:text-bone-600 dark:hover:bg-bone-600 dark:hover:text-bone-50" href="{{route('profile')}}"><i class="fa-solid fa-user mr-2"></i>Konto</a>

@@ -14,7 +14,7 @@ class PolicyPrivController extends Controller
             $trail->push('Strona główna', route('index'));
         });
 
-        Breadcrumbs::for('rule', function ($trail) {
+        Breadcrumbs::for('priv', function ($trail) {
             $trail->push('Polityka prywatności', route('priv'));
         });
         $elements = Priv::orderBy('order')->get();
@@ -26,7 +26,7 @@ class PolicyPrivController extends Controller
             $trail->push('Strona główna', route('index'));
         });
 
-        Breadcrumbs::for('rule', function ($trail) {
+        Breadcrumbs::for('priv', function ($trail) {
             $trail->push('Polityka prywatności', route('priv'));
         });
         $elements = Priv::orderBy('order')->get();
@@ -52,7 +52,7 @@ class PolicyPrivController extends Controller
             $trail->push('Strona główna', route('index'));
         });
 
-        Breadcrumbs::for('rule', function ($trail) {
+        Breadcrumbs::for('priv', function ($trail) {
             $trail->push('Polityka prywatności', route('priv'));
         });
         $elements = Priv::orderBy('order')->get();

@@ -7,44 +7,46 @@
             </svg>
             <div class="dark:text-stone-50 text-5xl relative font-display font-bold bg-clip-text bg-gradient-to-l from-stone-950 to-stone-500 text-transparent">PŁATNOŚCI</div>
         </div>
-        <div class="mx-auto container text-center grid grid-cols-1 md:grid-cols-2 items-center">
+        <div class="mx-auto container text-center grid grid-cols-1 items-center">
             <!-- Breadcrumb -->
-            <nav class="flex text-stone-700 px-4" aria-label="Breadcrumb">
-                <ol class="inline-flex flex-wrap wrap justify-center items-center space-x-1 md:space-x-3">
-                    <li class="inline-flex items-center">
-                        <a href="{{route('index')}}" class="inline-flex items-center text-sm font-medium text-stone-700 hover:text-bone-600 dark:text-stone-400 dark:hover:text-white">
-                            <svg class="w-3 h-3 mr-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                                <path d="m19.707 9.293-2-2-7-7a1 1 0 0 0-1.414 0l-7 7-2 2a1 1 0 0 0 1.414 1.414L2 10.414V18a2 2 0 0 0 2 2h3a1 1 0 0 0 1-1v-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v4a1 1 0 0 0 1 1h3a2 2 0 0 0 2-2v-7.586l.293.293a1 1 0 0 0 1.414-1.414Z" />
-                            </svg>
-                            {{ Breadcrumbs::render('index') }}
-                        </a>
-                    </li>
-                    <li>
-                        <div class="flex items-center">
-                            <svg class="w-3 h-3 mx-1 text-stone-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4" />
-                            </svg>
-                            <a href="{{route('shop')}}" class="ml-1 text-sm font-medium text-stone-700 hover:text-bone-600 md:ml-2 dark:text-stone-400 dark:hover:text-white">{{ Breadcrumbs::render('shop') }}</a>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="flex items-center">
-                            <svg class="w-3 h-3 mx-1 text-stone-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4" />
-                            </svg>
-                            <a href="{{route('busket')}}" class="ml-1 text-sm font-medium text-stone-700 hover:text-bone-600 md:ml-2 dark:text-stone-400 dark:hover:text-white">{{ Breadcrumbs::render('busket') }}</a>
-                        </div>
-                    </li>
-                    <li aria-current="page">
-                        <div class="flex items-center">
-                            <svg class="w-3 h-3 mx-1 text-stone-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4" />
-                            </svg>
-                            <span class="ml-1 text-sm font-medium text-stone-500 md:ml-2 dark:text-stone-400">{{ Breadcrumbs::render('order.create') }}</span>
-                        </div>
-                    </li>
-                </ol>
-            </nav>
+            <div class="flex items-center justify-center w-full">
+                <nav class="flex text-stone-700 px-4" aria-label="Breadcrumb">
+                    <ol class="inline-flex flex-wrap wrap justify-center items-center space-x-1 md:space-x-3">
+                        <li class="inline-flex items-center">
+                            <a href="{{route('index')}}" class="inline-flex items-center text-sm font-medium text-stone-700 hover:text-bone-600 dark:text-stone-400 dark:hover:text-white">
+                                <svg class="w-3 h-3 mr-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="m19.707 9.293-2-2-7-7a1 1 0 0 0-1.414 0l-7 7-2 2a1 1 0 0 0 1.414 1.414L2 10.414V18a2 2 0 0 0 2 2h3a1 1 0 0 0 1-1v-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v4a1 1 0 0 0 1 1h3a2 2 0 0 0 2-2v-7.586l.293.293a1 1 0 0 0 1.414-1.414Z" />
+                                </svg>
+                                {{ Breadcrumbs::render('index') }}
+                            </a>
+                        </li>
+                        <li>
+                            <div class="flex items-center">
+                                <svg class="w-3 h-3 mx-1 text-stone-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4" />
+                                </svg>
+                                <a href="{{route('shop')}}" class="ml-1 text-sm font-medium text-stone-700 hover:text-bone-600 md:ml-2 dark:text-stone-400 dark:hover:text-white">{{ Breadcrumbs::render('shop') }}</a>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="flex items-center">
+                                <svg class="w-3 h-3 mx-1 text-stone-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4" />
+                                </svg>
+                                <a href="{{route('busket')}}" class="ml-1 text-sm font-medium text-stone-700 hover:text-bone-600 md:ml-2 dark:text-stone-400 dark:hover:text-white">{{ Breadcrumbs::render('busket') }}</a>
+                            </div>
+                        </li>
+                        <li aria-current="page">
+                            <div class="flex items-center">
+                                <svg class="w-3 h-3 mx-1 text-stone-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4" />
+                                </svg>
+                                <span class="ml-1 text-sm font-medium text-stone-500 md:ml-2 dark:text-stone-400">{{ Breadcrumbs::render('order.create') }}</span>
+                            </div>
+                        </li>
+                    </ol>
+                </nav>
+            </div>
         </div>
         <div class="container mx-auto text-start mt-8">
             <form action="{{route('order.store')}}" method="POST" class="w-full grid grid-cols-1 lg:grid-cols-3 px-4 gap-4">
@@ -161,7 +163,8 @@
                     </div>
                     <div class="flex justify-between">
                         <p class="text-stone-700 dark:text-stone-50">Wysyłka</p>
-                        <p class="text-stone-700 dark:text-stone-50">{{$ship}} zł</p>
+                        <p class="text-stone-700 dark:text-stone-50" id="ship-show">{{$ship}} zł</p>
+                        <input type="hidden" id="ship-show-input" value="{{$ship}}">
                     </div>
                     <hr class="my-4" />
                     <div class="flex justify-between">
@@ -177,7 +180,7 @@
                     <ul class="grid w-full gap-6 md:grid-cols-1">
                         @if($setting['payment_classic'] == '1')
                         <li>
-                            <input onclick="$('#price-show').html($('#countship').val()+' zł')" type="radio" id="payment_classic" {{ old('payment_classic') ? 'checked' : ''}} name="hosting" value="payment_classic" class="hidden peer" required>
+                            <input onclick="$('#price-show').html($('#countship').val()+' zł'); $('#ship-show').html($('#ship-show-input').val()+' zł')" type="radio" id="payment_classic" {{ old('payment_classic') ? 'checked' : ''}} name="hosting" value="payment_classic" class="hidden peer" required>
                             <label for="payment_classic" class="dark:text-stone-50 inline-flex items-center justify-between w-full p-5 text-stone-500 bg-white border border-stone-200 rounded-lg cursor-pointer dark:hover:text-stone-300 dark:border-stone-700 dark:peer-checked:text-bone-500 peer-checked:border-bone-600 peer-checked:text-bone-600 hover:text-stone-600 hover:bg-stone-100 dark:text-stone-400 dark:bg-stone-800 dark:hover:bg-stone-700">
                                 <div class="block">
                                     <div class="w-full text-lg font-semibold">Przelew</div>
@@ -190,11 +193,11 @@
                         @endif
                         @if($setting['payment_transfer24'] == '1')
                         <li>
-                            <input onclick="$('#price-show').html($('#countship').val()+' zł')" type="radio" id="payment_transfer24" {{ old('payment_transfer24') ? 'checked' : 'checked'}} name="hosting" value="payment_transfer24" class="hidden peer">
+                            <input onclick="$('#price-show').html($('#countship').val()+' zł'); $('#ship-show').html($('#ship-show-input').val()+' zł')" type="radio" id="payment_transfer24" {{ old('payment_transfer24') ? 'checked' : 'checked'}} name="hosting" value="payment_transfer24" class="hidden peer">
                             <label for="payment_transfer24" class="dark:text-stone-50 inline-flex items-center justify-between w-full p-5 text-stone-500 bg-white border border-stone-200 rounded-lg cursor-pointer dark:hover:text-stone-300 dark:border-stone-700 dark:peer-checked:text-bone-500 peer-checked:border-bone-600 peer-checked:text-bone-600 hover:text-stone-600 hover:bg-stone-100 dark:text-stone-400 dark:bg-stone-800 dark:hover:bg-stone-700">
                                 <div class="block">
                                     <div class="w-full text-lg font-semibold">Płatność on-line</div>
-                                    <div class="w-full dark:text-stone-50">Przelwey24, Blik, IMG ...</div>
+                                    <div class="w-full dark:text-stone-50">Przelwey24, Blik, ING ...</div>
                                 </div>
                                 <svg class="w-5 h-5 ms-3 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9" />
@@ -204,7 +207,7 @@
                         @endif
                         @if($setting['payment_shipcash'] == '1')
                         <li>
-                            <input onclick="$('#price-show').html($('#countship').val()+' zł')" type="radio" id="payment_shipcash" {{ old('payment_shipcash') ? 'checked' : ''}} name="hosting" value="payment_shipcash" class="hidden peer">
+                            <input onclick="$('#price-show').html($('#countship').val()+' zł'); $('#ship-show').html($('#ship-show-input').val()+' zł')" type="radio" id="payment_shipcash" {{ old('payment_shipcash') ? 'checked' : ''}} name="hosting" value="payment_shipcash" class="hidden peer">
                             <label for="payment_shipcash" class="dark:text-stone-50 inline-flex items-center justify-between w-full p-5 text-stone-500 bg-white border border-stone-200 rounded-lg cursor-pointer dark:hover:text-stone-300 dark:border-stone-700 dark:peer-checked:text-bone-500 peer-checked:border-bone-600 peer-checked:text-bone-600 hover:text-stone-600 hover:bg-stone-100 dark:text-stone-400 dark:bg-stone-800 dark:hover:bg-stone-700">
                                 <div class="block">
                                     <div class="w-full text-lg font-semibold">Płatność przy odbiorze przesyłki</div>
@@ -217,7 +220,7 @@
                         @endif
                         @if($setting['payment_cash'] == '1')
                         <li>
-                            <input onclick="$('#price-show').html($('#count').val()+' zł')" type="radio" id="payment_cash" {{ old('payment_cash') ? 'checked' : ''}} name="hosting" value="payment_cash" class="hidden peer">
+                            <input onclick="$('#price-show').html($('#count').val()+' zł'); $('#ship-show').html('Brak opłat')" type="radio" id="payment_cash" {{ old('payment_cash') ? 'checked' : ''}} name="hosting" value="payment_cash" class="hidden peer">
                             <label for="payment_cash" class="dark:text-stone-50 inline-flex items-center justify-between w-full p-5 text-stone-500 bg-white border border-stone-200 rounded-lg cursor-pointer dark:hover:text-stone-300 dark:border-stone-700 dark:peer-checked:text-bone-500 peer-checked:border-bone-600 peer-checked:text-bone-600 hover:text-stone-600 hover:bg-stone-100 dark:text-stone-400 dark:bg-stone-800 dark:hover:bg-stone-700">
                                 <div class="block">
                                     <div class="w-full text-lg font-semibold">Odbiór osobisty</div>

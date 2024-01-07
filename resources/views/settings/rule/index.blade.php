@@ -30,6 +30,7 @@
             </div>
         </div>
         <div class="container mx-auto text-center my-16 relative">
+            @if(auth()->check() && auth()->user()->role === 'admin')
             <div class="mb-4 flex flex-row gap-4 items-center justify-center">
                 <a href="{{route('rule.create')}}" class="text-white bg-green-500 hover:bg-green-600 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
                     <i class="fa-solid fa-plus mr-2"></i>Utwórz treść
@@ -38,6 +39,7 @@
                     <i class="fa-solid fa-eye mr-2"></i>Podgląd
                 </a>
             </div>
+            @endif
             @foreach($elements as $element)
             @switch($element->type)
             @case('title')
