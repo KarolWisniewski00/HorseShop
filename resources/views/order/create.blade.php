@@ -129,7 +129,7 @@
                             <div class="flex items-center h-5">
                                 <input id="rules" type="checkbox" value="{{ old('rules') ? 'checked' : ''}}" class="w-4 h-4 border border-stone-300 rounded bg-white focus:ring-3 focus:ring-bone-300 dark:bg-stone-700 dark:border-stone-600 dark:focus:ring-bone-600 dark:ring-offset-stone-800 dark:focus:ring-offset-stone-800" required>
                             </div>
-                            <label for="rules" class="ms-2 text-sm font-medium text-stone-900 dark:text-stone-400">Oświadczam, że zapoznałem/am się z treścią strony <a href="{{route('rule')}}">regulamin</a></label>
+                            <label for="rules" class="ms-2 text-sm font-medium text-stone-900 dark:text-stone-400">Oświadczam, że zapoznałem/am się z treścią strony <a href="{{route('rule')}}" class="dark:text-bone-600 dark:hover:text-bone-400">regulamin</a></label>
                         </div>
 
                         <div class="flex justify-start space-x-4">

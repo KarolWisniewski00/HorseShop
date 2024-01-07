@@ -24,6 +24,17 @@ class ShopAdminController extends Controller
 
         return view('shop.product.create', compact('photos'));
     }
+    public function createSet()
+    {
+        $photos = File::files(public_path('asset/photo'));
+
+        // Sortowanie tablicy $photos od najnowszych do najstarszych na podstawie daty utworzenia.
+        usort($photos, function ($a, $b) {
+            return filemtime($b) - filemtime($a);
+        });
+        $products = Product::orderBy('created_at', 'desc')->get();
+        return view('shop.product.createSet', compact('photos', 'products'));
+    }
     public function store(Request $request)
     {
 
@@ -41,7 +52,9 @@ class ShopAdminController extends Controller
             'seo_title' => $request->seo_title,
             'seo_description' => $request->seo_description,
             'visibility_in_google' => isset($request->visibility_in_google)  ? 1 : 0,
-            'attr' => $request->category
+            'attr' => $request->category,
+            'amazon' => $request->amazon,
+            'allegro' => $request->allegro
         ]);
 
         if ($res) {
@@ -79,7 +92,9 @@ class ShopAdminController extends Controller
             'seo_title' => $request->seo_title,
             'seo_description' => $request->seo_description,
             'visibility_in_google' => isset($request->visibility_in_google)  ? 1 : 0,
-            'attr' => $request->category
+            'attr' => $request->category,
+            'amazon' => $request->amazon,
+            'allegro' => $request->allegro
         ]);
 
         if ($res) {

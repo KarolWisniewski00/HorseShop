@@ -4,7 +4,9 @@
             {{ __('Produkty') }}
         </h2>
     </x-slot>
-
+    @php
+    $price = 0;
+    @endphp
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
@@ -12,15 +14,80 @@
                     <x-application-logo class="block h-12 w-auto" />
                     <div class="flex flex-row justify-between">
                         <h1 class="mt-8 mb-4 text-2xl font-medium text-gray-900">
-                            Tworzenie produktu
+                            Tworzenie zestawu produktów
                         </h1>
                         <a href="{{route('admin.products')}}" type="button" class="mt-8 mb-4 text-white bg-indigo-500 hover:bg-indigo-600 focus:ring-4 focus:ring-indigo-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 focus:outline-none"><i class="fa-solid fa-chevron-left me-2"></i>Powrót</span></a>
                     </div>
                     <form action="{{route('admin.product.store')}}" method="POST">
                         @csrf
+                        <script>
+                            function priceSet(p) {
+                                price = $('#price-input').val();
+                                price = parseInt(price) + parseInt(p);
+                                $('#price-input').val(price);
+                            }
+                        </script>
+                        <div class="my-4 overflow-auto" style="height: 25em;">
+                            <table class="w-full text-sm text-left text-gray-500">
+                                <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+                                    <tr>
+                                        <th scope="col" class="px-6 py-3">
+                                            Zdjęcie
+                                        </th>
+                                        <th scope="col" class="px-6 py-3">
+                                            Nazwa
+                                        </th>
+                                        <th scope="col" class="px-6 py-3">
+                                            Wyświetlenia
+                                        </th>
+                                        <th scope="col" class="px-6 py-3">
+                                            W Koszyku
+                                        </th>
+                                        <th scope="col" class="px-6 py-3">
+                                            Sprzedanych
+                                        </th>
+                                        <th scope="col" class="px-6 py-3">
+                                            Cena
+                                        </th>
+                                        <th scope="col" class="px-6 py-3">
+                                            Dodaj
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach($products as $product)
+                                    <tr class="bg-white border-b hover:bg-gray-50">
+                                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                                            <img src="{{ asset('asset/photo/'.$product->photo) }}" alt="" class="img-fluid" height="48px" width="48px" onerror="this.onerror=null; this.src=`{{ asset('asset/image/photo-noloaded.svg') }}`;">
+                                        </th>
+                                        <td class="px-6 py-4">
+                                            {{$product->name}}
+                                        </td>
+                                        <td class="px-6 py-4">
+                                            {{$product->view}}
+                                        </td>
+                                        <td class="px-6 py-4">
+                                            {{$product->busket}}
+                                        </td>
+                                        <td class="px-6 py-4">
+                                            {{$product->sell}}
+                                        </td>
+                                        <td class="px-6 py-4">
+                                            {{$product->price}}
+                                        </td>
+                                        <td class="px-6 py-4">
+                                            <button type="button" onclick="priceSet({{$product->price}})" class="text-white bg-green-500 hover:bg-green-600 focus:ring-4 focus:ring-green-300 font-medium text-sm px-4 py-2 focus:outline-none rounded-full w-10 h-10 inline-flex items-center justify-center">
+                                                <i class="fa-solid fa-plus"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
                         <div class="mb-6">
                             <label for="text" class="block mb-2 text-sm font-medium text-gray-900 ">Nazwa</label>
-                            <input value="{{ old('name') ? old('name') : ''}}" name="name" type="text" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 " placeholder="Wpisz nazwę" required>
+                            <input value="{{ old('name') ? old('name') : 'Zestaw'}}" name="name" type="text" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 " placeholder="Wpisz nazwę" required>
                             @error('name')
                             <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
                             @enderror
@@ -42,7 +109,7 @@
 
                         <div class="mb-6">
                             <label for="number" class="block mb-2 text-sm font-medium text-gray-900 ">Cena</label>
-                            <input value="{{ old('price') ? old('price') : ''}}" name="price" type="number" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
+                            <input value="{{ old('price') ? old('price') : $price}}" id="price-input" name="price" type="number" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
                             @error('price')
                             <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
                             @enderror
@@ -104,33 +171,6 @@
                         @error('visibility_in_google')
                         <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
                         @enderror
-
-                        <div class="mb-6">
-                            <h3 class="mb-5 text-lg font-medium text-gray-900 ">Kategoria</h3>
-                            <ul class="grid w-full gap-6 md:grid-cols-3">
-                                <li>
-                                    <input {{ old('photo') == 'oil' ? 'checked' : '' }} name="category" type="radio" id="category-1" value="oil" class="hidden peer">
-                                    <label for="category-1" class="h-full inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border-2 border-gray-200 rounded-lg cursor-pointer peer-checked:border-blue-600 hover:text-gray-600 peer-checked:text-gray-600 hover:bg-gray-50">
-                                        <div class="block text-center">
-                                            <div class="w-full text-lg font-semibold">Olej</div>
-                                            <div class="w-full p-5"><img src="{{ asset('asset/image/filter-oil.jpg') }}" alt=""></div>
-                                        </div>
-                                    </label>
-                                </li>
-                                <li>
-                                    <input {{ old('photo') == 'suplement' ? 'checked' : '' }} name="category" type="radio" id="category-2" value="suplement" class="hidden peer">
-                                    <label for="category-2" class="h-full inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border-2 border-gray-200 rounded-lg cursor-pointer peer-checked:border-blue-600 hover:text-gray-600 peer-checked:text-gray-600 hover:bg-gray-50">
-                                        <div class="block text-center">
-                                            <div class="w-full text-lg font-semibold">Suplement</div>
-                                            <div class="w-full p-5"><img src="{{ asset('asset/image/filter-sup.jpg') }}" alt=""></div>
-                                        </div>
-                                    </label>
-                                </li>
-                            </ul>
-                            @error('category')
-                            <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
-                            @enderror
-                        </div>
 
                         <!-- Add the "Show More" button below the existing code -->
                         <div class="mb-6">

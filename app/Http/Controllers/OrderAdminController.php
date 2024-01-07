@@ -7,6 +7,7 @@ use App\Enums\OrderStatus;
 use App\Models\Order;
 use App\Models\OrderItem;
 use App\Models\OrderLog;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -55,6 +56,9 @@ class OrderAdminController extends Controller
                 ]);
                 break;
             case 2:
+                $order = Order::where('id', '=', $id)->first();
+                $user = User::where('id', $order->user_id)->first();
+                User::where('id', $order->user_id)->update(['points' => intval($user->points) + $order->total]);
                 $res = Order::where('id', '=', $id)->update(['status' => strval(OrderStatus::DONE)]);
                 OrderLog::create([
                     'name' => $user->name,

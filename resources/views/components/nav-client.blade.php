@@ -62,7 +62,7 @@
                     <a class="shadow block px-4 py-3 mb-2 leading-loose text-xs text-center text-neutral-50 font-semibold bg-bone-600 hover:bg-white hover:text-bone-500  rounded-xl dark:bg-bone-600 dark:text-bone-50 dark:hover:bg-stone-800 dark:hover:text-bone-600" href="{{route('busket')}}"><i class="fa-solid fa-basket-shopping mr-2"></i>Koszyk</a>
                 </div>
                 <p class="my-4 text-xs text-center text-neutral-400 dark:text-stone-50">
-                    <span>Karol Wiśniewski © 2023</span>
+                    <span>Karol Wiśniewski © {{ \Carbon\Carbon::now()->format('Y') }}</span>
                 </p>
             </div>
         </nav>

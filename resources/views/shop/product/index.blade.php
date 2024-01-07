@@ -14,9 +14,16 @@
                         <h1 class="mt-8 mb-4 text-2xl font-medium text-gray-900">
                             Wszystkie produkty
                         </h1>
-                        <a href="{{route('admin.product.create')}}" class="inline-flex items-center justify-center w-10 h-10 mr-2 text-green-100 transition-colors duration-150 bg-green-500 rounded-full focus:shadow-outline hover:bg-green-600">
-                            <i class="fa-solid fa-plus"></i>
-                        </a>
+                        <div class="flex flex-row justify-center items-center">
+                            <a href="{{route('admin.product.create')}}" class="inline-flex items-center justify-center w-10 h-10 mr-2 text-green-100 transition-colors duration-150 bg-green-500 rounded-full focus:shadow-outline hover:bg-green-600">
+                                <i class="fa-solid fa-plus"></i>
+                            </a>
+                            <!--
+                            <a href="{{route('admin.product.create.set')}}" class="inline-flex items-center justify-center w-10 h-10 mr-2 text-violet-100 transition-colors duration-150 bg-violet-500 rounded-full focus:shadow-outline hover:bg-violet-600">
+                                <i class="fa-solid fa-plus"></i>
+                            </a>
+-->
+                        </div>
                     </div>
                     <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
                         <table class="w-full text-sm text-left text-gray-500">

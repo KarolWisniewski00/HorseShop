@@ -86,7 +86,7 @@ class OrderController extends Controller
             'extra' => $request->extra,
             'user_id' => $usrid,
             'total' => $total,
-            'hosting'=>$hosting,
+            'payment_type'=>$hosting,
             'status' => OrderStatus::PENDING,
         ]);
 
@@ -127,7 +127,9 @@ class OrderController extends Controller
         Breadcrumbs::for('order', function ($trail) {
             $trail->push('Zamówienie', route('order.create'));
         });
-
+        Breadcrumbs::for('history', function ($trail) {
+            $trail->push('Historia', route('history'));
+        });
         $user = Auth::user();
         $orders = OrderItem::where('order_id', $order->id)->get();
         return view('order.client', compact('order', 'orders'));

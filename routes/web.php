@@ -1,8 +1,10 @@
 <?php
 
 use App\Http\Controllers\AboutController;
+use App\Http\Controllers\APIController;
 use App\Http\Controllers\BusketController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\HistoryController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\MediaController;
 use App\Http\Controllers\OrderAdminController;
@@ -31,9 +33,13 @@ use Symfony\Component\HttpKernel\Profiler\Profile;
 */
 //TODO
 //poprawić ścieżkę on error na foto
-//dodac historie zamówien
+//empty place w sklepie
+//zestawy
+//strona ładowania
 //podpiąć sandbox
-//dodać role
+//dodać role + middleware
+//tworzenie zamówienia przy odb osobistym usunąć adresy
+//dodać requesty
 //dodać logowanie przez google
 //komunikaty w panelu admina
 //podgląd zdjęcia w panelu
@@ -93,11 +99,16 @@ Route::prefix('shop')->group(function () {
         Route::post('/store', [OrderController::class, 'store'])->name('order.store');
         Route::get('/show/{url}', [OrderController::class, 'show'])->name('order.show');
     });
+});
+Route::prefix('profile')->group(function () {
+    Route::get('/', [ProfileController::class, 'index'])->name('profile');
     Route::prefix('profile')->group(function () {
-        Route::get('/', [ProfileController::class, 'index'])->name('profile');
+        Route::get('/', [HistoryController::class, 'index'])->name('history');
     });
 });
-
+Route::prefix('api')->group(function () {
+    Route::get('/payment/{slug}/{val}', [APIController::class, 'payment'])->name('payment');
+});
 //LOGGED IN
 Route::middleware([
     'auth:sanctum',
@@ -129,6 +140,7 @@ Route::middleware([
         Route::prefix('shop')->group(function () {
             Route::get('/', [ShopAdminController::class, 'index'])->name('admin.products');
             Route::get('/create', [ShopAdminController::class, 'create'])->name('admin.product.create');
+            Route::get('/set/create', [ShopAdminController::class, 'createSet'])->name('admin.product.create.set');
             Route::post('/store', [ShopAdminController::class, 'store'])->name('admin.product.store');
             Route::get('/edit/{product}', [ShopAdminController::class, 'edit'])->name('admin.product.edit');
             Route::put('/update/{product}', [ShopAdminController::class, 'update'])->name('admin.product.update');

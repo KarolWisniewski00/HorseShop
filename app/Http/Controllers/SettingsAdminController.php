@@ -11,7 +11,11 @@ class SettingsAdminController extends Controller
     public function index()
     {
         $elements = Setting::get();
-        return view('settings.index', compact('elements'));
+        $payment_classic = Setting::where('type','payment_classic')->first();
+        $payment_transfer24 = Setting::where('type','payment_transfer24')->first();
+        $payment_shipcash = Setting::where('type','payment_shipcash')->first();
+        $payment_cash = Setting::where('type','payment_cash')->first();
+        return view('settings.index', compact('elements','payment_classic','payment_transfer24','payment_shipcash','payment_cash'));
     }
     public function edit(Setting $element)
     {
