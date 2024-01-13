@@ -43,6 +43,7 @@ use Symfony\Component\HttpKernel\Profiler\Profile;
 //dodać logowanie przez google
 //komunikaty w panelu admina
 //podgląd zdjęcia w panelu
+//wyloguj w profilu
 //SEO
 Route::get('/', [IndexController::class, 'index'])->name('index');
 

@@ -61,7 +61,19 @@
                 </div>
             </div>
         </div>
-
+        <div class="container mx-auto text-center my-16 relative px-4">
+            <div class="grid grid-cols-1 gap-8">
+                <div class="col-span-1 flex flex-col justify-center">
+                    <div class="h-auto w-full shadow rounded-xl border flex flex-col h-full px-8 bg-white dark:border-stone-600 dark:bg-stone-700">
+                        <h1 class="text-4xl my-8 font-bold dark:text-stone-50">Certyfikaty</h1>
+                        <p class="text-stone-400 leading-10 text-lg mb-3">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                        <div class="flex flex-row justify-center items-center">
+                        <a class="shadow block px-4 py-3 mb-3 leading-loose text-4xl text-center font-semibold leading-none text-bone-500 bg-white hover:bg-bone-500 hover:text-white rounded-xl dark:bg-stone-800 dark:text-bone-600 dark:hover:bg-bone-600 dark:hover:text-bone-50" href="{{asset('asset/pdf/CertyfikatHealthyHorse.pdf')}}" download="CertyfikatHealthyHorse.pdf"><i class="fa-solid fa-file-pdf mr-2"></i>Pobierz PDF</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
     @include('components/fbig')
     @include('components/footer')

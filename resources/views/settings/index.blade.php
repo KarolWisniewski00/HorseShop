@@ -170,6 +170,15 @@
                             <time class="mb-1 text-sm font-normal leading-none text-gray-400">8 Styczeń 2024 V 1.0</time>
                             <h3 class="text-lg font-semibold text-gray-900">Stworzenie Projektu</h3>
                         </li>
+                        <li class="mb-10 ms-4">
+                            <div class="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -start-1.5 border border-whites"></div>
+                            <time class="mb-1 text-sm font-normal leading-none text-gray-400">13 Styczeń 2024 V 1.1</time>
+                            <h3 class="text-lg font-semibold text-gray-900">1 seria poprawek</h3>
+                            <p class="text-gray-900 my-2">- Dodanie pobierania certyfikatów na podstronie "o nas" z wyznaczonym miejscem na tekst</p>
+                            <p class="text-gray-900 my-2">- Dodanie większej ilości pokazywania punktów. Dodano w: strona sklepu pod filtrami, strona produktu pomiędzy produktem a sugerowanymi</p>
+                            <p class="text-gray-900 my-2">- Reset bazy danych</p>
+                            <p class="text-gray-900 my-2">- Ustawienie domeny jako <span class="text-rose-500">osobny projekt</span> - <a href="http://suplementyhealthyhorse.pl/" class="text-blue-500">link do strony głównej serwera produkcyjnego</a> oraz <a href="http://vps-699e8f36.vps.ovh.net:8005/" class="text-blue-500">link do strony głównej serwera testowego</a></p>
+                        </li>
                     </ol>
                 </div>
             </div>
