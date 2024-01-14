@@ -2,7 +2,7 @@
     @include('components/nav-client')
     <section class="pt-20">
         <div class="container mx-auto text-center my-16 relative">
-            <div class="text-5xl relative font-display font-bold bg-clip-text bg-gradient-to-l from-stone-950 to-stone-500 text-transparent">REGULAMIN</div>
+            <div class="text-5xl relative font-display font-bold bg-clip-text bg-gradient-to-l from-stone-950 to-stone-500  dark:from-stone-50 dark:to-stone-50 text-transparent">REGULAMIN</div>
         </div>
         <div class="mx-auto container text-center grid grid-cols-1 items-center mb-4">
             <!-- Breadcrumb -->
@@ -10,7 +10,7 @@
                 <nav class="flex text-gray-700 px-4" aria-label="Breadcrumb">
                     <ol class="inline-flex items-center space-x-1 md:space-x-3">
                         <li class="inline-flex items-center">
-                            <a href="{{route('index')}}" class="inline-flex items-center text-sm font-medium text-gray-700 hover:text-bone-600 dark:text-gray-400 dark:hover:text-white">
+                            <a href="{{route('index')}}" class="inline-flex items-center text-sm font-medium text-gray-700 hover:text-bone-600 dark:text-stone-400 dark:hover:text-white">
                                 <svg class="w-3 h-3 mr-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
                                     <path d="m19.707 9.293-2-2-7-7a1 1 0 0 0-1.414 0l-7 7-2 2a1 1 0 0 0 1.414 1.414L2 10.414V18a2 2 0 0 0 2 2h3a1 1 0 0 0 1-1v-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v4a1 1 0 0 0 1 1h3a2 2 0 0 0 2-2v-7.586l.293.293a1 1 0 0 0 1.414-1.414Z" />
                                 </svg>
@@ -19,10 +19,10 @@
                         </li>
                         <li aria-current="page">
                             <div class="flex items-center">
-                                <svg class="w-3 h-3 mx-1 text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                                <svg class="w-3 h-3 mx-1 text-gray-400 dark:text-stone-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4" />
                                 </svg>
-                                <span class="ml-1 text-sm font-medium text-gray-500 md:ml-2 dark:text-gray-400">{{ Breadcrumbs::render('rule') }}</span>
+                                <span class="ml-1 text-sm font-medium text-gray-500 md:ml-2 dark:text-stone-400">{{ Breadcrumbs::render('rule') }}</span>
                             </div>
                         </li>
                     </ol>
@@ -30,14 +30,14 @@
             </div>
         </div>
         <div class="container mx-auto text-center my-16 relative">
-            <form action="{{route('rule.store')}}" method="POST" class="w-100 border-2 rounded p-4">
+            <form action="{{route('rule.store')}}" method="POST" class="w-100 border-2 rounded p-4 dark:border-stone-700">
                 @csrf
                 <div class="mb-6">
-                    <h3 class="mb-5 text-lg font-medium text-gray-900">Rodzaj treści</h3>
+                    <h3 class="mb-5 text-lg font-medium text-gray-900 dark:text-stone-200">Rodzaj treści</h3>
                     <ul class="grid w-full gap-6 grid-cols-1">
                         <li>
                             <input type="radio" id="title" name="type" value="title" class="hidden peer" required>
-                            <label for="title" class="inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-gray-100">
+                            <label for="title" class="dark:bg-stone-700 dark:text-stone-200 dark:border-stone-600 inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer peer-checked:border-bone-600 peer-checked:text-bone-600 hover:text-gray-600 hover:bg-gray-100">
                                 <div class="block">
                                     <div class="w-full text-lg font-semibold">Nagłowek</div>
                                 </div>
@@ -45,7 +45,7 @@
                         </li>
                         <li>
                             <input type="radio" id="subtitle" name="type" value="subtitle" class="hidden peer">
-                            <label for="subtitle" class="inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-gray-100">
+                            <label for="subtitle" class="dark:bg-stone-700 dark:text-stone-200 dark:border-stone-600 inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer peer-checked:border-bone-600 peer-checked:text-bone-600 hover:text-gray-600 hover:bg-gray-100">
                                 <div class="block">
                                     <div class="w-full text-lg font-semibold">Tytuł</div>
                                 </div>
@@ -53,7 +53,7 @@
                         </li>
                         <li>
                             <input type="radio" id="paragraf" name="type" value="paragraf" class="hidden peer">
-                            <label for="paragraf" class="inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-gray-100">
+                            <label for="paragraf" class="dark:bg-stone-700 dark:text-stone-200 dark:border-stone-600 inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer peer-checked:border-bone-600 peer-checked:text-bone-600 hover:text-gray-600 hover:bg-gray-100">
                                 <div class="block">
                                     <div class="w-full text-lg font-semibold">Paragraf</div>
                                 </div>
@@ -65,38 +65,38 @@
                     @enderror
                 </div>
                 <div class="mb-6">
-                    <label for="content" class="block mb-2 text-sm font-medium text-gray-900">Treść</label>
-                    <textarea id="content" name="content" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500" placeholder="Wpisz treść tutaj"></textarea>
+                    <label for="content" class="block mb-2 text-sm font-medium text-gray-900 dark:text-stone-200">Treść</label>
+                    <textarea id="content" name="content" rows="4" class="dark:bg-stone-700 dark:text-stone-200 dark:border-stone-600 block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500"></textarea>
                     @error('content')
                     <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
                     @enderror
                 </div>
                 <div class="mb-6">
-                    <label for="number" class="block mb-2 text-sm font-medium text-gray-900">Kolejność</label>
-                    <input value="{{ old('order') ? old('order') : 0 }}" name="order" type="number" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="0" required>
+                    <label for="number" class="block mb-2 text-sm font-medium text-gray-900 dark:text-stone-200">Kolejność</label>
+                    <input value="{{ old('order') ? old('order') : 0 }}" name="order" type="number" class="dark:bg-stone-700 dark:text-stone-200 dark:border-stone-600 shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="0" required>
                     @error('order')
                     <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
                     @enderror
                 </div>
-                <button type="submit" class="text-white bg-green-500 hover:bg-green-600 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
+                <button type="submit" class="dark:bg-green-700 dark:hover:bg-green-800 dark:focus:ring-green-500 mr-2 text-white bg-green-500 hover:bg-green-600 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
                     <i class="fa-solid fa-floppy-disk mr-2"></i>Zapisz
                 </button>
-                <a href="{{route('rule')}}" class="text-red-500 hover:text-white border border-red-600 hover:bg-red-500 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
+                <a href="{{route('rule')}}" class="dark:text-red-700 dark:border-red-800 dark:hover:bg-red-700 dark:focus:ring-red-500 text-red-500 hover:text-white border border-red-600 hover:bg-red-500 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
                     <i class="fa-solid fa-x mr-2"></i>Anuluj
                 </a>
             </form>
             @foreach($elements as $element)
             @switch($element->type)
             @case('title')
-            <h1 class="text-4xl">{{$element->content}}</h1>
+            <h1 class="text-4xl dark:text-stone-200">{{$element->content}}</h1>
             <div class="mb-4 flex flex-row gap-4 items-center justify-center">
-                <a href="{{route('rule.edit', $element)}}" class="text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
+                <a href="{{route('rule.edit', $element)}}" class="dark:bg-blue-700 dark:hover:bg-blue-800 dark:focus:ring-blue-500 text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
                     <i class="fa-solid fa-pen-to-square mr-2"></i>Edytuj treść
                 </a>
                 <form action="{{ route('rule.delete', $element) }}" method="POST" onsubmit="return confirm('Czy na pewno chcesz usunąć ten produkt?')">
                     @csrf
                     @method('DELETE')
-                    <button type="submit" class="text-red-500 hover:text-white border border-red-600 hover:bg-red-500 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
+                    <button type="submit" class="dark:text-red-700 dark:border-red-800 dark:hover:bg-red-700 dark:focus:ring-red-500 text-red-500 hover:text-white border border-red-600 hover:bg-red-500 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
                         <i class="fa-solid fa-trash mr-2"></i>Usuń
                     </button>
                 </form>
@@ -104,15 +104,15 @@
             @break
 
             @case('subtitle')
-            <h3 class="text-2xl">{{$element->content}}</h3>
+            <h3 class="text-2xl dark:text-stone-200">{{$element->content}}</h3>
             <div class="mb-4 flex flex-row gap-4 items-center justify-center">
-                <a href="{{route('rule.edit', $element)}}" class="text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
+                <a href="{{route('rule.edit', $element)}}" class="dark:bg-blue-700 dark:hover:bg-blue-800 dark:focus:ring-blue-500 text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
                     <i class="fa-solid fa-pen-to-square mr-2"></i>Edytuj treść
                 </a>
                 <form action="{{ route('rule.delete', $element) }}" method="POST" onsubmit="return confirm('Czy na pewno chcesz usunąć ten produkt?')">
                     @csrf
                     @method('DELETE')
-                    <button type="submit" class="text-red-500 hover:text-white border border-red-600 hover:bg-red-500 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
+                    <button type="submit" class="dark:text-red-700 dark:border-red-800 dark:hover:bg-red-700 dark:focus:ring-red-500 text-red-500 hover:text-white border border-red-600 hover:bg-red-500 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
                         <i class="fa-solid fa-trash mr-2"></i>Usuń
                     </button>
                 </form>
@@ -120,15 +120,15 @@
             @break
 
             @default
-            <p class="text-lg">{{$element->content}}</p>
+            <p class="text-lg dark:text-stone-200">{{$element->content}}</p>
             <div class="mb-4 flex flex-row gap-4 items-center justify-center">
-                <a href="{{route('rule.edit', $element)}}" class="text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
+                <a href="{{route('rule.edit', $element)}}" class="dark:bg-blue-700 dark:hover:bg-blue-800 dark:focus:ring-blue-500 text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
                     <i class="fa-solid fa-pen-to-square mr-2"></i>Edytuj treść
                 </a>
                 <form action="{{ route('rule.delete', $element) }}" method="POST" onsubmit="return confirm('Czy na pewno chcesz usunąć ten produkt?')">
                     @csrf
                     @method('DELETE')
-                    <button type="submit" class="text-red-500 hover:text-white border border-red-600 hover:bg-red-500 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
+                    <button type="submit" class="dark:text-red-700 dark:border-red-800 dark:hover:bg-red-700 dark:focus:ring-red-500 text-red-500 hover:text-white border border-red-600 hover:bg-red-500 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
                         <i class="fa-solid fa-trash mr-2"></i>Usuń
                     </button>
                 </form>

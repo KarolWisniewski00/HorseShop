@@ -71,7 +71,11 @@ class ShopController extends Controller
             if (count($request->category) == 1) {
                 $products = Product::where('visibility_on_website',True)->where('attr', $request->category[0]);
                 $category = $request->category[0];
-            } else {
+            } else if(count($request->category) == 2) {
+                $products = Product::where('visibility_on_website',True);
+                $products = $products->where('attr', $request->category[0])->orWhere('attr', $request->category[1]);
+                $category = strval($request->category[0]) . strval($request->category[1]);
+            }else {
                 $category = 'all';
             }
         }

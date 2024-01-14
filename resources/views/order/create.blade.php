@@ -89,31 +89,31 @@
                             <input type="text" id="nip" value="{{ old('nip') ? old('nip') : ''}}" name="nip" class="bg-white border border-stone-300 text-stone-900 text-sm rounded-lg focus:ring-bone-500 focus:border-bone-500 block w-full p-2.5 dark:bg-stone-700 dark:border-stone-600 dark:placeholder-stone-400 dark:text-stone-50 dark:focus:ring-bone-500 dark:focus:border-bone-500">
                             <span class="text-red-500">@error('nip') {{$message}} @enderror</span>
                         </div>
+                        <div class="w-100 transition duration-500 ease-in-out" id="adress-container">
+                            <div class="mb-6">
+                                <label for="post" class="block mb-2 text-sm font-medium text-stone-900 dark:text-stone-50">Kod pocztowy</label>
+                                <input type="text" id="post" value="{{ old('post') ? old('post') : ''}}" name="post" class="bg-white border border-stone-300 text-stone-900 text-sm rounded-lg focus:ring-bone-500 focus:border-bone-500 block w-full p-2.5 dark:bg-stone-700 dark:border-stone-600 dark:placeholder-stone-400 dark:text-stone-50 dark:focus:ring-bone-500 dark:focus:border-bone-500" required>
+                                <span class="text-red-500">@error('post') {{$message}} @enderror</span>
+                            </div>
 
-                        <div class="mb-6">
-                            <label for="post" class="block mb-2 text-sm font-medium text-stone-900 dark:text-stone-50">Kod pocztowy</label>
-                            <input type="text" id="post" value="{{ old('post') ? old('post') : ''}}" name="post" class="bg-white border border-stone-300 text-stone-900 text-sm rounded-lg focus:ring-bone-500 focus:border-bone-500 block w-full p-2.5 dark:bg-stone-700 dark:border-stone-600 dark:placeholder-stone-400 dark:text-stone-50 dark:focus:ring-bone-500 dark:focus:border-bone-500" required>
-                            <span class="text-red-500">@error('post') {{$message}} @enderror</span>
+                            <div class="mb-6">
+                                <label for="street" class="block mb-2 text-sm font-medium text-stone-900 dark:text-stone-50">Ulica</label>
+                                <input type="text" id="street" value="{{ old('street') ? old('street') : ''}}" name="street" class="bg-white border border-stone-300 text-stone-900 text-sm rounded-lg focus:ring-bone-500 focus:border-bone-500 block w-full p-2.5 dark:bg-stone-700 dark:border-stone-600 dark:placeholder-stone-400 dark:text-stone-50 dark:focus:ring-bone-500 dark:focus:border-bone-500" required>
+                                <span class="text-red-500">@error('street') {{$message}} @enderror</span>
+                            </div>
+
+                            <div class="mb-6">
+                                <label for="street_extra" class="block mb-2 text-sm font-medium text-stone-900 dark:text-stone-50">Ciąg dalszy adresu (opcjonalne)</label>
+                                <input type="text" id="street_extra" value="{{ old('street_extra') ? old('street_extra') : ''}}" name="street_extra" class="bg-white border border-stone-300 text-stone-900 text-sm rounded-lg focus:ring-bone-500 focus:border-bone-500 block w-full p-2.5 dark:bg-stone-700 dark:border-stone-600 dark:placeholder-stone-400 dark:text-stone-50 dark:focus:ring-bone-500 dark:focus:border-bone-500">
+                                <span class="text-red-500">@error('street_extra') {{$message}} @enderror</span>
+                            </div>
+
+                            <div class="mb-6">
+                                <label for="city" class="block mb-2 text-sm font-medium text-stone-900 dark:text-stone-50">Miasto</label>
+                                <input type="text" id="city" value="{{ old('city') ? old('city') : ''}}" name="city" class="bg-white border border-stone-300 text-stone-900 text-sm rounded-lg focus:ring-bone-500 focus:border-bone-500 block w-full p-2.5 dark:bg-stone-700 dark:border-stone-600 dark:placeholder-stone-400 dark:text-stone-50 dark:focus:ring-bone-500 dark:focus:border-bone-500" required>
+                                <span class="text-red-500">@error('city') {{$message}} @enderror</span>
+                            </div>
                         </div>
-
-                        <div class="mb-6">
-                            <label for="street" class="block mb-2 text-sm font-medium text-stone-900 dark:text-stone-50">Ulica</label>
-                            <input type="text" id="street" value="{{ old('street') ? old('street') : ''}}" name="street" class="bg-white border border-stone-300 text-stone-900 text-sm rounded-lg focus:ring-bone-500 focus:border-bone-500 block w-full p-2.5 dark:bg-stone-700 dark:border-stone-600 dark:placeholder-stone-400 dark:text-stone-50 dark:focus:ring-bone-500 dark:focus:border-bone-500" required>
-                            <span class="text-red-500">@error('street') {{$message}} @enderror</span>
-                        </div>
-
-                        <div class="mb-6">
-                            <label for="street_extra" class="block mb-2 text-sm font-medium text-stone-900 dark:text-stone-50">Ciąg dalszy adresu (opcjonalne)</label>
-                            <input type="text" id="street_extra" value="{{ old('street_extra') ? old('street_extra') : ''}}" name="street_extra" class="bg-white border border-stone-300 text-stone-900 text-sm rounded-lg focus:ring-bone-500 focus:border-bone-500 block w-full p-2.5 dark:bg-stone-700 dark:border-stone-600 dark:placeholder-stone-400 dark:text-stone-50 dark:focus:ring-bone-500 dark:focus:border-bone-500">
-                            <span class="text-red-500">@error('street_extra') {{$message}} @enderror</span>
-                        </div>
-
-                        <div class="mb-6">
-                            <label for="city" class="block mb-2 text-sm font-medium text-stone-900 dark:text-stone-50">Miasto</label>
-                            <input type="text" id="city" value="{{ old('city') ? old('city') : ''}}" name="city" class="bg-white border border-stone-300 text-stone-900 text-sm rounded-lg focus:ring-bone-500 focus:border-bone-500 block w-full p-2.5 dark:bg-stone-700 dark:border-stone-600 dark:placeholder-stone-400 dark:text-stone-50 dark:focus:ring-bone-500 dark:focus:border-bone-500" required>
-                            <span class="text-red-500">@error('city') {{$message}} @enderror</span>
-                        </div>
-
                         <div class="mb-6">
                             <label for="phone" class="block mb-2 text-sm font-medium text-stone-900 dark:text-stone-50">Numer telefonu</label>
                             <input type="text" id="phone" value="{{ old('phone') ? old('phone') : ''}}" name="phone" class="bg-white border border-stone-300 text-stone-900 text-sm rounded-lg focus:ring-bone-500 focus:border-bone-500 block w-full p-2.5 dark:bg-stone-700 dark:border-stone-600 dark:placeholder-stone-400 dark:text-stone-50 dark:focus:ring-bone-500 dark:focus:border-bone-500" required>
@@ -180,7 +180,7 @@
                     <ul class="grid w-full gap-6 md:grid-cols-1">
                         @if($setting['payment_classic'] == '1')
                         <li>
-                            <input onclick="$('#price-show').html($('#countship').val()+' zł'); $('#ship-show').html($('#ship-show-input').val()+' zł')" type="radio" id="payment_classic" {{ old('payment_classic') ? 'checked' : ''}} name="hosting" value="payment_classic" class="hidden peer" required>
+                            <input onclick="$('#price-show').html($('#countship').val()+' zł'); $('#ship-show').html($('#ship-show-input').val()+' zł'); $('#adress-container').removeClass('hidden');" type="radio" id="payment_classic" {{ old('payment_classic') ? 'checked' : ''}} name="hosting" value="payment_classic" class="hidden peer" required>
                             <label for="payment_classic" class="dark:text-stone-50 inline-flex items-center justify-between w-full p-5 text-stone-500 bg-white border border-stone-200 rounded-lg cursor-pointer dark:hover:text-stone-300 dark:border-stone-700 dark:peer-checked:text-bone-500 peer-checked:border-bone-600 peer-checked:text-bone-600 hover:text-stone-600 hover:bg-stone-100 dark:text-stone-400 dark:bg-stone-800 dark:hover:bg-stone-700">
                                 <div class="block">
                                     <div class="w-full text-lg font-semibold">Przelew</div>
@@ -193,7 +193,7 @@
                         @endif
                         @if($setting['payment_transfer24'] == '1')
                         <li>
-                            <input onclick="$('#price-show').html($('#countship').val()+' zł'); $('#ship-show').html($('#ship-show-input').val()+' zł')" type="radio" id="payment_transfer24" {{ old('payment_transfer24') ? 'checked' : 'checked'}} name="hosting" value="payment_transfer24" class="hidden peer">
+                            <input onclick="$('#price-show').html($('#countship').val()+' zł'); $('#ship-show').html($('#ship-show-input').val()+' zł'); $('#adress-container').removeClass('hidden');" type="radio" id="payment_transfer24" {{ old('payment_transfer24') ? 'checked' : 'checked'}} name="hosting" value="payment_transfer24" class="hidden peer">
                             <label for="payment_transfer24" class="dark:text-stone-50 inline-flex items-center justify-between w-full p-5 text-stone-500 bg-white border border-stone-200 rounded-lg cursor-pointer dark:hover:text-stone-300 dark:border-stone-700 dark:peer-checked:text-bone-500 peer-checked:border-bone-600 peer-checked:text-bone-600 hover:text-stone-600 hover:bg-stone-100 dark:text-stone-400 dark:bg-stone-800 dark:hover:bg-stone-700">
                                 <div class="block">
                                     <div class="w-full text-lg font-semibold">Płatność on-line</div>
@@ -207,7 +207,7 @@
                         @endif
                         @if($setting['payment_shipcash'] == '1')
                         <li>
-                            <input onclick="$('#price-show').html($('#countship').val()+' zł'); $('#ship-show').html($('#ship-show-input').val()+' zł')" type="radio" id="payment_shipcash" {{ old('payment_shipcash') ? 'checked' : ''}} name="hosting" value="payment_shipcash" class="hidden peer">
+                            <input onclick="$('#price-show').html($('#countship').val()+' zł'); $('#ship-show').html($('#ship-show-input').val()+' zł'); $('#adress-container').removeClass('hidden');" type="radio" id="payment_shipcash" {{ old('payment_shipcash') ? 'checked' : ''}} name="hosting" value="payment_shipcash" class="hidden peer">
                             <label for="payment_shipcash" class="dark:text-stone-50 inline-flex items-center justify-between w-full p-5 text-stone-500 bg-white border border-stone-200 rounded-lg cursor-pointer dark:hover:text-stone-300 dark:border-stone-700 dark:peer-checked:text-bone-500 peer-checked:border-bone-600 peer-checked:text-bone-600 hover:text-stone-600 hover:bg-stone-100 dark:text-stone-400 dark:bg-stone-800 dark:hover:bg-stone-700">
                                 <div class="block">
                                     <div class="w-full text-lg font-semibold">Płatność przy odbiorze przesyłki</div>
@@ -220,7 +220,7 @@
                         @endif
                         @if($setting['payment_cash'] == '1')
                         <li>
-                            <input onclick="$('#price-show').html($('#count').val()+' zł'); $('#ship-show').html('Brak opłat')" type="radio" id="payment_cash" {{ old('payment_cash') ? 'checked' : ''}} name="hosting" value="payment_cash" class="hidden peer">
+                            <input onclick="$('#price-show').html($('#count').val()+' zł'); $('#ship-show').html('Brak opłat'); $('#adress-container').addClass('hidden');" type="radio" id="payment_cash" {{ old('payment_cash') ? 'checked' : ''}} name="hosting" value="payment_cash" class="hidden peer">
                             <label for="payment_cash" class="dark:text-stone-50 inline-flex items-center justify-between w-full p-5 text-stone-500 bg-white border border-stone-200 rounded-lg cursor-pointer dark:hover:text-stone-300 dark:border-stone-700 dark:peer-checked:text-bone-500 peer-checked:border-bone-600 peer-checked:text-bone-600 hover:text-stone-600 hover:bg-stone-100 dark:text-stone-400 dark:bg-stone-800 dark:hover:bg-stone-700">
                                 <div class="block">
                                     <div class="w-full text-lg font-semibold">Odbiór osobisty</div>

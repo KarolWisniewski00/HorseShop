@@ -37,7 +37,7 @@
                 <li class="w-full">
                     <a href="{{route('history')}}" class="inline-block w-full p-4 bg-white border-r border-stone-200 dark:border-stone-700 hover:text-stone-700 hover:bg-stone-50 focus:ring-4 focus:ring-bone-600 focus:outline-none dark:hover:text-white dark:bg-stone-700 dark:hover:bg-stone-600">Historia</a>
                 </li>
-                @if(auth()->check() && auth()->user()->role === 'admin')
+                @if(auth()->check() && auth()->user()->role === 'ADMIN')
                 <li class="w-full">
                     <a href="{{route('dashboard')}}" class="inline-block w-full p-4 bg-white border-r border-stone-200 dark:border-stone-700 hover:text-stone-700 hover:bg-stone-50 focus:ring-4 focus:ring-bone-600 focus:outline-none dark:hover:text-white dark:bg-stone-700 dark:hover:bg-stone-600">Panel Admina</a>
                 </li>

@@ -126,6 +126,15 @@
                                         </div>
                                     </label>
                                 </li>
+                                <li>
+                                    <input {{ old('photo') == 'set' ? 'checked' : '' }} name="category" type="radio" id="category-3" value="set" class="hidden peer">
+                                    <label for="category-3" class="h-full inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border-2 border-gray-200 rounded-lg cursor-pointer peer-checked:border-blue-600 hover:text-gray-600 peer-checked:text-gray-600 hover:bg-gray-50">
+                                        <div class="block text-center">
+                                            <div class="w-full text-lg font-semibold">Zestaw</div>
+                                            <div class="w-full p-5"><img src="{{ asset('asset/image/set.jpg') }}" alt=""></div>
+                                        </div>
+                                    </label>
+                                </li>
                             </ul>
                             @error('category')
                             <p class="text-red-500 text-sm mt-1">{{ $message }}</p>

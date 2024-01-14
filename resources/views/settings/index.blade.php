@@ -179,6 +179,16 @@
                             <p class="text-gray-900 my-2">- Reset bazy danych</p>
                             <p class="text-gray-900 my-2">- Ustawienie domeny jako <span class="text-rose-500">osobny projekt</span> - <a href="http://suplementyhealthyhorse.pl/" class="text-blue-500">link do strony głównej serwera produkcyjnego</a> oraz <a href="http://vps-699e8f36.vps.ovh.net:8005/" class="text-blue-500">link do strony głównej serwera testowego</a></p>
                         </li>
+                        <li class="mb-10 ms-4">
+                            <div class="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -start-1.5 border border-whites"></div>
+                            <time class="mb-1 text-sm font-normal leading-none text-gray-400">14 Styczeń 2024 V 1.2</time>
+                            <h3 class="text-lg font-semibold text-gray-900">1 seria poprawek</h3>
+                            <p class="text-gray-900 my-2">- Dodanie kategorii zestawów</p>
+                            <p class="text-gray-900 my-2">- Dodanie znikania danych adresowych w momencie wybrania odbioru osobistego</p>
+                            <p class="text-gray-900 my-2">- Dodanie widoku punktów, roli i logowania google w użytkownikach w panelu admina</p>
+                            <p class="text-gray-900 my-2">- Zabezpieczenie scieżek i podział na role użytkownik niezalogowany, użytkownik zalogowany i administrator</p>
+
+                        </li>
                     </ol>
                 </div>
             </div>

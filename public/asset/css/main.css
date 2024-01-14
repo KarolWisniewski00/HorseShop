@@ -23,7 +23,6 @@
         radial-gradient(ellipse at center right, rgba(229, 234, 250, 0), transparent 50%),
         radial-gradient(ellipse at center left, rgba(224, 203, 182, 0.5), transparent 50%) !important;
 }
-
 .work {
     border: 1px solid yellow !important;
 }

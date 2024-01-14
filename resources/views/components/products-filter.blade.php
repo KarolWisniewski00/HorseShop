@@ -53,19 +53,26 @@
                     <div class="text-2xl relative my-8 text-stone-700 dark:text-stone-50">Kategorie produktów</div>
                 </div>
                 <div class="mx-auto flex flex-col items-center px-4 text-center relative pb-3">
-                    <ul class="flex grid grid-cols-2 gap-4">
+                    <ul class="grid grid-cols-2 grid-rows-2 gap-4">
                         <li>
-                            <input @if($category=='oil' || $category=='all' ) {{'checked'}} @endif name="category[]" type="checkbox" id="oil" value="oil" class="hidden peer">
+                            <input @if(strpos($category, 'oil') !== false || $category=='all' ) {{'checked'}} @endif name="category[]" type="checkbox" id="oil" value="oil" class="hidden peer">
                             <label for="oil" class="flex flex-col hover-filter bg-white rounded-xl border p-4 border-2 border-transparent peer-checked:border-2 peer-checked:border-bone-500">
                                 <img class="h-full w-auto -mb-4" src="{{asset('asset/image/filter-oil.jpg')}}">
                                 <div class="text-xl relative text-stone-700">Oleje</div>
                             </label>
                         </li>
                         <li>
-                            <input @if($category=='suplement' || $category=='all' ) {{'checked'}} @endif name="category[]" type="checkbox" id="sup" value="suplement" class="hidden peer">
+                            <input @if(strpos($category, 'suplement') !== false || $category=='all' ) {{'checked'}} @endif name="category[]" type="checkbox" id="sup" value="suplement" class="hidden peer">
                             <label for="sup" class="flex flex-col hover-filter bg-white rounded-xl border p-4 border-2 border-transparent peer-checked:border-2 peer-checked:border-bone-500">
                                 <img class="h-full w-auto -mb-4" src="{{asset('asset/image/filter-sup.jpg')}}">
                                 <div class="text-xl relative text-stone-700">Suplementy</div>
+                            </label>
+                        </li>
+                        <li class="col-span-2">
+                            <input @if(strpos($category, 'set') !== false || $category=='all' ) {{'checked'}} @endif name="category[]" type="checkbox" id="set" value="set" class="hidden peer">
+                            <label for="set" class="flex flex-col hover-filter bg-white rounded-xl border p-4 border-2 border-transparent peer-checked:border-2 peer-checked:border-bone-500">
+                                <img class="h-full w-auto" src="{{asset('asset/image/set.jpg')}}">
+                                <div class="text-xl relative text-stone-700">Zestawy</div>
                             </label>
                         </li>
                     </ul>
@@ -106,7 +113,7 @@
                             <span class="text-white text-2xl">{{$user->points != null ? $user->points : 0 }} pkt</span>
                         </div>
                         @else
-                        <a class="py-2 m-4 px-3 inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border-2 border-white text-white hover:border-white/70 hover:text-white/70 disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600" href="#">
+                        <a class="py-2 m-4 px-3 inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border-2 border-white text-white hover:border-white/70 hover:text-white/70 disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600" href="{{ route('login.google') }}">
                             Zaloguj przez google
                         </a>
                         @endauth
@@ -129,7 +136,7 @@
         </div>
         <!-- End Announcement Banner -->
         <div class="mx-auto text-center lg:hidden relative">
-            <div class="text-5xl font-horse relative my-8 text-stone-700">Wszystkie produkty</div>
+            <div class="text-5xl relative my-8 text-stone-700 dark:text-stone-200">Wszystkie produkty</div>
         </div>
         <div class="w-full lg:w-2/3 my-16">
             <div class="flex flex-row justify-between align-center">

@@ -14,7 +14,7 @@
                         <span class="text-white text-2xl">{{$user->points != null ? $user->points : 0 }} pkt</span>
                     </div>
                     @else
-                    <a class="py-2 m-4 px-3 inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border-2 border-white text-white hover:border-white/70 hover:text-white/70 disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600" href="#">
+                    <a class="py-2 m-4 px-3 inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border-2 border-white text-white hover:border-white/70 hover:text-white/70 disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600" href="{{ route('login.google') }}">
                         Zaloguj przez google
                     </a>
                     @endauth

@@ -27,6 +27,15 @@
                                         Email
                                     </th>
                                     <th scope="col" class="px-6 py-3">
+                                        Punkty
+                                    </th>
+                                    <th scope="col" class="px-6 py-3">
+                                        Rola
+                                    </th>
+                                    <th scope="col" class="px-6 py-3">
+                                        Google
+                                    </th>
+                                    <th scope="col" class="px-6 py-3">
                                         Utworzono
                                     </th>
                                     <th scope="col" class="px-6 py-3">
@@ -42,6 +51,15 @@
                                     </td>
                                     <td class="px-6 py-4">
                                         {{$user->email}}
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        {{$user->points}}
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        {{$user->role}}
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        {{$user->oauth_id}}
                                     </td>
                                     <td class="px-6 py-4">
                                         {{$user->created_at}}

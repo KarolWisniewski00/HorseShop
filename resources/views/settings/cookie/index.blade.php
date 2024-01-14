@@ -1,8 +1,8 @@
 <x-guest-layout>
     @include('components/nav-client')
     <section class="pt-20">
-    <div class="container mx-auto text-center my-16 relative">
-    <div class="text-5xl relative font-display font-bold bg-clip-text bg-gradient-to-l from-stone-950 to-stone-500  dark:from-stone-50 dark:to-stone-50 text-transparent">POLITYKA COOKIES</div>
+        <div class="container mx-auto text-center my-16 relative">
+            <div class="text-5xl relative font-display font-bold bg-clip-text bg-gradient-to-l from-stone-950 to-stone-500  dark:from-stone-50 dark:to-stone-50 text-transparent">POLITYKA COOKIES</div>
         </div>
         <div class="mx-auto container text-center grid grid-cols-1 items-center mb-4">
             <!-- Breadcrumb -->
@@ -30,64 +30,70 @@
             </div>
         </div>
         <div class="container mx-auto text-center my-16 relative">
-            @if(auth()->check() && auth()->user()->role === 'admin')
+            @if(auth()->check() && auth()->user()->role === 'ADMIN')
             <div class="mb-4 flex flex-row gap-4 items-center justify-center">
-                <a href="{{route('cookie.create')}}" class="text-white bg-green-500 hover:bg-green-600 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
+                <a href="{{route('cookie.create')}}" class="text-white bg-green-500 hover:bg-green-600 dark:bg-green-700 dark:hover:bg-green-800 dark:focus:ring-green-500 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
                     <i class="fa-solid fa-plus mr-2"></i>Utwórz treść
-                </a>
-                <a href="" class="text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
-                    <i class="fa-solid fa-eye mr-2"></i>Podgląd
                 </a>
             </div>
             @endif
             @foreach($elements as $element)
             @switch($element->type)
             @case('title')
-            <h1 class="text-4xl">{{$element->content}}</h1>
+            <h1 class="text-4xl dark:text-stone-200">{{$element->content}}</h1>
+            @if(auth()->check() && auth()->user()->role === 'ADMIN')
             <div class="mb-4 flex flex-row gap-4 items-center justify-center">
-                <a href="{{route('cookie.edit', $element)}}" class="text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
+                <a href="{{route('cookie.edit', $element)}}" class="text-white bg-blue-500 hover:bg-blue-600 dark:bg-blue-700 dark:hover:bg-blue-800 dark:focus:ring-blue-500 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
                     <i class="fa-solid fa-pen-to-square mr-2"></i>Edytuj treść
                 </a>
                 <form action="{{ route('cookie.delete', $element) }}" method="POST" onsubmit="return confirm('Czy na pewno chcesz usunąć ten produkt?')">
                     @csrf
                     @method('DELETE')
-                    <button type="submit" class="text-red-500 hover:text-white border border-red-600 hover:bg-red-500 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
+                    <button type="submit" class="text-red-500 hover:text-white border border-red-600 dark:text-red-700 dark:border-red-800 dark:hover:bg-red-700 dark:focus:ring-red-500 hover:bg-red-500 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
                         <i class="fa-solid fa-trash mr-2"></i>Usuń
                     </button>
                 </form>
             </div>
+            @endif
+
             @break
 
             @case('subtitle')
-            <h3 class="text-2xl">{{$element->content}}</h3>
+            <h3 class="text-2xl dark:text-stone-200">{{$element->content}}</h3>
+            @if(auth()->check() && auth()->user()->role === 'ADMIN')
             <div class="mb-4 flex flex-row gap-4 items-center justify-center">
-                <a href="{{route('cookie.edit', $element)}}" class="text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
+                <a href="{{route('cookie.edit', $element)}}" class="text-white bg-blue-500 hover:bg-blue-600 dark:bg-blue-700 dark:hover:bg-blue-800 dark:focus:ring-blue-500 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
                     <i class="fa-solid fa-pen-to-square mr-2"></i>Edytuj treść
                 </a>
                 <form action="{{ route('cookie.delete', $element) }}" method="POST" onsubmit="return confirm('Czy na pewno chcesz usunąć ten produkt?')">
                     @csrf
                     @method('DELETE')
-                    <button type="submit" class="text-red-500 hover:text-white border border-red-600 hover:bg-red-500 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
+                    <button type="submit" class="text-red-500 hover:text-white border border-red-600 hover:bg-red-500 dark:text-red-700 dark:border-red-800 dark:hover:bg-red-700 dark:focus:ring-red-500 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
                         <i class="fa-solid fa-trash mr-2"></i>Usuń
                     </button>
                 </form>
             </div>
+            @endif
+
             @break
 
             @default
-            <p class="text-lg">{{$element->content}}</p>
+            <p class="text-lg dark:text-stone-200">{{$element->content}}</p>
+            @if(auth()->check() && auth()->user()->role === 'ADMIN')
             <div class="mb-4 flex flex-row gap-4 items-center justify-center">
-                <a href="{{route('cookie.edit', $element)}}" class="text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
+                <a href="{{route('cookie.edit', $element)}}" class="text-white bg-blue-500 hover:bg-blue-600 dark:bg-blue-700 dark:hover:bg-blue-800 dark:focus:ring-blue-500  focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
                     <i class="fa-solid fa-pen-to-square mr-2"></i>Edytuj treść
                 </a>
                 <form action="{{ route('cookie.delete', $element) }}" method="POST" onsubmit="return confirm('Czy na pewno chcesz usunąć ten produkt?')">
                     @csrf
                     @method('DELETE')
-                    <button type="submit" class="text-red-500 hover:text-white border border-red-600 hover:bg-red-500 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
+                    <button type="submit" class="text-red-500 hover:text-white border border-red-600 hover:bg-red-500 dark:text-red-700 dark:border-red-800 dark:hover:bg-red-700 dark:focus:ring-red-500 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
                         <i class="fa-solid fa-trash mr-2"></i>Usuń
                     </button>
                 </form>
             </div>
+            @endif
+
             @endswitch
             @endforeach
         </div>
