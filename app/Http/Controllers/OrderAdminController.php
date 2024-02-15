@@ -8,6 +8,7 @@ use App\Models\Order;
 use App\Models\OrderItem;
 use App\Models\OrderLog;
 use App\Models\User;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -22,6 +23,8 @@ class OrderAdminController extends Controller
             'DONE' => OrderStatus::DONE,
             'CANCEL' => OrderStatus::CANCEL,
             'PAID' => OrderStatus::PAID,
+            'CHECK' => OrderStatus::CHECK,
+            'ERROR' => OrderStatus::ERROR,
         ];
         return view('dashboard', compact('orders', 'status'));
     }
@@ -31,7 +34,16 @@ class OrderAdminController extends Controller
         $orders = OrderItem::where('order_id', $order->id)->get();
         $order = Order::where('id', $order->id)->first();
         $order_logs = OrderLog::where('order_id', $order->id)->get();
-        return view('order.show', compact('order', 'orders', 'order_logs'));
+        $status = [
+            'PENDING' => OrderStatus::PENDING,
+            'PROGRESS' => OrderStatus::PROGRESS,
+            'DONE' => OrderStatus::DONE,
+            'CANCEL' => OrderStatus::CANCEL,
+            'PAID' => OrderStatus::PAID,
+            'CHECK' => OrderStatus::CHECK,
+            'ERROR' => OrderStatus::ERROR,
+        ];
+        return view('order.show', compact('order', 'orders', 'order_logs','status'));
     }
     public function status($id, $slug)
     {
@@ -58,14 +70,28 @@ class OrderAdminController extends Controller
             case 2:
                 $order = Order::where('id', '=', $id)->first();
                 $user = User::where('id', $order->user_id)->first();
-                User::where('id', $order->user_id)->update(['points' => intval($user->points) + $order->total]);
+                try {
+                    User::where('id', $order->user_id)->update(['points' => intval($user->points) + intval($order->total)]);
+                } catch (Exception) {
+                    User::where('id', $order->user_id)->update(['points' => intval($order->total)]);
+                }
+
                 $res = Order::where('id', '=', $id)->update(['status' => strval(OrderStatus::DONE)]);
-                OrderLog::create([
-                    'name' => $user->name,
-                    'description' => 'Zmiana statusu na:' . OrderStatus::DONE,
-                    'type' => EnumsOrderLog::ADMIN,
-                    'order_id' => $id,
-                ]);
+                if($user != null){
+                    OrderLog::create([
+                        'name' => $user->name,
+                        'description' => 'Zmiana statusu na:' . OrderStatus::DONE,
+                        'type' => EnumsOrderLog::ADMIN,
+                        'order_id' => $id,
+                    ]);
+                }else{
+                    OrderLog::create([
+                        'name' => "UNKNOWUSER",
+                        'description' => 'Zmiana statusu na:' . OrderStatus::DONE,
+                        'type' => EnumsOrderLog::ADMIN,
+                        'order_id' => $id,
+                    ]);
+                }
                 break;
             case 3:
                 $res = Order::where('id', '=', $id)->update(['status' => strval(OrderStatus::CANCEL)]);
@@ -76,6 +102,15 @@ class OrderAdminController extends Controller
                     'order_id' => $id,
                 ]);
                 break;
+            case 4:
+                    $res = Order::where('id', '=', $id)->update(['status' => strval(OrderStatus::CHECK)]);
+                    OrderLog::create([
+                        'name' => $user->name,
+                        'description' => 'Zmiana statusu na:' . OrderStatus::CHECK,
+                        'type' => EnumsOrderLog::ADMIN,
+                        'order_id' => $id,
+                    ]);
+                    break;
             case 5:
                 $res = Order::where('id', '=', $id)->update(['status' => strval(OrderStatus::PAID)]);
                 OrderLog::create([

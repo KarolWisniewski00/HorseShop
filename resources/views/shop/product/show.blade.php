@@ -74,10 +74,6 @@
                     <h5 class="relative m-0 p-0 my-2 mb-4 font-bold text-4xl text-bone-500 product-price">{{$product->price}} zł</h5>
                     @endif
                     <p class="text-gray-700 my-16 dark:text-stone-50">{{$product->description}}</p>
-                    <div class="flex flex-col items-start text-start relative py-8 w-full">
-                        <label for="steps-range" class="block mb-2 font-medium text-gray-700" id="steps-label">1</label>
-                        <input id="steps-range" type="range" min="1" max="5" value="1" step="1" class="w-full h-2 bg-gray-200 rounded-xl appearance-none cursor-pointer">
-                    </div>
                     <script>
                         $(document).ready(function() {
                             $("#steps-range").on("input", function() {

@@ -39,7 +39,7 @@
         </div>
         <div class="container mx-auto px-4 my-16">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <address class="grid grid-cols-1 xl:grid-cols-2 gap-8">
+                <address class="grid grid-cols-1 xl:grid-cols-2 gap-4">
                     <div class="dark:text-bone-400 flex flex-col justify-center align-middle text-center bg-white shadow rounded-xl border text-bone-900 p-2 dark:bg-stone-700 dark:border-stone-600">
                         <i class="text-2xl fa-solid fa-location-dot"></i>
                         <span class="text-bone-500 text-4xl dark:text-bone-600">Znajdź nas</span>

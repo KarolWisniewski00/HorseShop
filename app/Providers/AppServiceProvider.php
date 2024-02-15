@@ -29,6 +29,7 @@ class AppServiceProvider extends ServiceProvider
             if (!Str::startsWith(request()->path(), 'dashboard/')) {
                 $view->with('setting', $setting)->with('user', $user);
             }
+            $view->with('setting', $setting);
         });
     }
 }

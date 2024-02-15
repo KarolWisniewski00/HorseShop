@@ -109,7 +109,7 @@
                             <h3 class="mb-5 text-lg font-medium text-gray-900 ">Kategoria</h3>
                             <ul class="grid w-full gap-6 md:grid-cols-3">
                                 <li>
-                                    <input {{ old('photo') == 'oil' ? 'checked' : '' }} name="category" type="radio" id="category-1" value="oil" class="hidden peer">
+                                    <input {{ old('category') == 'oil' ? 'checked' : '' }} name="category" type="radio" id="category-1" value="oil" class="hidden peer">
                                     <label for="category-1" class="h-full inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border-2 border-gray-200 rounded-lg cursor-pointer peer-checked:border-blue-600 hover:text-gray-600 peer-checked:text-gray-600 hover:bg-gray-50">
                                         <div class="block text-center">
                                             <div class="w-full text-lg font-semibold">Olej</div>
@@ -118,7 +118,7 @@
                                     </label>
                                 </li>
                                 <li>
-                                    <input {{ old('photo') == 'suplement' ? 'checked' : '' }} name="category" type="radio" id="category-2" value="suplement" class="hidden peer">
+                                    <input {{ old('category') == 'suplement' ? 'checked' : '' }} name="category" type="radio" id="category-2" value="suplement" class="hidden peer">
                                     <label for="category-2" class="h-full inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border-2 border-gray-200 rounded-lg cursor-pointer peer-checked:border-blue-600 hover:text-gray-600 peer-checked:text-gray-600 hover:bg-gray-50">
                                         <div class="block text-center">
                                             <div class="w-full text-lg font-semibold">Suplement</div>
@@ -127,11 +127,19 @@
                                     </label>
                                 </li>
                                 <li>
-                                    <input {{ old('photo') == 'set' ? 'checked' : '' }} name="category" type="radio" id="category-3" value="set" class="hidden peer">
+                                    <input {{ old('category') == 'set' ? 'checked' : '' }} name="category" type="radio" id="category-3" value="set" class="hidden peer">
                                     <label for="category-3" class="h-full inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border-2 border-gray-200 rounded-lg cursor-pointer peer-checked:border-blue-600 hover:text-gray-600 peer-checked:text-gray-600 hover:bg-gray-50">
                                         <div class="block text-center">
                                             <div class="w-full text-lg font-semibold">Zestaw</div>
                                             <div class="w-full p-5"><img src="{{ asset('asset/image/set.jpg') }}" alt=""></div>
+                                        </div>
+                                    </label>
+                                </li>
+                                <li>
+                                    <input {{ old('category') == 'herb' ? 'checked' : '' }} name="category" type="radio" id="category-4" value="herb" class="hidden peer">
+                                    <label for="category-4" class="h-full inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border-2 border-gray-200 rounded-lg cursor-pointer peer-checked:border-blue-600 hover:text-gray-600 peer-checked:text-gray-600 hover:bg-gray-50">
+                                        <div class="block text-center">
+                                            <div class="w-full text-lg font-semibold">Zioła</div>
                                         </div>
                                     </label>
                                 </li>

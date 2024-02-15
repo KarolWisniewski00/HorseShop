@@ -59,9 +59,9 @@
         </div>
         <div class="mx-auto container px-4">
             @auth
-            <a class="shadow block w-fit px-4 py-3 mb-2 leading-loose text-xs text-center text-neutral-50 font-semibold bg-bone-600 hover:bg-white hover:text-bone-500  rounded-xl dark:bg-bone-600 dark:text-bone-50 dark:hover:bg-stone-800 dark:hover:text-bone-600" href="{{route('history')}}">Historia</a>
+            <a class="shadow block w-fit px-4 py-3 mb-3 leading-loose text-xs text-center text-neutral-50 font-semibold bg-bone-600 hover:bg-white hover:text-bone-500  rounded-xl dark:bg-bone-600 dark:text-bone-50 dark:hover:bg-stone-800 dark:hover:text-bone-600" href="{{route('history')}}"><i class="fa-solid fa-angles-left mr-2"></i>Historia</a>
             @else
-            <a class="shadow block w-fit px-4 py-3 mb-2 leading-loose text-xs text-center text-neutral-50 font-semibold bg-bone-600 hover:bg-white hover:text-bone-500  rounded-xl dark:bg-bone-600 dark:text-bone-50 dark:hover:bg-stone-800 dark:hover:text-bone-600" href="{{route('index')}}"><i class="fa-solid fa-home mr-2"></i>Strona główna</a>
+            <a class="shadow block w-fit px-4 py-3 mb-3 leading-loose text-xs text-center text-neutral-50 font-semibold bg-bone-600 hover:bg-white hover:text-bone-500  rounded-xl dark:bg-bone-600 dark:text-bone-50 dark:hover:bg-stone-800 dark:hover:text-bone-600" href="{{route('index')}}"><i class="fa-solid fa-home mr-2"></i>Strona główna</a>
             @endauth
             <div class="grid grid-cols-1 p-6 bg-white rounded-xl border relative overflow-hidden shadow dark:border-stone-600 dark:bg-stone-700">
                 <div class="w-full">
@@ -73,7 +73,20 @@
                     <dl class=" text-gray-900 divide-y divide-gray-200 w-full">
                         <div class="flex flex-col pb-3">
                             <dt class="mb-1 text-gray-500 md:text-lg dark:text-bone-600">Status</dt>
-                            <dd class="text-lg font-semibold dark:text-stone-50">{{$order->status}}</dd>
+                            <dd class="text-lg font-semibold
+                            @if($order->status == $status['CANCEL'])
+                        text-rose-100 dark:text-rose-800 dark:border-rose-600 dark:hover:text-rose-700
+                        @elseif($order->status == $status['DONE'])
+                        text-emerald-100 dark:text-emerald-800 dark:border-emerald-600 dark:hover:text-emerald-700
+                        @elseif($order->status == $status['PROGRESS'])
+                        text-lime-100 dark:text-lime-800 dark:border-lime-600 dark:hover:text-lime-700
+                        @elseif($order->status == $status['PENDING'])
+                        text-amber-100 dark:text-amber-800 dark:border-amber-600 dark:hover:text-amber-700
+                        @elseif($order->status == $status['ERROR'])
+                        text-rose-100 dark:text-rose-800 dark:border-rose-600 dark:hover:text-rose-700
+                        @elseif($order->status == $status['CHECK'])
+                        text-amber-100 dark:text-amber-800 dark:border-amber-600 dark:hover:text-amber-700
+                        @endif">{{$order->status}}</dd>
                         </div>
                         <div class="flex flex-col py-3">
                             <dt class="mb-1 text-gray-500 md:text-lg dark:text-bone-600">Numer Zamówienia</dt>
@@ -94,6 +107,36 @@
                     </dl>
                 </div>
             </div>
+            @if($order->status == $status['DONE'])
+            <!-- Announcement Banner -->
+            <div class="container mx-auto my-16 relative px-4">
+                <div class="bg-gradient-to-r from-bone-600 to-bone-400 dark:from-bone-800 dark:to-bone-600 border rounded-xl shadow p-4 dark:border-stone-600">
+                    <!-- Grid -->
+                    <div class="grid justify-center md:grid-cols-2 md:justify-between md:items-center gap-2">
+                        <div class="text-center md:text-start md:order-2 md:flex md:justify-end md:items-center">
+                            <div class="flex flex-row md:flex-col mx-4 justify-center items-center">
+                                <span class="text-white text-2xl mx-2 md:mx-0">Masz</span>
+                                <span class="text-white text-2xl mx-2 md:mx-0">{{$user->points != null ? $user->points : 0 }} pkt</span>
+                            </div>
+                        </div>
+                        <!-- End Col -->
+
+                        <div class="flex items-center">
+                            <p class="text-center text-2xl py-2 px-3 inline-flex justify-center items-center gap-2 rounded-xl font-medium text-white transition-all">
+                                Dodano punkty na twoje konto
+                            </p>
+                            <span class="inline-block border-e border-white/[.3] w-px h-5 mx-2"></span>
+                            <p class="text-center py-2 px-3 inline-flex justify-center items-center gap-2 rounded-xl font-medium text-white transition-all text-sm">
+                                W sumie masz już
+                            </p>
+                        </div>
+                        <!-- End Col -->
+                    </div>
+                    <!-- End Grid -->
+                </div>
+            </div>
+            <!-- End Announcement Banner -->
+            @endif
             @if($order->payment_type == "Przelew" ||
             $order->payment_type == "Płatność przy odbiorze")
             <div class="grid grid-cols-1 {{$order->payment_type == 'Przelew' ? 'md:grid-cols-2' : ''}} gap-6 py-6">
@@ -199,29 +242,23 @@
                 @endif
             </div>
             @endif
-            <div class="relative overflow-x-auto shadow-md sm:rounded-lg my-6">
+            <div class="relative overflow-x-auto shadow-md rounded-xl my-6">
                 <table class="w-full text-sm text-left text-gray-500 table-fixed dark:text-stone-50">
                     <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-stone-700 dark:text-stone-50">
                         <tr>
-                            <th scope="col" class="px-6 py-3">
+                            <th scope="col" class="px-3 py-3">
                                 Zdjęcie
                             </th>
-                            <th scope="col" class="px-6 py-3">
+                            <th scope="col" class="px-3 py-3">
                                 Nazwa
                             </th>
-                            <th scope="col" class="px-6 py-3">
-                                Atrybut 1
-                            </th>
-                            <th scope="col" class="px-6 py-3">
-                                Atrybut 2
-                            </th>
-                            <th scope="col" class="px-6 py-3">
+                            <th scope="col" class="px-3 py-3">
                                 Cena
                             </th>
-                            <th scope="col" class="px-6 py-3">
+                            <th scope="col" class="px-3 py-3">
                                 Ilość
                             </th>
-                            <th scope="col" class="px-6 py-3">
+                            <th scope="col" class="px-3 py-3">
                                 Łącznie
                             </th>
                         </tr>
@@ -229,25 +266,21 @@
                     <tbody>
                         @foreach($orders as $o)
                         <tr class="bg-white border-b hover:bg-gray-50 dark:bg-stone-600 dark:border-stone-500 dark:hover:bg-stone-500">
-                            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                            <th scope="row" class="px-3 py-4 font-medium text-gray-900 whitespace-nowrap">
+                                @if($o->product != null)
                                 <img src="{{asset('asset/photo/'.$o->product->photo)}}" alt="{{asset('asset/photo/'.$o->product->photo)}}" height="48px" width="48px" onerror="this.onerror=null; this.src=`{{ asset('asset/image/undraw_photos_re_pvh3.svg') }}`;">
+                                @endif
                             </th>
-                            <td class="px-6 py-4">
+                            <td class="px-3 py-4">
                                 {{$o->name}}
                             </td>
-                            <td class="px-6 py-4">
-                                {{$o->attributes_name}}
-                            </td>
-                            <td class="px-6 py-4">
-                                {{$o->attributes_grind}}
-                            </td>
-                            <td class="px-6 py-4">
+                            <td class="px-3 py-4">
                                 {{$o->price}}
                             </td>
-                            <td class="px-6 py-4">
+                            <td class="px-3 py-4">
                                 {{$o->quantity}}
                             </td>
-                            <td class="px-6 py-4">
+                            <td class="px-3 py-4">
                                 {{$o->quantity*$o->price}} PLN
                             </td>
                         </tr>

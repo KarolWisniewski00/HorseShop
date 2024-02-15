@@ -10,8 +10,8 @@
                 <img class="h-auto max-w-full" src="{{asset('asset/image/logo.png')}}" alt="logo">
             </div>
             <div class="relative z-1 order-2 md:order-1 flex flex-col justify-center items-start text-start">
-                <h1 class="text-4xl font-bold leadi sm:text-5xl px-8 dark:text-stone-50">Certyfikowane końskie
-                    <span class="text-bone-500">suplementy</span>
+                <h1 class="text-4xl font-bold leadi sm:text-5xl px-8 dark:text-stone-50">Certyfikowane suplementy dla
+                    <span class="text-bone-500">Koni</span>
                 </h1>
                 <p class="px-8 my-4 text-lg dark:text-stone-50">oraz inne akcesoria dla konia</p>
                 <div class="flex flex-row my-4 justify-center px-8">

@@ -6,7 +6,7 @@
     </x-slot>
 
     <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto sm:px-3 lg:px-8">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                 <div class="p-6 lg:p-8 bg-white border-b border-gray-200">
 
@@ -27,7 +27,20 @@
                             <dl class="max-w-md text-gray-900 divide-y divide-gray-200">
                                 <div class="flex flex-col pb-3">
                                     <dt class="mb-1 text-gray-500 md:text-lg">Status</dt>
-                                    <dd class="text-lg font-semibold">{{$order->status}}</dd>
+                                    <dd class="text-lg font-semibold 
+                                    @if($order->status == $status['CANCEL'])
+                        text-rose-100 dark:text-rose-800 dark:border-rose-600 dark:hover:text-rose-700
+                        @elseif($order->status == $status['DONE'])
+                        text-emerald-100 dark:text-emerald-800 dark:border-emerald-600 dark:hover:text-emerald-700
+                        @elseif($order->status == $status['PROGRESS'])
+                        text-lime-100 dark:text-lime-800 dark:border-lime-600 dark:hover:text-lime-700
+                        @elseif($order->status == $status['PENDING'])
+                        text-amber-100 dark:text-amber-800 dark:border-amber-600 dark:hover:text-amber-700
+                        @elseif($order->status == $status['ERROR'])
+                        text-rose-100 dark:text-rose-800 dark:border-rose-600 dark:hover:text-rose-700
+                        @elseif($order->status == $status['CHECK'])
+                        text-amber-100 dark:text-amber-800 dark:border-amber-600 dark:hover:text-amber-700
+                        @endif">{{$order->status}}</dd>
                                 </div>
                                 <div class="flex flex-col py-3">
                                     <dt class="mb-1 text-gray-500 md:text-lg">Numer Zamówienia</dt>
@@ -56,6 +69,7 @@
                             </dl>
                             <div class="grid grid-cols-1 md:grid-cols-2 pr-8">
                                 <a href="{{route('dashboard.order.status', ['id'=>$order->id, 'slug'=>'0'])}}" type="button" class="mt-8 mb-4 text-white bg-amber-500 hover:bg-amber-600 focus:ring-4 focus:ring-amber-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 focus:outline-none"><i class="fa-solid fa-clock mr-2"></i>Oczekujące na płatność</a>
+                                <a href="{{route('dashboard.order.status', ['id'=>$order->id, 'slug'=>'4'])}}" type="button" class="mt-8 mb-4 text-white bg-amber-600 hover:bg-amber-700 focus:ring-4 focus:ring-amber-400 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 focus:outline-none"><i class="fa-solid fa-clock mr-2"></i>Weryfikacja płatności</a>
                                 <a href="{{route('dashboard.order.status', ['id'=>$order->id, 'slug'=>'1'])}}" type="button" class="mt-8 mb-4 text-white bg-lime-500 hover:bg-lime-600 focus:ring-4 focus:ring-lime-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 focus:outline-none"><i class="fa-solid fa-business-time mr-2"></i>W trakcie realizacji</a>
                                 <a href="{{route('dashboard.order.status', ['id'=>$order->id, 'slug'=>'2'])}}" type="button" class="mt-8 mb-4 text-white bg-emerald-500 hover:bg-emerald-600 focus:ring-4 focus:ring-emerald-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 focus:outline-none"><i class="fa-solid fa-check mr-2"></i>Zrealizowane</a>
                                 <a href="{{route('dashboard.order.status', ['id'=>$order->id, 'slug'=>'3'])}}" type="button" class="mt-8 mb-4 text-white bg-rose-500 hover:bg-rose-600 focus:ring-4 focus:ring-rose-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 focus:outline-none"><i class="fa-solid fa-x mr-2"></i>Anulowano</a>
@@ -101,6 +115,10 @@
                                     <dd class="text-lg font-semibold">{{$order->city}}</dd>
                                 </div>
                                 <div class="flex flex-col pt-3">
+                                    <dt class="mb-1 text-gray-500 md:text-lg">Kod Pocztowy</dt>
+                                    <dd class="text-lg font-semibold">{{$order->post}}</dd>
+                                </div>
+                                <div class="flex flex-col pt-3">
                                     <dt class="mb-1 text-gray-500 md:text-lg">Uwagi dotyczące zamówienia</dt>
                                     <dd class="text-lg font-semibold">{{$order->extra}}</dd>
                                 </div>
@@ -116,25 +134,19 @@
                         <table class="w-full text-sm text-left text-gray-500 table-fixed">
                             <thead class="text-xs text-gray-700 uppercase bg-gray-50">
                                 <tr>
-                                    <th scope="col" class="px-6 py-3">
+                                    <th scope="col" class="px-3 py-3">
                                         Zdjęcie
                                     </th>
-                                    <th scope="col" class="px-6 py-3">
+                                    <th scope="col" class="px-3 py-3">
                                         Nazwa
                                     </th>
-                                    <th scope="col" class="px-6 py-3">
-                                        Atrybut 1
-                                    </th>
-                                    <th scope="col" class="px-6 py-3">
-                                        Atrybut 2
-                                    </th>
-                                    <th scope="col" class="px-6 py-3">
+                                    <th scope="col" class="px-3 py-3">
                                         Cena
                                     </th>
-                                    <th scope="col" class="px-6 py-3">
+                                    <th scope="col" class="px-3 py-3">
                                         Ilość
                                     </th>
-                                    <th scope="col" class="px-6 py-3">
+                                    <th scope="col" class="px-3 py-3">
                                         Łącznie
                                     </th>
                                 </tr>
@@ -142,31 +154,36 @@
                             <tbody>
                                 @foreach($orders as $o)
                                 <tr class="bg-white border-b hover:bg-gray-50">
-                                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                                    <th scope="row" class="px-3 py-4 font-medium text-gray-900 whitespace-nowrap">
+                                        @if($o->product != null)
                                         <img src="{{asset('asset/photo/'.$o->product->photo)}}" alt="" class="img-fluid" height="48px" width="48px" onerror="this.onerror=null; this.src=`{{ asset('asset/image/undraw_photos_re_pvh3.svg') }}`;">
+                                        @endif
                                     </th>
-                                    <td class="px-6 py-4">
+                                    <td class="px-3 py-4">
                                         {{$o->name}}
                                     </td>
-                                    <td class="px-6 py-4">
-                                        {{$o->attributes_name}}
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        {{$o->attributes_grind}}
-                                    </td>
-                                    <td class="px-6 py-4">
+                                    <td class="px-3 py-4">
+                                        @if($o->product != null)
                                         @if($o->product->price_promo != null || $o->product->price_promo != 0)
                                         {{$o->product->price_promo}}
                                         @else
                                         {{$o->price}}
                                         @endif
+                                        @else
+                                        {{$o->price}} PLN
+                                        @endif
                                     </td>
-                                    <td class="px-6 py-4">
+                                    <td class="px-3 py-4">
                                         {{$o->quantity}}
                                     </td>
-                                    <td class="px-6 py-4">
+                                    <td class="px-3 py-4">
+                                        @if($o->product != null)
+
                                         @if($o->product->price_promo != null || $o->product->price_promo != 0)
                                         {{$o->quantity*$o->product->price_promo}} PLN
+                                        @else
+                                        {{$o->quantity*$o->price}} PLN
+                                        @endif
                                         @else
                                         {{$o->quantity*$o->price}} PLN
                                         @endif

@@ -29,6 +29,8 @@ class HistoryController extends Controller
             'DONE' => OrderStatus::DONE,
             'CANCEL' => OrderStatus::CANCEL,
             'PAID' => OrderStatus::PAID,
+            'CHECK' => OrderStatus::CHECK,
+            'ERROR' => OrderStatus::ERROR,
         ];
         return view('history', compact('orders', 'status'));
     }

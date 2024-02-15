@@ -10,6 +10,7 @@ use App\Http\Controllers\IndexController;
 use App\Http\Controllers\MediaController;
 use App\Http\Controllers\OrderAdminController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\PolicyCookieController;
 use App\Http\Controllers\PolicyPrivController;
 use App\Http\Controllers\ProductController;
@@ -53,6 +54,7 @@ Route::prefix('contact')->group(function () {
 
 Route::get('/login/google', [GoogleLoginController::class, 'redirectToGoogle'])->name('login.google');
 Route::get('/login/google/callback', [GoogleLoginController::class, 'handleGoogleCallback']);
+Route::post('/payment/status', [PaymentController::class, 'status'])->name('payment.status');
 
 Route::prefix('policy-cookies')->group(function () {
     Route::get('/', [PolicyCookieController::class, 'index'])->name('cookie');

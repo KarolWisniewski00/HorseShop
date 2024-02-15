@@ -1,6 +1,7 @@
 <?php
 
 use App\Enums\OrderStatus;
+use App\Enums\PaymentStatus;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -14,11 +15,12 @@ return new class extends Migration
     {
         Schema::create('payments', function (Blueprint $table) {
             $table->id();
-            $table->enum('status', OrderStatus::TYPES)->default(OrderStatus::PENDING);
+            $table->enum('status', OrderStatus::TYPES)->default(OrderStatus::PROGRESS);
             $table->integer('error_code')->nullable();
             $table->string('error_description', 2000)->nullable();
             $table->string('session_id', 100)->nullable();
             $table->timestamps();
+
             $table->foreignId('order_id')->constrained();
         });
     }

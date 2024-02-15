@@ -39,9 +39,6 @@
                                         Wyświetlenia
                                     </th>
                                     <th scope="col" class="px-6 py-3">
-                                        W Koszyku
-                                    </th>
-                                    <th scope="col" class="px-6 py-3">
                                         Sprzedanych
                                     </th>
                                     <th scope="col" class="px-6 py-3">
@@ -66,9 +63,6 @@
                                     </td>
                                     <td class="px-6 py-4">
                                         {{$product->view}}
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        {{$product->busket}}
                                     </td>
                                     <td class="px-6 py-4">
                                         {{$product->sell}}

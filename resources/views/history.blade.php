@@ -38,47 +38,47 @@
             </div>
         </div>
         <div class="container mx-auto text-center my-16 relative px-4">
-            <ul class="hidden text-sm font-medium text-center text-stone-500 rounded-xl shadow sm:flex dark:divide-stone-700 dark:text-stone-400">
+            <ul class="text-sm font-medium text-center text-stone-500 rounded-xl shadow sm:flex dark:divide-stone-700 dark:text-stone-400">
                 <li class="w-full">
-                    <a href="{{route('profile')}}" class="inline-block w-full p-4 bg-white border-r border-stone-200 dark:border-stone-700 hover:text-stone-700 rounded-s-xl hover:bg-stone-50 focus:ring-4 focus:ring-bone-600 focus:outline-none dark:hover:text-white dark:bg-stone-700 dark:hover:bg-stone-600">Profil</a>
+                    <a href="{{route('profile')}}" class="my-2 sm:my-2 inline-block w-full p-4 bg-white border-r border-stone-200 dark:border-stone-700 hover:text-stone-700 rounded-xl sm:rounded-s-xl sm:rounded-e-none  hover:bg-stone-50 focus:ring-4 focus:ring-bone-600 focus:outline-none dark:hover:text-white dark:bg-stone-700 dark:hover:bg-stone-600"><i class="fa-solid fa-user me-2"></i>Profil</a>
                 </li>
                 <li class="w-full">
-                    <a href="{{route('history')}}" class="inline-block w-full p-4 text-stone-900 bg-stone-100 border-r border-stone-200 dark:border-stone-700 focus:ring-4 focus:ring-bone-600 active focus:outline-none dark:bg-stone-600 dark:text-white" aria-current="page">Historia</a>
+                    <a href="{{route('history')}}" class="my-2 sm:my-2 inline-block w-full p-4 text-stone-900 bg-stone-100 border-r border-stone-200 dark:border-stone-700 rounded-xl sm:rounded-none sm:rounded-e-none focus:ring-4 focus:ring-bone-600 active focus:outline-none dark:bg-stone-600 dark:text-white" aria-current="page"><i class="fa-solid fa-clock-rotate-left me-2"></i>Historia</a>
                 </li>
-                @if(auth()->check() && auth()->user()->role === 'admin')
+                @if(auth()->check() && auth()->user()->role === 'ADMIN')
                 <li class="w-full">
-                    <a href="{{route('dashboard')}}" class="inline-block w-full p-4 bg-white border-r border-stone-200 dark:border-stone-700 hover:text-stone-700 hover:bg-stone-50 focus:ring-4 focus:ring-bone-600 focus:outline-none dark:hover:text-white dark:bg-stone-700 dark:hover:bg-stone-600">Panel Admina</a>
+                    <a href="{{route('dashboard')}}" class="my-2 sm:my-2 inline-block w-full p-4 bg-white border-r border-stone-200 dark:border-stone-700 hover:text-stone-700 rounded-xl sm:rounded-none hover:bg-stone-50 focus:ring-4 focus:ring-bone-600 focus:outline-none dark:hover:text-white dark:bg-stone-700 dark:hover:bg-stone-600"><i class="fa-brands fa-black-tie me-2"></i>Panel Admina</a>
                 </li>
                 @endif
                 <li class="w-full">
                     <form method="POST" action="{{ route('logout') }}">
                         @csrf
-                        <button type="submit" class="inline-block w-full p-4 bg-white border-r border-stone-200 dark:border-stone-700 hover:text-stone-700 rounded-e-xl hover:bg-stone-50 focus:ring-4 focus:ring-bone-600 focus:outline-none dark:hover:text-white dark:bg-stone-700 dark:hover:bg-stone-600">Wyloguj</button>
+                        <button type="submit" class="my-2 sm:my-2 inline-block w-full p-4 bg-white border-r border-stone-200 dark:border-stone-700 hover:text-stone-700 rounded-xl sm:rounded-e-xl sm:rounded-s-none hover:bg-stone-50 focus:ring-4 focus:ring-bone-600 focus:outline-none dark:hover:text-white dark:bg-stone-700 dark:hover:bg-stone-600"><i class="fa-solid fa-right-from-bracket me-2"></i>Wyloguj</button>
                     </form>
                 </li>
             </ul>
         </div>
         <div class="container mx-auto my-16 relative px-4">
-            <div class="relative overflow-x-auto shadow-md sm:rounded-lg my-6">
-                <table class="w-full text-sm text-left text-gray-500 table-fixed dark:text-stone-50">
+            <div class="relative overflow-x-auto shadow-md rounded-xl my-6 overflow-auto">
+                <table class="md:w-full text-sm text-left text-gray-500 table-fixed dark:text-stone-50">
                     <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-stone-700 dark:text-stone-50">
                         <tr>
-                            <th scope="col" class="px-6 py-3">
+                            <th scope="col" class="px-3 py-3 text-center">
                                 #
                             </th>
-                            <th scope="col" class="px-6 py-3">
+                            <th scope="col" class="px-3 py-3 text-center">
                                 Numer zamówienia
                             </th>
-                            <th scope="col" class="px-6 py-3">
+                            <th scope="col" class="px-3 py-3 text-center">
                                 Cena
                             </th>
-                            <th scope="col" class="px-6 py-3">
+                            <th scope="col" class="px-3 py-3 text-center">
                                 Status
                             </th>
-                            <th scope="col" class="px-6 py-3">
+                            <th scope="col" class="px-3 py-3 text-center">
                                 Data
                             </th>
-                            <th scope="col" class="px-6 py-3">
+                            <th scope="col" class="px-3 py-3 text-center">
                                 Podgląd
                             </th>
                         </tr>
@@ -94,29 +94,36 @@
                         bg-lime-100 dark:bg-lime-800 dark:border-lime-600 dark:hover:bg-lime-700
                         @elseif($o->status == $status['PENDING'])
                         bg-amber-100 dark:bg-amber-800 dark:border-amber-600 dark:hover:bg-amber-700
+                        @elseif($o->status == $status['ERROR'])
+                        bg-rose-200 dark:bg-rose-900 dark:border-rose-700 dark:hover:bg-rose-800
+                        @elseif($o->status == $status['CHECK'])
+                        bg-amber-200 dark:bg-amber-900 dark:border-amber-700 dark:hover:bg-amber-800
                         @endif">
-                            <th scope="row" class="px-6 py-4">
+                            <th scope="row" class="sm:px-3 sm:py-4 text-center">
                                 {{$k+1}}
                             </th>
-                            <td class="px-6 py-4">
+                            <td class="sm:px-3 sm:py-4 text-center">
                                 {{$o->number}}
                             </td>
-                            <td class="px-6 py-4">
+                            <td class="sm:px-3 sm:py-4 text-center">
                                 {{$o->total}}{{$o->status == $status['DONE'] ? ' +'.$o->total.' pkt' : ''}}
                             </td>
-                            <td class="px-6 py-4">
+                            <td class="sm:px-3 sm:py-4 text-center">
                                 {{$o->status}}
                             </td>
-                            <td class="px-6 py-4">
+                            <td class="sm:px-3 sm:py-4 text-center">
                                 {{$o->created_at}}
                             </td>
-                            <td class="px-6 py-4">
+                            <td class="sm:px-3 sm:py-4 text-center">
                                 <a class="shadow block px-4 py-3 mb-3 leading-loose text-xs text-center font-semibold leading-none text-bone-500 bg-white hover:bg-bone-500 hover:text-white rounded-xl dark:bg-stone-800 dark:text-bone-600 dark:hover:bg-bone-600 dark:hover:text-bone-50" href="{{route('order.show', $o->url)}}"><i class="fa-solid fa-eye"></i></a>
                             </td>
                         </tr>
                         @endforeach
                     </tbody>
                 </table>
+            </div>
+            <div class="px-4 py-2">
+                {{ $orders->links() }}
             </div>
         </div>
     </div>

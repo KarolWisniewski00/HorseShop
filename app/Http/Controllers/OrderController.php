@@ -7,8 +7,11 @@ use App\Enums\OrderStatus;
 use App\Models\Order;
 use App\Models\OrderItem;
 use App\Models\OrderLog;
+use App\Models\Payment;
 use App\Models\Product;
+use App\Models\Setting;
 use DaveJamesMiller\Breadcrumbs\Facades\Breadcrumbs;
+use Devpark\Transfers24\Requests\Transfers24;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
@@ -16,6 +19,13 @@ use Throwable;
 
 class OrderController extends Controller
 {
+
+    private Transfers24 $transfers24;
+
+    public function __construct(Transfers24 $transfers24)
+    {
+        $this->transfers24 = $transfers24;
+    }
     private function getOrderNumber()
     {
         $currentYear = date('y');
@@ -41,7 +51,7 @@ class OrderController extends Controller
         });
         $cartItems = \Cart::session('cart')->getContent();
         $ship = 14;
-        return view('order.create', compact('cartItems','ship'));
+        return view('order.create', compact('cartItems', 'ship'));
     }
     public function store(Request $request)
     {
@@ -56,20 +66,19 @@ class OrderController extends Controller
         } catch (Throwable $e) {
             $usrid = null;
         }
-        if($request->hosting == 'payment_cash'){
+        if ($request->hosting == 'payment_cash') {
             $total = $request->count;
             $hosting = 'Odbiór osobisty - Brak opłat za wysyłkę';
-        }elseif($request->hosting == 'payment_shipcash'){
+        } elseif ($request->hosting == 'payment_shipcash') {
             $total = $request->countship;
             $hosting = 'Płatność przy odbiorze';
-        }elseif($request->hosting == 'payment_transfer24'){
+        } elseif ($request->hosting == 'payment_transfer24') {
             $total = $request->countship;
             $hosting = 'Płatność on-line';
-        }elseif($request->hosting == 'payment_classic'){
+        } elseif ($request->hosting == 'payment_classic') {
             $total = $request->countship;
             $hosting = 'Przelew';
-        }else{
-            
+        } else {
         }
         $order = Order::create([
             'number' => $this->getOrderNumber(),
@@ -86,7 +95,7 @@ class OrderController extends Controller
             'extra' => $request->extra,
             'user_id' => $usrid,
             'total' => $total,
-            'payment_type'=>$hosting,
+            'payment_type' => $hosting,
             'status' => OrderStatus::PENDING,
         ]);
 
@@ -101,15 +110,32 @@ class OrderController extends Controller
             $product = Product::where('name', $item->name)->firstOrFail();
             $product->update(['sell' => intval($product->sell) + $item->quantity]);
         }
+        if ($request->hosting == 'payment_transfer24') {
+            $o = OrderItem::create([
+                'order_id' => $order->id,
+                'product_id' => 0,
+                'name' => 'Przesyłka',
+                'price' => 14,
+                'quantity' => 1,
+            ]);
+        } elseif ($request->hosting == 'payment_classic') {
+            $o = OrderItem::create([
+                'order_id' => $order->id,
+                'product_id' => 0,
+                'name' => 'Przesyłka',
+                'price' => 14,
+                'quantity' => 1,
+            ]);
+        }
         OrderLog::create([
             'name' => 'Klient',
             'description' => 'Utworzenie zamówienia',
             'type' => EnumsOrderLog::CLIENT,
             'order_id' => $order->id,
         ]);
-        if($request->hosting == 'payment_transfer24'){
-            return "w trakcie";
-        }else{
+        if ($request->hosting == 'payment_transfer24') {
+            return $this->paymentTransaction($order);
+        } else {
             \Cart::session('cart')->clear();
             return redirect()->route('order.show', $order->url)->with('success', 'Dziękujemy, zamówienie zostało złożone.');
         }
@@ -132,6 +158,68 @@ class OrderController extends Controller
         });
         $user = Auth::user();
         $orders = OrderItem::where('order_id', $order->id)->get();
-        return view('order.client', compact('order', 'orders'));
+        $status = [
+            'PENDING' => OrderStatus::PENDING,
+            'PROGRESS' => OrderStatus::PROGRESS,
+            'DONE' => OrderStatus::DONE,
+            'CANCEL' => OrderStatus::CANCEL,
+            'PAID' => OrderStatus::PAID,
+            'CHECK' => OrderStatus::CHECK,
+            'ERROR' => OrderStatus::ERROR,
+        ];
+        return view('order.client', compact('order', 'orders','status'));
+    }
+    private function paymentTransaction(Order $order)
+    {
+        $payment = new Payment();
+        $payment->order_id = $order->id;
+        $this->transfers24->setEmail($order->email)->setAmount($order->total);
+        try {
+            $response = $this->transfers24->init();
+            if ($response->isSuccess()) {
+                $payment->status = OrderStatus::PROGRESS;
+                $payment->session_id = $response->getSessionId();
+                $payment->save();
+                $order->update([
+                    'status' => OrderStatus::CHECK
+                ]);
+                OrderLog::create([
+                    'name' => 'Przelewy24',
+                    'description' => 'Zmiana statusu na Weryfikacja płatności.',
+                    'type' => EnumsOrderLog::SYSTEM,
+                    'order_id' => $order->id,
+                ]);
+
+                \Cart::session('cart')->clear();
+                OrderLog::create([
+                    'name' => 'Przelewy24',
+                    'description' => 'Przeniesienie do zewnętrznego systemu płatności Przelewy24.',
+                    'type' => EnumsOrderLog::SYSTEM,
+                    'order_id' => $order->id,
+                ]);
+                return redirect($this->transfers24->execute($response->getToken(), false));
+            } else {
+                $payment->status = OrderStatus::ERROR;
+                $payment->error_code = $response->getErrorCode();
+                $payment->error_description = json_encode($response->getErrorDescription());
+                $payment->save();
+                OrderLog::create([
+                    'name' => '[Błąd] Przelewy24',
+                    'description' => 'Operacja przeniesienia użytkownika do zewnętrznego systemu płatności się nie powiodła',
+                    'type' => EnumsOrderLog::SYSTEM,
+                    'order_id' => $order->id,
+                ]);
+                return back()->with('fail', 'Ups. Coś poszło nie tak.');
+            }
+        } catch (RequestException | RequestExecutionException $error) {
+            Log::error('Błąd transakcji', ['error' => $error]);
+            OrderLog::create([
+                'name' => '[Błąd krytyczny] Przelewy24',
+                'description' => 'Operacja przeniesienia użytkownika do zewnętrznego systemu płatności się nie powiodła',
+                'type' => EnumsOrderLog::SYSTEM,
+                'order_id' => $order->id,
+            ]);
+            return back()->with('fail', 'Ups. Coś poszło nie tak.');
+        }
     }
 }

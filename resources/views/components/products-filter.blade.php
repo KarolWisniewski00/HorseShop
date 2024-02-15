@@ -75,6 +75,12 @@
                                 <div class="text-xl relative text-stone-700">Zestawy</div>
                             </label>
                         </li>
+                        <li class="col-span-2">
+                            <input disabled name="category[]" type="checkbox" id="herb" value="herb" class="hidden peer">
+                            <label for="herb" class="flex flex-col hover-filter bg-white rounded-xl border p-4 border-2 border-transparent peer-checked:border-2 peer-checked:border-bone-500">
+                                <div class="text-xl relative text-stone-700">Zioła</div>
+                            </label>
+                        </li>
                     </ul>
                 </div>
                 <div class="mx-auto text-center relative">

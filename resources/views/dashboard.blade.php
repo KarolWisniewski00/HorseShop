@@ -16,8 +16,8 @@
                         </h1>
                     </div>
                     <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-                        <table class="w-full text-sm text-left text-gray-500">
-                            <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+                        <table class="w-full text-sm text-left text-gray-500 dark:text-bone-50">
+                            <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:text-bone-50 dark:bg-bone-950">
                                 <tr>
                                     <th scope="col" class="px-2 py-1">
                                         Numer zamówienia
@@ -60,15 +60,19 @@
                             <tbody>
                                 @foreach($orders as $key => $order)
                                 <tr class="
-                                    @if($order->status == $status['CANCEL'])
-                                    bg-rose-100
-                                    @elseif($order->status == $status['DONE'])
-                                    bg-emerald-100
-                                    @elseif($order->status == $status['PROGRESS'])
-                                    bg-lime-100
-                                    @elseif($order->status == $status['PENDING'])
-                                    bg-amber-100
-                                    @endif
+                                @if($order->status == $status['CANCEL'])
+                        bg-rose-100 dark:bg-rose-800 dark:border-rose-600 dark:hover:bg-rose-700
+                        @elseif($order->status == $status['DONE'])
+                        bg-emerald-100 dark:bg-emerald-800 dark:border-emerald-600 dark:hover:bg-emerald-700
+                        @elseif($order->status == $status['PROGRESS'])
+                        bg-lime-100 dark:bg-lime-800 dark:border-lime-600 dark:hover:bg-lime-700
+                        @elseif($order->status == $status['PENDING'])
+                        bg-amber-100 dark:bg-amber-800 dark:border-amber-600 dark:hover:bg-amber-700
+                        @elseif($order->status == $status['ERROR'])
+                        bg-rose-200 dark:bg-rose-900 dark:border-rose-700 dark:hover:bg-rose-800
+                        @elseif($order->status == $status['CHECK'])
+                        bg-amber-200 dark:bg-amber-900 dark:border-amber-700 dark:hover:bg-amber-800
+                        @endif
                                     ">
                                     <td class="px-2 py-1">
                                         {{$order->number}}
