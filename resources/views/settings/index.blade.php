@@ -169,14 +169,20 @@
                             <div class="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -start-1.5 border border-whites"></div>
                             <time class="mb-1 text-sm font-normal leading-none text-gray-400">15 Luty 2024 V 1.1.0</time>
                             <h3 class="text-lg font-semibold text-gray-900">Bramka Płatnicza</h3>
+                            <p class="text-gray-900 my-2">- Usunięcie zabezpieczeń i blokad na endpoint /payment/status - a konkretnie tokenu zabezpieczającego CSRF</p>
+                        </li>
+                        <li class="mb-10 ms-4">
+                            <div class="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -start-1.5 border border-whites"></div>
+                            <time class="mb-1 text-sm font-normal leading-none text-gray-400">15 Luty 2024 V 1.1.0</time>
+                            <h3 class="text-lg font-semibold text-gray-900">Bramka Płatnicza</h3>
                             <p class="text-gray-900 my-2">- Dodanie trybu "SANDBOX" integracji z <span class="text-rose-500">przelewy 24</span></p>
                             <p class="text-gray-900 my-2">- Dodanie statusów do zamówienia: error i weryfikacja płatności</p>
-                            <p class="text-gray-900 my-2">- Dodanie odpowiedniej kolorystyki zamówień według statusu + poprawa wyglądu na telefon</p>
-                            <p class="text-gray-900 my-2">- Naprawa nie pokazującego się paska nawigacyjnego na telefon + dodanie ikon</p>
+                            <p class="text-gray-900 my-2">- Dodanie odpowiedniej kolorystyki zamówień według statusu + <span class="text-emerald-500">poprawa wyglądu na telefon</span></p>
+                            <p class="text-gray-900 my-2">- Naprawa nie pokazującego się paska nawigacyjnego na telefon + <span class="text-emerald-500">dodanie ikon</span></p>
                             <p class="text-gray-900 my-2">- Naprawa błędnie pokazującego się stanu zalogowania na wyglądzie mobilnym</p>
                             <p class="text-gray-900 my-2">- Naprawa notatek w zamówieniu - brakowało kolumny</p>
                             <p class="text-gray-900 my-2">- Dodanie Kodu pocztowego w szczegółach zamówienia w panelu admina</p>
-
+                            <p class="text-gray-900 my-2">- Dodanie trybu dark do tabeli w panelu adminia w wszystkich zamówieniach</p>
                         </li>
                         <li class="mb-10 ms-4">
                             <div class="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -start-1.5 border border-whites"></div>
