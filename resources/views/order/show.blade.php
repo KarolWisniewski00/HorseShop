@@ -32,6 +32,8 @@
                         text-rose-100 dark:text-rose-800 dark:border-rose-600 dark:hover:text-rose-700
                         @elseif($order->status == $status['DONE'])
                         text-emerald-100 dark:text-emerald-800 dark:border-emerald-600 dark:hover:text-emerald-700
+                        @elseif($order->status == $status['PAID'])
+                        text-emerald-100 dark:text-emerald-800 dark:border-emerald-600 dark:hover:text-emerald-700
                         @elseif($order->status == $status['PROGRESS'])
                         text-lime-100 dark:text-lime-800 dark:border-lime-600 dark:hover:text-lime-700
                         @elseif($order->status == $status['PENDING'])
