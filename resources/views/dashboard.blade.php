@@ -72,6 +72,8 @@
                         bg-rose-200 dark:bg-rose-900 dark:border-rose-700 dark:hover:bg-rose-800
                         @elseif($order->status == $status['CHECK'])
                         bg-amber-200 dark:bg-amber-900 dark:border-amber-700 dark:hover:bg-amber-800
+                        @elseif($o->status == $status['PAID'])
+                        bg-emerald-100 dark:bg-emerald-800 dark:border-emerald-600 dark:hover:bg-emerald-700
                         @endif
                                     ">
                                     <td class="px-2 py-1">

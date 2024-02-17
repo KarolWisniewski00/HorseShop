@@ -60,11 +60,6 @@
         </div>
         <div class="container mx-auto my-16 relative px-4">
             <div class="relative overflow-x-auto shadow-md rounded-xl my-6 overflow-auto">
-                <input type="hidden" class="
-                        bg-emerald-100 dark:bg-emerald-800 dark:border-emerald-600 dark:hover:bg-emerald-700
-                        bg-lime-100 dark:bg-lime-800 dark:border-lime-600 dark:hover:bg-lime-700
-                        bg-rose-200 dark:bg-rose-900 dark:border-rose-700 dark:hover:bg-rose-800
-                        bg-amber-200 dark:bg-amber-900 dark:border-amber-700 dark:hover:bg-amber-800">
                 <table class="md:w-full text-sm text-left text-gray-500 table-fixed dark:text-stone-50">
                     <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-stone-700 dark:text-stone-50">
                         <tr>
@@ -95,6 +90,8 @@
                         bg-rose-100 dark:bg-rose-800 dark:border-rose-600 dark:hover:bg-rose-700
                         @elseif($o->status == $status['DONE'])
                         bg-emerald-100 dark:bg-emerald-800 dark:border-emerald-600 dark:hover:bg-emerald-700
+                        @elseif($o->status == $status['PAID'])
+                        bg-emerald-100 dark:bg-emerald-800 dark:border-emerald-600 dark:hover:bg-emerald-700
                         @elseif($o->status == $status['PROGRESS'])
                         bg-lime-100 dark:bg-lime-800 dark:border-lime-600 dark:hover:bg-lime-700
                         @elseif($o->status == $status['PENDING'])
@@ -103,7 +100,9 @@
                         bg-rose-200 dark:bg-rose-900 dark:border-rose-700 dark:hover:bg-rose-800
                         @elseif($o->status == $status['CHECK'])
                         bg-amber-200 dark:bg-amber-900 dark:border-amber-700 dark:hover:bg-amber-800
-                        @endif">
+                        @endif
+                        
+                        ">
                             <th scope="row" class="sm:px-3 sm:py-4 text-center">
                                 {{$k+1}}
                             </th>

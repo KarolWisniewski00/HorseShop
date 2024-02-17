@@ -9,6 +9,7 @@ use App\Mail\OrderMail;
 use App\Models\Order;
 use App\Models\OrderLog;
 use App\Models\Payment;
+use App\Models\User;
 use Devpark\Transfers24\Requests\Transfers24;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
@@ -16,6 +17,7 @@ use Darryldecode\Cart\Cart;
 use Darryldecode\Cart\CartCondition;
 use Darryldecode\Cart\CartItem;
 use Darryldecode\Cart\CartCollection;
+use Exception;
 
 class PaymentController extends Controller
 {
@@ -36,6 +38,12 @@ class PaymentController extends Controller
             $payment->save();
             Order::where('id', '=', $payment->order_id)->update(['status' => OrderStatus::PAID]);
             $order = Order::where('id', '=', $payment->order_id)->first();
+            $user = User::where('id', $order->user_id)->first();
+            try {
+                User::where('id', $order->user_id)->update(['points' => intval($user->points) + intval($order->total)]);
+            } catch (Exception) {
+                User::where('id', $order->user_id)->update(['points' => intval($order->total)]);
+            }
             //$email = new OrderMail($order);
             //Mail::to($order->email)->send($email->build());
             //Mail::to('admin@coffeesummit.pl')->send($email->build());
