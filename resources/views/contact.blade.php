@@ -59,8 +59,7 @@
                         </a>
                     </div>
                 </address>
-                <div>
-                    <iframe class="w-full h-auto rounded-xl border shadow" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2611.129141927443!2d-77.03738663643693!3d38.897150921288095!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89b7b7bcdecbb1df%3A0x715969d86d0b76bf!2sBia%C5%82y%20Dom!5e0!3m2!1spl!2spl!4v1697729360006!5m2!1spl!2spl" style="border:0;min-height:450px" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <div><iframe class="w-full h-auto rounded-xl border shadow" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d389651.2497585084!2d20.39612013119993!3d50.08974767436368!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47163c56831cba2b%3A0xbbfd9013ec69a4dc!2sBuczyna%201%2C%2032-742%20Buczyna!5e0!3m2!1spl!2spl!4v1708365743355!5m2!1spl!2spl" style="border:0;min-height:450px" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
             </div>
         </div>

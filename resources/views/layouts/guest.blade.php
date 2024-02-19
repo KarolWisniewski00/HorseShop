@@ -1,12 +1,23 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="pl">
 
 <head>
     <meta charset="utf-8">
+    <meta name="author" content="Karol Wiśniewski">
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta property="og:locale" content="pl_PL" />
+    <link rel="icon" href="{{asset('asset/image/logo.png')}}" type="image/png">
+    <link rel="apple-touch-icon" href="{{asset('asset/image/logo.png')}}">
+    <meta name="base-url" content="https://suplementyhh.pl/">
+    <link rel="canonical" href="https://suplementyhh.pl/">
+    <meta property="og:url" content="https://suplementyhh.pl/">
+    <meta property="og:site_name" content="Suplementy Healthy Horse" />
+    <meta property="og:type" content="article" />
+    <meta name="twitter:card" content="summary" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Suplementy Healthy Horse</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
@@ -17,6 +28,7 @@
     <link rel="stylesheet" href="{{asset('asset/css/main.css')}}">
     <!-- Styles -->
     @livewireStyles
+    
 </head>
 
 <body class="bg-stone-50 dark:bg-stone-800">

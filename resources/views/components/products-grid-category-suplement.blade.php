@@ -11,22 +11,40 @@
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
             <div class="flex items-center">
                 @foreach($products as $key => $product)
-                @if($key == 1)
+                @if($product->attr == 'suplement')
+                @if(!in_array($product->id, $used))
+                @php
+                array_push($used, $product->id);
+                @endphp
                 @include('components/product-small')
+                @break
+                @endif
                 @endif
                 @endforeach
             </div>
             <div class="flex items-center">
                 @foreach($products as $key => $product)
-                @if($key == 2)
+                @if($product->attr == 'suplement')
+                @if(!in_array($product->id, $used))
+                @php
+                array_push($used, $product->id);
+                @endphp
                 @include('components/product-small')
+                @break
+                @endif
                 @endif
                 @endforeach
             </div>
             <div class="flex items-center">
                 @foreach($products as $key => $product)
-                @if($key == 1)
+                @if($product->attr == 'suplement')
+                @if(!in_array($product->id, $used))
+                @php
+                array_push($used, $product->id);
+                @endphp
                 @include('components/product-small')
+                @break
+                @endif
                 @endif
                 @endforeach
             </div>

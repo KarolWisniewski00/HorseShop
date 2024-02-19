@@ -1,7 +1,15 @@
 <x-guest-layout>
     @include('components/nav-client')
     @include('components/hero')
-    @include('components/products-grid-news')
+    @include('components/products-grid-news')@section('SEO')
+<title>Coffee Summit sklep z kawą</title>
+<meta property="og:title" content="Coffee Summit sklep z kawą" />
+<meta name="twitter:title" content="Coffee Summit sklep z kawą" />
+<meta name="description" content="Jeśli jesteś miłośnikiem kawy sprawdź naszą ofertę. Sklep online z kawą i dostawą pod twoje drzwi">
+<meta property="og:description" content="Jeśli jesteś miłośnikiem kawy sprawdź naszą ofertę. Sklep online z kawą i dostawą pod twoje drzwi" />
+<meta name="twitter:description" content="Jeśli jesteś miłośnikiem kawy sprawdź naszą ofertę. Sklep online z kawą i dostawą pod twoje drzwi" />
+<meta name="keywords" content="Coffee Summit, coffee summit, palarnia kawy piła, dobra kawa do ekspresu, najlepsza kawa ziarnista do ekspresu, kawa ziarnista 1kg promocja, kawa mielona do ekspresu, kawa do ekspresu ziarnista">
+@endsection
     <!-- Announcement Banner -->
     <div class="container mx-auto px-4 mt-8">
         <div class="bg-gradient-to-r from-bone-600 to-bone-400 dark:from-bone-800 dark:to-bone-600 border rounded-xl shadow p-4 dark:border-stone-600">

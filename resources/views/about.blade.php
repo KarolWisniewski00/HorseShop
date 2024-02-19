@@ -36,8 +36,13 @@
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div class="col-span-1 md:col-span-2 flex flex-col justify-center">
                     <div class="h-auto w-full shadow rounded-xl border flex flex-col h-full px-8 bg-white dark:border-stone-600 dark:bg-stone-700">
-                        <h1 class="text-4xl my-8 font-bold dark:text-stone-50">Helthty Horse</h1>
-                        <p class="text-stone-400 leading-10 text-lg">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                        <h1 class="text-4xl my-8 font-bold dark:text-stone-50">,,Konie są jak poezja, zabierają cię w miejsca, o których nawet nie śniłeś.”
+                            – J.R.R. Tolkien</h1>
+                        <p class="text-stone-400 leading-10 text-lg">Utrzymanie konia w dobrym zdrowiu i samopoczuciu to najważniejszy cel każdego hodowcy.</p>
+                        <p class="text-stone-400 leading-10 text-lg">
+                            Zdrowie konia to nie tylko brak chorób, ale także utrzymanie go w świetnej kondycji oraz zapewnienie mu jak najlepszego samopoczucia.
+                            Z miłości do koni i chęci dzielenia zdrowego życia z nimi powstała marka Healthy Horse - tworzący ją ludzie to hodowcy, trenerzy, a także prawdziwi pasjonaci.
+                            Nasze suplementy powstają z surowców o najwyższych standardach jakości, pochodzą z natury, nie zawierają żadnych konserwantów. </p>
                         <div class="flex flex-row justify-center items-center">
                             <i class="text-7xl mx-4 md:mx-8 my-4 text-stone-500 fa-solid fa-suitcase-medical"></i>
                             <i class="text-7xl mx-4 md:mx-8 my-4 text-bone-500 dark:text-bone-600 fa-solid fa-horse"></i>
@@ -68,7 +73,7 @@
                         <h1 class="text-4xl my-8 font-bold dark:text-stone-50">Certyfikaty</h1>
                         <p class="text-stone-400 leading-10 text-lg mb-3">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
                         <div class="flex flex-row justify-center items-center">
-                        <a class="shadow block px-4 py-3 mb-3 leading-loose text-4xl text-center font-semibold leading-none text-bone-500 bg-white hover:bg-bone-500 hover:text-white rounded-xl dark:bg-stone-800 dark:text-bone-600 dark:hover:bg-bone-600 dark:hover:text-bone-50" href="{{asset('asset/pdf/CertyfikatHealthyHorse.pdf')}}" download="CertyfikatHealthyHorse.pdf"><i class="fa-solid fa-file-pdf mr-2"></i>Pobierz PDF</a>
+                            <a class="shadow block px-4 py-3 mb-3 leading-loose text-4xl text-center font-semibold leading-none text-bone-500 bg-white hover:bg-bone-500 hover:text-white rounded-xl dark:bg-stone-800 dark:text-bone-600 dark:hover:bg-bone-600 dark:hover:text-bone-50" href="{{asset('asset/pdf/CertyfikatHealthyHorse.pdf')}}" download="CertyfikatHealthyHorse.pdf"><i class="fa-solid fa-file-pdf mr-2"></i>Pobierz PDF</a>
                         </div>
                     </div>
                 </div>
