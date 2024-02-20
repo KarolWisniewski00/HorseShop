@@ -9,6 +9,9 @@
     </div>
     <div class="container mx-auto px-4">
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            @php
+            $used = [];
+            @endphp
             <div class="flex items-center">
                 @foreach($products as $key => $product)
                 @if($product->attr == 'suplement')
