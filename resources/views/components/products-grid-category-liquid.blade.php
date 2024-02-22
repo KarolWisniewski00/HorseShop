@@ -11,61 +11,11 @@
 
     <div class="container mx-auto px-4">
         <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
-            @php
-            $used = [];
-            @endphp
+            @foreach($oils as $key => $product)
             <div class="flex items-center">
-                @foreach($products as $key => $product)
-                @if($product->attr == 'oil')
-                @if(!in_array($product->id, $used))
-                @php
-                array_push($used, $product->id);
-                @endphp
                 @include('components/product-small')
-                @break
-                @endif
-                @endif
-                @endforeach
             </div>
-            <div class="flex items-center">
-                @foreach($products as $key => $product)
-                @if($product->attr == 'oil')
-                @if(!in_array($product->id, $used))
-                @php
-                array_push($used, $product->id);
-                @endphp
-                @include('components/product-small')
-                @break
-                @endif
-                @endif
-                @endforeach
-            </div>
-            <div class="flex items-center">
-                @foreach($products as $key => $product)
-                @if($product->attr == 'oil')
-                @if(!in_array($product->id, $used))
-                @php
-                array_push($used, $product->id);
-                @endphp
-                @include('components/product-small')
-                @break
-                @endif
-                @endif
-                @endforeach
-            </div>
-            <div class="flex items-center">
-                @foreach($products as $key => $product)
-                @if($product->attr == 'oil')
-                @if(!in_array($product->id, $used))
-                @php
-                array_push($used, $product->id);
-                @endphp
-                @include('components/product-small')
-                @break
-                @endif
-                @endif
-                @endforeach
-            </div>
+            @endforeach
         </div>
     </div>
 </section>
