@@ -33,7 +33,7 @@ return [
     'google' => [
         'client_id' => env('GOOGLE_CLIENT_ID'),
         'client_secret' => env('GOOGLE_CLIENT_SECRET'),
-        'redirect' => 'https://suplementyhh.pl/login/google/callback',
+        'redirect' => 'https://suplementyhealthyhorse.pl/login/google/callback',
     ],
     
 ];
