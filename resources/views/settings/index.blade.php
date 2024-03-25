@@ -167,6 +167,21 @@
                     <ol class="relative border-s border-gray-200 dark:border-gray-700 mt-4">
                     <li class="mb-10 ms-4">
                             <div class="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -start-1.5 border border-whites"></div>
+                            <time class="mb-1 text-sm font-normal leading-none text-gray-400">25 Marzec 2024 V 1.1.2</time>
+                            <h3 class="text-lg font-semibold text-gray-900">Poprawki</h3>
+                            <p class="text-gray-900 my-2">- Dodanie kodów rabatowych</p>
+                            <p class="text-gray-900 my-2">- Zmiana interpretacji opisu z takstu na html</p>
+                            <p class="text-gray-900 my-2">- Konfiguracja Przelewy24</p>
+                        </li>
+                        <li class="mb-10 ms-4">
+                            <div class="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -start-1.5 border border-whites"></div>
+                            <time class="mb-1 text-sm font-normal leading-none text-gray-400">22 Marzec 2024 V 1.1.1</time>
+                            <h3 class="text-lg font-semibold text-gray-900">Poprawki</h3>
+                            <p class="text-gray-900 my-2">- Dodanie możliwości ustawiania cen wysyłki</p>
+                            <p class="text-gray-900 my-2">- Naprawa logowanie przez google dla suplementyhh.pl</p>
+                        </li>
+                        <li class="mb-10 ms-4">
+                            <div class="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -start-1.5 border border-whites"></div>
                             <time class="mb-1 text-sm font-normal leading-none text-gray-400">15 Luty 2024 V 1.1.0</time>
                             <h3 class="text-lg font-semibold text-gray-900">Bramka Płatnicza</h3>
                             <p class="text-gray-900 my-2">- Usunięcie zabezpieczeń i blokad na endpoint /payment/status - a konkretnie tokenu zabezpieczającego CSRF</p>

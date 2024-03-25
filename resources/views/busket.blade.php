@@ -120,13 +120,13 @@
                     </div>
                     <div class="flex justify-between">
                         <p class="text-stone-700 dark:text-stone-50">Wysyłka</p>
-                        <p class="text-stone-700 dark:text-stone-50">14 PLN</p>
+                        <p class="text-stone-700 dark:text-stone-50">{{$setting['payment_price']}} PLN</p>
                     </div>
                     <hr class="my-4" />
                     <div class="flex justify-between">
                         <p class="text-lg font-bold dark:text-stone-50">Razem</p>
                         <div class="text-end">
-                            <p class="mb-1 text-lg font-bold dark:text-stone-50">{{$count + 14}} PLN</p>
+                            <p class="mb-1 text-lg font-bold dark:text-stone-50">{{$count + intval($setting['payment_price'])}} PLN</p>
                             <p class="text-sm text-stone-700 dark:text-stone-50">zawiera VAT</p>
                         </div>
                     </div>

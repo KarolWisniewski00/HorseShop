@@ -73,7 +73,6 @@
                     @else
                     <h5 class="relative m-0 p-0 my-2 mb-4 font-bold text-4xl text-bone-500 product-price">{{$product->price}} zł</h5>
                     @endif
-                    <p class="text-gray-700 my-16 dark:text-stone-50">{{$product->description}}</p>
                     <script>
                         $(document).ready(function() {
                             $("#steps-range").on("input", function() {
@@ -95,6 +94,13 @@
                 @endif
             </div>
         </div>
+
+        <div class="mx-auto container text-center grid items-center px-4 mt-8">
+            <div class="rounded-xl shadow flex flex-col items-center h-min bg-white w-full p-8 dark:bg-stone-700">
+                <p class="text-gray-700 my-16 dark:text-stone-50">{!! $product->description !!}</p>
+            </div>
+        </div>
+
         <!-- Announcement Banner -->
         <div class="container mx-auto px-4 mt-8">
             <div class="bg-gradient-to-r from-bone-600 to-bone-400 dark:from-bone-800 dark:to-bone-600 border rounded-xl shadow p-4 dark:border-stone-600">

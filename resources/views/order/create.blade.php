@@ -49,6 +49,55 @@
             </div>
         </div>
         <div class="container mx-auto text-start mt-8">
+            <input type="hidden" id="settings" value='@json($settings)'>
+            <script>
+                $(document).ready(function() {
+                    // Pobierz wartość z ukrytego pola wejściowego
+                    var settingsValue = $('#settings').val();
+
+                    var codes = [];
+
+                    // Wyświetl wartość w konsoli w formacie JSON
+                    var settings = JSON.parse(settingsValue)
+                    settings.forEach(setting => {
+                        if (setting.type.startsWith("code")) {
+                            codes.push({
+                                pl: setting.pl,
+                                content: setting.content
+                            });
+                        }
+                    });
+
+                    // Pobierz pole wejściowe code_rabat
+                    var codeRabatInput = $('#code_rabat');
+
+                    // Dodaj nasłuchiwanie na zdarzenie input
+                    codeRabatInput.on('input', function() {
+                        // Pobierz aktualną wartość z pola wejściowego
+                        var currentValue = $(this).val();
+
+                        // Sprawdź, czy aktualna wartość znajduje się w tablicy codes
+                        var foundCode = codes.find(code => code.pl === currentValue);
+
+                        if (foundCode) {
+                            // Jeśli kod został znaleziony, wyświetl komunikat z odpowiednim rabatem
+                            var rabatValue = parseFloat(foundCode.content);
+                            var rabatText;
+
+                            if (rabatValue < 1) {
+                                rabatText = "Przyznano rabat: " + (rabatValue * 100) + "% cena zmieni się w następnym kroku";
+                            } else {
+                                rabatText = "Przyznano rabat: -" + rabatValue + " zł cena zmieni się w następnym kroku";
+                            }
+
+                            $('#rabat').html(rabatText);
+                        } else {
+                            // Jeśli kod nie został znaleziony, wyczyść komunikat
+                            $('#rabat').html('');
+                        }
+                    });
+                });
+            </script>
             <form action="{{route('order.store')}}" method="POST" class="w-full grid grid-cols-1 lg:grid-cols-3 px-4 gap-4">
                 <div class="bg-white dark:bg-stone-700 border dark:border-stone-600 rounded-xl shadow px-8 col-span-1 lg:col-span-2 py-16">
                     <div class="w-full">
@@ -124,6 +173,12 @@
                             <label for="extra" class="block mb-2 text-sm font-medium text-stone-900 dark:text-stone-50">Uwagi dotyczące zamówienia (opcjonalne)</label>
                             <input type="text" id="extra" value="{{ old('extra') ? old('extra') : ''}}" name="extra" class="bg-white border border-stone-300 text-stone-900 text-sm rounded-lg focus:ring-bone-500 focus:border-bone-500 block w-full p-2.5 dark:bg-stone-700 dark:border-stone-600 dark:placeholder-stone-400 dark:text-stone-50 dark:focus:ring-bone-500 dark:focus:border-bone-500">
                             <span class="text-red-500">@error('extra') {{$message}} @enderror</span>
+                        </div>
+                        <div class="mb-6">
+                            <label for="code_rabat" class="block mb-2 text-sm font-medium text-stone-900 dark:text-stone-50">Kod rabatowy</label>
+                            <input type="text" id="code_rabat" value="{{ old('code_rabat') ? old('code_rabat') : ''}}" name="code_rabat" class="bg-white border border-stone-300 text-stone-900 text-sm rounded-lg focus:ring-bone-500 focus:border-bone-500 block w-full p-2.5 dark:bg-stone-700 dark:border-stone-600 dark:placeholder-stone-400 dark:text-stone-50 dark:focus:ring-bone-500 dark:focus:border-bone-500">
+                            <span class="text-red-500">@error('code_rabat') {{$message}} @enderror</span>
+                            <span class="text-green-500" id="rabat"></span>
                         </div>
                         <div class="flex items-start mb-6">
                             <div class="flex items-center h-5">

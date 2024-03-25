@@ -97,6 +97,64 @@ return new class extends Migration
         $company->pl = 'Odbiór osobisty';
         $company->content = '1';
         $company->save();
+
+        $company = new Setting();
+        $company->type = 'payment_price';
+        $company->pl = 'Cena przesyłki';
+        $company->content = '19';
+        $company->save();
+        
+        $company = new Setting();
+        $company->type = 'code_rabat_1';
+        $company->pl = 'kod rabatowy 1';
+        $company->content = '10';
+
+        $company = new Setting();
+        $company->type = 'code_rabat_2';
+        $company->pl = 'kod rabatowy 2';
+        $company->content = '0,20';
+
+        $company = new Setting();
+        $company->type = 'code_rabat_3';
+        $company->pl = 'kod rabatowy 3';
+        $company->content = '30';
+
+        $company = new Setting();
+        $company->type = 'code_rabat_4';
+        $company->pl = 'kod rabatowy 4';
+        $company->content = '0,40';
+
+        $company = new Setting();
+        $company->type = 'code_rabat_5';
+        $company->pl = 'kod rabatowy 5';
+        $company->content = '50';
+
+        $company = new Setting();
+        $company->type = 'code_rabat_6';
+        $company->pl = 'kod rabatowy 6';
+        $company->content = '0,60';
+
+        $company = new Setting();
+        $company->type = 'code_rabat_7';
+        $company->pl = 'kod rabatowy 7';
+        $company->content = '70';
+
+        $company = new Setting();
+        $company->type = 'code_rabat_8';
+        $company->pl = 'kod rabatowy 8';
+        $company->content = '0,80';
+
+        $company = new Setting();
+        $company->type = 'code_rabat_9';
+        $company->pl = 'kod rabatowy 9';
+        $company->content = '90';
+
+        $company = new Setting();
+        $company->type = 'code_rabat_10';
+        $company->pl = 'kod rabatowy 10';
+        $company->content = '1';
+
+        $company->save();
     }
 
     /**

@@ -50,22 +50,30 @@ class OrderController extends Controller
             $trail->push('Płatności', route('order.create'));
         });
         $cartItems = \Cart::session('cart')->getContent();
-        $ship = 14;
-        return view('order.create', compact('cartItems', 'ship'));
+        $setting = Setting::get()->pluck('content', 'type');
+        $settings = Setting::get();
+        $ship = $setting['payment_price'];
+        return view('order.create', compact('cartItems', 'ship', 'settings'));
     }
     public function store(Request $request)
     {
+        //pobierz koszyk
         $cartContent = \Cart::session('cart')->getContent();
 
+        //sprawdź czy koszyk jest pusty
         if ($cartContent->isEmpty()) {
             return redirect()->back()->with('fail', 'Nie można złożyć zamówienia gdy koszyk jest pusty.');
         }
+
+        //sprawdź czy użytkownik zakogowany
         try {
             $user = Auth::user();
             $usrid = $user->id;
         } catch (Throwable $e) {
             $usrid = null;
         }
+
+        //sprawdź typ zamówienia
         if ($request->hosting == 'payment_cash') {
             $total = $request->count;
             $hosting = 'Odbiór osobisty - Brak opłat za wysyłkę';
@@ -80,6 +88,30 @@ class OrderController extends Controller
             $hosting = 'Przelew';
         } else {
         }
+
+        //sprawdź rabat
+        $settings = Setting::get();
+        $rabat = 0;
+        if($request->code_rabat != null){
+            foreach ($settings as $key => $value) {
+                if (strpos($value->type , 'code') === 0) {
+                    if($value->pl == $request->code_rabat){
+                        $fv = floatval($value->content);
+                        if ($fv < 1) {
+                            $rv = $total * $fv;
+                            $rabat = $rv;
+                            $total = $total - $rv;
+                        } else {
+                            $total = $total - $fv;
+                            $rabat = $fv;
+                        }
+                        
+                    }
+                }
+            }
+        }
+
+        //utwórz zamówienie
         $order = Order::create([
             'number' => $this->getOrderNumber(),
             'url' => Str::random(4),
@@ -99,6 +131,7 @@ class OrderController extends Controller
             'status' => OrderStatus::PENDING,
         ]);
 
+        //utwórz przedmioty zamówienia
         foreach ($cartContent as $item) {
             $o = OrderItem::create([
                 'order_id' => $order->id,
@@ -110,12 +143,16 @@ class OrderController extends Controller
             $product = Product::where('name', $item->name)->firstOrFail();
             $product->update(['sell' => intval($product->sell) + $item->quantity]);
         }
+        $setting = Setting::get()->pluck('content', 'type');
+        $ship = $setting['payment_price'];
+
+        //dodaj przesyłke jeśli konieczne
         if ($request->hosting == 'payment_transfer24') {
             $o = OrderItem::create([
                 'order_id' => $order->id,
                 'product_id' => 0,
                 'name' => 'Przesyłka',
-                'price' => 14,
+                'price' => $ship,
                 'quantity' => 1,
             ]);
         } elseif ($request->hosting == 'payment_classic') {
@@ -123,19 +160,38 @@ class OrderController extends Controller
                 'order_id' => $order->id,
                 'product_id' => 0,
                 'name' => 'Przesyłka',
-                'price' => 14,
+                'price' => $ship,
                 'quantity' => 1,
             ]);
         }
+
+        //dodaj rabat jeśli istnieje
+        if($rabat != 0){
+            $o = OrderItem::create([
+                'order_id' => $order->id,
+                'product_id' => 0,
+                'name' => 'Kod rabatowy',
+                'price' => -$rabat,
+                'quantity' => 1,
+            ]);
+        }
+
+        //utwórz wpis historyczny
         OrderLog::create([
             'name' => 'Klient',
             'description' => 'Utworzenie zamówienia',
             'type' => EnumsOrderLog::CLIENT,
             'order_id' => $order->id,
         ]);
+
+        
         if ($request->hosting == 'payment_transfer24') {
+            //jeśli typ płatności to p24 przejdź do p24
+
             return $this->paymentTransaction($order);
         } else {
+            //w innym przypadku przejdź do podsumowania
+
             \Cart::session('cart')->clear();
             return redirect()->route('order.show', $order->url)->with('success', 'Dziękujemy, zamówienie zostało złożone.');
         }
@@ -167,7 +223,7 @@ class OrderController extends Controller
             'CHECK' => OrderStatus::CHECK,
             'ERROR' => OrderStatus::ERROR,
         ];
-        return view('order.client', compact('order', 'orders','status'));
+        return view('order.client', compact('order', 'orders', 'status'));
     }
     private function paymentTransaction(Order $order)
     {

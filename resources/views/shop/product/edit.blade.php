@@ -27,6 +27,89 @@
                             @enderror
                         </div>
                         <div class="mb-6">
+                            <!---->
+
+                            Przykładowe tagi do opisu:
+
+                            <br>
+                            <br>
+                            Link zapis:
+                            <br>
+                            {{'<a href="#" class="font-medium text-bone-600 dark:text-bone-500 hover:underline">Zawartość linku</a>'}}
+                            <br>
+                            <br>
+                            Link wygląd:
+                            <br>
+                            <a href="#" class="font-medium text-bone-600 dark:text-bone-500 hover:underline">Zawartość linku</a>
+
+                            <br>
+                            <br>
+                            Pogrubienie zapis:
+                            <br>
+                            {{'<p class="font-light">Zawartość pogrubienie 1</p>
+                                <p class="font-normal">Zawartość pogrubienie 2</p>
+                                <p class="font-medium">Zawartość pogrubienie 3</p>
+                                <p class="font-semibold">Zawartość pogrubienie 4</p>
+                                <p class="font-bold">Zawartość pogrubienie 5</p>'}}
+                            <br>
+                            <br>
+                            Pogrubienie wygląd:
+                            <br>
+                            <p class="font-light">Zawartość pogrubienie 1</p>
+                            <p class="font-normal">Zawartość pogrubienie 2</p>
+                            <p class="font-medium">Zawartość pogrubienie 3</p>
+                            <p class="font-semibold">Zawartość pogrubienie 4</p>
+                            <p class="font-bold">Zawartość pogrubienie 5</p>
+
+
+                            <br>
+                            <br>
+                            Kursywa zapis:
+                            <br>
+                            {{'<p class="italic">Zawartość kursywa 1</p>
+                            <p class="not-italic">Zawartość kursywa 2</p>'}}
+                            <br>
+                            <br>
+                            Kursywa wygląd:
+                            <br>
+                            <p class="italic">Zawartość kursywa 1</p>
+                            <p class="not-italic">Zawartość kursywa 2</p>
+
+                            <br>
+                            <br>
+                            LISTA zapis:
+                            <br>
+                            {{'<ul class="list-disc">
+                            <li>Zawartość lista 1</li>
+
+                            </ul>
+
+                            <ol class="list-decimal">
+                            <li>Zawartość lista 2</li>
+
+                            </ol>
+
+                            <ul class="list-none">
+                            <li>Zawartość lista 3</li>
+
+                            </ul>'}}
+                            <br>
+                            <br>
+                            LISTA wygląd:
+                            <br>
+                            <ul class="list-disc">
+                                <li>Zawartość lista 1</li>
+                            </ul>
+
+                            <ol class="list-decimal">
+                                <li>Zawartość lista 2</li>
+                            </ol>
+
+                            <ul class="list-none">
+                                <li>Zawartość lista 3</li>
+                            </ul>
+
+                            <!---->
                             <label for="description" class="block mb-2 text-sm font-medium text-gray-900">Opis</label>
                             <textarea id="description" name="description" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500" placeholder="Wpisz treść tutaj">{{ old('description') ? old('description') : $product->description}}</textarea>
                             @error('description')
@@ -157,7 +240,7 @@
                                     @endif name="category" type="radio" id="category-4" value="herb" class="hidden peer">
                                     <label for="category-4" class="h-full inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border-2 border-gray-200 rounded-lg cursor-pointer peer-checked:border-blue-600 hover:text-gray-600 peer-checked:text-gray-600 hover:bg-gray-50">
                                         <div class="block text-center">
-                                            <div class="w-full text-lg font-semibold">Zestaw</div>
+                                            <div class="w-full text-lg font-semibold">Zioła</div>
                                         </div>
                                     </label>
                                 </li>
